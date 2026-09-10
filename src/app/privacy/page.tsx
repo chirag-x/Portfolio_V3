@@ -1,7 +1,7 @@
 import { profile } from "@/data/profile";
 
 export const metadata = {
-  title: "Privacy Policy | Chirag Sharma",
+  title: "Privacy Policy",
   description: "Privacy Policy for chiragsharma.dev",
 };
 

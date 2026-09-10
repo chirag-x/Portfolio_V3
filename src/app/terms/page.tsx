@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Terms & Conditions | Chirag Sharma",
+  title: "Terms & Conditions",
   description: "Terms and Conditions for chiragsharma.dev",
 };
 

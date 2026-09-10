@@ -2,7 +2,7 @@ import WorkClient from "./WorkClient";
 import { projects } from "@/data/projects";
 
 export const metadata = {
-  title: "Work | Chirag Sharma",
+  title: "Work",
   description: "Projects, experiments and systems I've built.",
 };
 

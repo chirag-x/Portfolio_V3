@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Services | Chirag Sharma",
+  title: "Services",
   description: "Web development, AI automation, and system architecture services.",
 };
 

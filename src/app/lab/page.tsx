@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Lab | Chirag Sharma",
+  title: "Lab",
   description: "Experiments, prototypes, and incomplete ideas.",
 };
 

@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "FAQ | Chirag Sharma",
+  title: "FAQ",
   description: "Frequently Asked Questions",
 };
 

@@ -2,7 +2,7 @@ import { profile } from "@/data/profile";
 import { Download, ExternalLink, Mail, MapPin, Phone } from "lucide-react";
 
 export const metadata = {
-  title: "Resume | Chirag Sharma",
+  title: "Resume",
   description: "Interactive resume of Chirag Sharma.",
 };
 

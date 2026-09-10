@@ -17,7 +17,7 @@ export const generateMetadata = ({ params }: { params: { slug: string } }) => {
   if (!project) return { title: 'Not Found' };
   
   return {
-    title: `${project.title} — ${project.tagline} | Chirag Sharma`,
+    title: `${project.title} — ${project.tagline}`,
     description: project.desc
   };
 };

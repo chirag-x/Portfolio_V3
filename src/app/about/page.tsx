@@ -2,7 +2,7 @@ import About from "@/components/layout/About";
 import Experience from "@/components/layout/Experience";
 
 export const metadata = {
-  title: "About | Chirag Sharma",
+  title: "About",
   description: "Learn more about me, my experience, and my journey.",
 };
 
