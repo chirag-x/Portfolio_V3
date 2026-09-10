@@ -23,8 +23,13 @@ function WorkContent() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [searchValue, setSearchValue] = useState(currentSearch);
 
-  // Derive unique categories and tech from data
   const allCategories = ["ALL", ...Array.from(new Set(projects.flatMap(p => p.category)))];
+  
+  const getCategoryCount = (cat: string) => {
+    if (cat === "ALL") return projects.length;
+    return projects.filter(p => p.category.includes(cat as ProjectCategory)).length;
+  };
+
   const allTech = ["ALL", ...Array.from(new Set(projects.flatMap(p => p.stack)))];
   const allTypes = ["ALL", ...Array.from(new Set(projects.map(p => p.type)))];
 
@@ -106,17 +111,20 @@ function WorkContent() {
         </div>
 
         <div className="flex flex-wrap gap-2 items-center w-full md:w-auto">
-          <div className="hidden lg:flex items-center gap-2">
+          <div className="hidden lg:flex flex-wrap items-center gap-2">
             <span className="text-sm font-medium text-muted-foreground uppercase tracking-wider mr-2">Category:</span>
             {allCategories.slice(0, 5).map(cat => (
               <button
                 key={cat}
                 onClick={() => updateUrl("category", cat)}
-                className={`text-xs font-bold px-3 py-1.5 rounded-full transition-colors ${
+                className={`flex items-center gap-2 text-xs font-bold px-3 py-1.5 rounded-full transition-colors ${
                   currentCategory === cat ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:bg-muted/80"
                 }`}
               >
                 {cat}
+                <span className={`px-1.5 py-0.5 rounded-full text-[10px] ${currentCategory === cat ? "bg-primary-foreground/20" : "bg-background/50"}`}>
+                  {getCategoryCount(cat)}
+                </span>
               </button>
             ))}
           </div>

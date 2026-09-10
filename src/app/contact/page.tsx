@@ -1,0 +1,20 @@
+import Contact from "@/components/layout/Contact";
+
+export const metadata = {
+  title: "Contact | Chirag Sharma",
+  description: "Get in touch with me.",
+};
+
+export default function ContactPage() {
+  return (
+    <div className="pt-32 pb-24 min-h-screen bg-background">
+      <div className="container mx-auto px-6 md:px-12 mb-8">
+        <h1 className="text-4xl md:text-6xl font-black tracking-tighter mb-4 uppercase">CONTACT</h1>
+        <p className="text-xl text-muted-foreground mb-12 max-w-2xl">
+          Let's discuss systems, automation, or freelance opportunities.
+        </p>
+      </div>
+      <Contact />
+    </div>
+  );
+}

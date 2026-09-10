@@ -7,12 +7,15 @@ import { useTheme } from "next-themes";
 import { Menu, Moon, Sun, X, Command } from "lucide-react";
 import { profile } from "@/data/profile";
 
+import { usePathname } from "next/navigation";
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsScrolled(latest > 50);
@@ -21,12 +24,13 @@ export default function Navbar() {
   useEffect(() => setMounted(true), []);
 
   const navLinks = [
-    { name: "Work", href: "/#work" },
-    { name: "About", href: "/#about" },
-    { name: "Experience", href: "/#experience" },
-    { name: "Notes", href: "/notes" },
+    { name: "Home", href: "/" },
+    { name: "Work", href: "/work" },
+    { name: "About", href: "/about" },
+    { name: "Services", href: "/services" },
+    { name: "Lab", href: "/lab" },
     { name: "Resume", href: "/resume" },
-    { name: "Contact", href: "/#contact" },
+    { name: "Contact", href: "/contact" },
   ];
 
   return (
@@ -53,15 +57,20 @@ export default function Navbar() {
           </Link>
 
           <nav className="hidden md:flex items-center gap-6">
-            {navLinks.map(link => (
-              <Link 
-                key={link.name} 
-                href={link.href}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {link.name}
-              </Link>
-            ))}
+            {navLinks.map(link => {
+              const isActive = link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
+              return (
+                <Link 
+                  key={link.name} 
+                  href={link.href}
+                  className={`text-sm font-medium transition-colors ${
+                    isActive ? "text-primary" : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
           </nav>
 
           <div className="flex items-center gap-2">
@@ -81,7 +90,7 @@ export default function Navbar() {
             </button>
             
             <button 
-              className="md:flex lg:hidden p-2 text-muted-foreground hover:text-foreground"
+              className="md:hidden flex p-2 text-muted-foreground hover:text-foreground"
               onClick={() => setIsOpen(!isOpen)}
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -96,19 +105,24 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden absolute top-full left-0 right-0 bg-background border-b border-border overflow-hidden shadow-2xl"
+            className="md:hidden absolute top-full left-0 right-0 bg-background border-b border-border overflow-hidden shadow-2xl"
           >
             <nav className="container mx-auto px-6 py-6 flex flex-col gap-4">
-              {navLinks.map(link => (
-                <Link 
-                  key={link.name} 
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  {link.name}
-                </Link>
-              ))}
+              {navLinks.map(link => {
+                const isActive = link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
+                return (
+                  <Link 
+                    key={link.name} 
+                    href={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className={`text-lg font-medium transition-colors ${
+                      isActive ? "text-primary" : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                );
+              })}
             </nav>
           </motion.div>
         )}

@@ -5,67 +5,78 @@ import { FaGithub as Github, FaLinkedin as Linkedin, FaInstagram as Instagram, F
 
 export default function Footer() {
   return (
-    <footer className="border-t border-border bg-background py-12 mt-20">
-      <div className="container mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-6">
-        <div className="flex flex-col items-center md:items-start gap-2">
-          <Link href="/" className="text-xl font-bold tracking-tighter">
-            Chirag<span className="text-primary">.</span>
-          </Link>
-          <p className="text-sm text-muted-foreground text-center md:text-left max-w-xs">
-            {profile.tagline}
+    <footer className="border-t border-border bg-background pt-20 pb-12 mt-auto">
+      <div className="container mx-auto px-6 md:px-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+          
+          <div className="space-y-4">
+            <Link href="/" className="text-2xl font-black tracking-tighter uppercase block">
+              CHIRAG SHARMA<span className="text-primary">.</span>
+            </Link>
+            <p className="text-sm font-bold text-muted-foreground uppercase tracking-widest">
+              Full-Stack Gen AI Developer
+            </p>
+            <p className="text-sm text-muted-foreground leading-relaxed mt-4">
+              {profile.tagline}
+            </p>
+          </div>
+
+          <div>
+            <h4 className="text-sm font-bold uppercase tracking-widest mb-6">Explore</h4>
+            <ul className="space-y-3 text-sm text-muted-foreground">
+              <li><Link href="/" className="hover:text-primary transition-colors">Home</Link></li>
+              <li><Link href="/work" className="hover:text-primary transition-colors">Work</Link></li>
+              <li><Link href="/about" className="hover:text-primary transition-colors">About</Link></li>
+              <li><Link href="/services" className="hover:text-primary transition-colors">Services</Link></li>
+              <li><Link href="/lab" className="hover:text-primary transition-colors">Lab</Link></li>
+              <li><Link href="/resume" className="hover:text-primary transition-colors">Resume</Link></li>
+              <li><Link href="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-sm font-bold uppercase tracking-widest mb-6">Resources</h4>
+            <ul className="space-y-3 text-sm text-muted-foreground">
+              <li><Link href="/faq" className="hover:text-primary transition-colors">FAQ</Link></li>
+              <li><Link href="/notes" className="hover:text-primary transition-colors">Engineering Notes</Link></li>
+              <li><a href={profile.socials.github} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">GitHub</a></li>
+              <li><a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">LinkedIn</a></li>
+              <li><a href={profile.socials.leetcode} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">LeetCode</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-sm font-bold uppercase tracking-widest mb-6">Legal</h4>
+            <ul className="space-y-3 text-sm text-muted-foreground">
+              <li><Link href="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
+              <li><Link href="/terms" className="hover:text-primary transition-colors">Terms & Conditions</Link></li>
+            </ul>
+          </div>
+          
+        </div>
+
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-8 border-t border-border/50">
+          <div className="flex items-center gap-4">
+            <a href={profile.socials.github} target="_blank" rel="noopener noreferrer" className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-full transition-colors">
+              <Github className="h-5 w-5" />
+            </a>
+            <a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer" className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-full transition-colors">
+              <Linkedin className="h-5 w-5" />
+            </a>
+            <a href={profile.socials.instagram} target="_blank" rel="noopener noreferrer" className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-full transition-colors">
+              <Instagram className="h-5 w-5" />
+            </a>
+            <a href={profile.socials.discord} target="_blank" rel="noopener noreferrer" className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-full transition-colors">
+              <Discord className="h-5 w-5" />
+            </a>
+            <a href={`mailto:${profile.email}`} className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-full transition-colors">
+              <Mail className="h-5 w-5" />
+            </a>
+          </div>
+          
+          <p className="text-sm text-muted-foreground font-mono">
+            &copy; 2026 {profile.name}. All rights reserved.
           </p>
-        </div>
-        
-        <div className="flex items-center gap-4">
-          <a
-            href={profile.socials.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-foreground transition-colors"
-          >
-            <Github className="h-5 w-5" />
-            <span className="sr-only">GitHub</span>
-          </a>
-          <a
-            href={profile.socials.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-foreground transition-colors"
-          >
-            <Linkedin className="h-5 w-5" />
-            <span className="sr-only">LinkedIn</span>
-          </a>
-          <a
-            href={profile.socials.instagram}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-foreground transition-colors"
-          >
-            <Instagram className="h-5 w-5" />
-            <span className="sr-only">Instagram</span>
-          </a>
-          <a
-            href={profile.socials.discord}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-foreground transition-colors"
-          >
-            <Discord className="h-5 w-5" />
-            <span className="sr-only">Discord</span>
-          </a>
-          <a
-            href={`mailto:${profile.email}`}
-            className="text-muted-foreground hover:text-foreground transition-colors"
-          >
-            <Mail className="h-5 w-5" />
-            <span className="sr-only">Email</span>
-          </a>
-        </div>
-      </div>
-      <div className="container mx-auto px-6 md:px-12 mt-8 flex flex-col md:flex-row justify-between items-center text-xs text-muted-foreground">
-        <p>&copy; {new Date().getFullYear()} {profile.name}. All rights reserved.</p>
-        <div className="flex gap-4 mt-4 md:mt-0">
-          <Link href="/about" className="hover:text-foreground transition-colors">About</Link>
         </div>
       </div>
     </footer>
