@@ -18,7 +18,7 @@ const architectureNodes = [
 
 export default function OmnixCinematic() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const flagship = projects.find(p => p.flagship);
+  const flagship = projects.find(p => p.slug === 'omnix');
   const [activeNode, setActiveNode] = useState(0);
 
   const { scrollYProgress } = useScroll({

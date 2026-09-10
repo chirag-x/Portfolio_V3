@@ -11,9 +11,9 @@ type Message = {
 };
 
 const SUGGESTIONS = [
-  "Who is Chirag?",
-  "What is OMNIX?",
-  "Show me AI work",
+  "What is Vertex Studio?",
+  "Tell me about OMNIX",
+  "Show me featured work",
   "How to contact him?",
 ];
 
@@ -42,10 +42,12 @@ export default function AstaAssistant() {
     const lowerText = text.toLowerCase();
     if (lowerText.includes("omnix")) {
       router.push("/work/omnix");
+    } else if (lowerText.includes("vertex") || lowerText.includes("studio") || lowerText.includes("agency") || lowerText.includes("business")) {
+      router.push("/work/vertex-studio");
     } else if (lowerText.includes("contact") || lowerText.includes("hire") || lowerText.includes("email")) {
-      router.push("/#contact");
-    } else if (lowerText.includes("project") || lowerText.includes("work") || lowerText.includes("build")) {
-      router.push("/#work");
+      router.push("/contact");
+    } else if (lowerText.includes("project") || lowerText.includes("work") || lowerText.includes("build") || lowerText.includes("featured")) {
+      router.push("/work");
     }
 
     const userMessage = { role: "user" as const, content: text };

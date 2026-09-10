@@ -15,8 +15,8 @@ export type ProjectStory = {
   broke: string;
 };
 
-export type ProjectCategory = "WEB" | "FULL-STACK" | "AI / ML" | "AUTOMATION" | "AI AGENTS" | "BACKEND" | "UI / FRONTEND" | "EXPERIMENTS";
-export type ProjectType = "PROJECT" | "SYSTEM" | "EXPERIMENT" | "CLONE" | "REDESIGN" | "AI SYSTEM" | "AUTOMATION";
+export type ProjectCategory = "WEB" | "FULL-STACK" | "AI / ML" | "AUTOMATION" | "AI AGENTS" | "BACKEND" | "UI / FRONTEND" | "EXPERIMENTS" | "BUSINESS" | "AGENCY";
+export type ProjectType = "PROJECT" | "SYSTEM" | "EXPERIMENT" | "CLONE" | "REDESIGN" | "AI SYSTEM" | "AUTOMATION" | "BUSINESS";
 
 export type Project = {
   title: string;
@@ -91,33 +91,44 @@ export const projects: Project[] = [
   {
     slug: 'vertex-studio',
     title: 'Vertex Studio',
-    tagline: 'Web Design Agency',
-    desc: 'Modern web design agency project with service pages, responsive layouts, strong visual branding, and client-focused conversion sections.',
-    category: ['UI / FRONTEND', 'WEB'],
-    type: 'PROJECT',
+    tagline: 'Digital Growth Studio',
+    desc: 'An agency/business I operate, focused on building websites, digital experiences and growth systems for real businesses. Vertex Studio provides end-to-end digital services including web development, marketing, and SEO.',
+    category: ['BUSINESS', 'AGENCY', 'WEB', 'FULL-STACK'],
+    type: 'BUSINESS',
     year: '2023',
     status: 'Completed',
-    link: 'https://vertex-studio-main.netlify.app/',
+    link: 'https://vertex-studio-official.netlify.app/',
     github: 'https://github.com/chirag-x/portfolio',
-    stack: ['HTML', 'CSS', 'JavaScript', 'Netlify'],
+    stack: ['React', 'Next.js', 'Node.js', 'Tailwind CSS', 'Figma'],
     featured: true,
+    flagship: true,
     img: '/images/vertex-studio.png',
     story: {
-      built: 'A polished agency website with service sections, project presentation, responsive design, and deployment-ready structure.',
-      learned: 'How to shape a client-facing website around clarity, visual trust, mobile polish, and fast visitor decisions.',
-      broke: 'Image-heavy sections and motion polish needed careful layout tuning so the site stayed smooth on mobile.'
+      built: 'Vertex Studio is a real digital growth agency I operate. I built the business infrastructure, client-facing portfolio, pricing calculator, and lead generation funnels from scratch to serve real-world clients.',
+      learned: 'How to transition from purely writing code to operating a digital business. This project taught me product thinking, client conversion, and how to sell technical services (like SEO, maintenance, and web redesigns) to non-technical business owners.',
+      broke: 'Initially, the offering was too broad. I had to refine the business system (Discovery → Design → Development → Testing → Launch) and focus on specific deliverables like Landing Pages, QR Menus, and Local SEO to streamline operations.'
     },
     caseStudy: {
-      metrics: ['Agency website', 'Responsive UI', 'Service pages', 'Netlify deployment'],
+      metrics: [
+        'Website Design & Redesign',
+        'Landing Pages & Funnels',
+        'QR Digital Menus',
+        'Digital Marketing & Local SEO',
+        'Google Business Profile Optimization',
+        'Social Media Creatives',
+        'Ecommerce & Maintenance'
+      ],
       architecture: [
-        { label: 'Frontend', detail: 'Semantic HTML, structured CSS, responsive sections, and interactive JavaScript enhancements.' },
-        { label: 'UX Flow', detail: 'Service, process, pricing, portfolio, and contact sections guide visitors toward a quote request.' },
-        { label: 'Deployment', detail: 'Static production deployment on Netlify with project assets optimized for a live demo.' }
+        { label: 'Discovery', detail: 'Understanding the client business, target audience, and digital goals.' },
+        { label: 'Design', detail: 'Creating conversion-focused wireframes, visual branding, and UI prototypes in Figma.' },
+        { label: 'Development', detail: 'Engineering fast, responsive, and accessible web experiences using modern stacks.' },
+        { label: 'Testing', detail: 'Rigorous QA for performance (90+ speed target), mobile responsiveness, and SEO indexing.' },
+        { label: 'Launch', detail: 'Deploying the system and initiating digital marketing/growth campaigns.' }
       ],
       challenges: [
-        'Making the design feel like a real client-facing agency rather than a student clone.',
-        'Keeping the hero, service cards, and portfolio sections readable across mobile and desktop.',
-        'Balancing animation polish with page speed and stable layout.'
+        'Translating complex technical features into clear business value for potential clients.',
+        'Building a scalable agency process that can handle 20+ projects without sacrificing quality.',
+        'Integrating lead generation tools (WhatsApp CTA, Calendly, Cost Calculator) seamlessly into the user flow.'
       ]
     }
   },

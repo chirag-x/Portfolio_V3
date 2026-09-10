@@ -25,17 +25,20 @@ export default function Footer() {
             <h4 className="text-sm font-bold uppercase tracking-widest mb-6">Explore</h4>
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li><Link href="/" className="hover:text-primary transition-colors">Home</Link></li>
-              <li><Link href="/work" className="hover:text-primary transition-colors">Work</Link></li>
+              <li><Link href="/work" className="hover:text-primary transition-colors">All Work</Link></li>
               <li><Link href="/about" className="hover:text-primary transition-colors">About</Link></li>
               <li><Link href="/services" className="hover:text-primary transition-colors">Services</Link></li>
               <li><Link href="/lab" className="hover:text-primary transition-colors">Lab</Link></li>
-              <li><Link href="/resume" className="hover:text-primary transition-colors">Resume</Link></li>
-              <li><Link href="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-sm font-bold uppercase tracking-widest mb-6">Resources</h4>
+            <h4 className="text-sm font-bold uppercase tracking-widest mb-6">Featured Work</h4>
+            <ul className="space-y-3 text-sm text-muted-foreground">
+              <li><Link href="/work/vertex-studio" className="hover:text-primary transition-colors">Vertex Studio</Link></li>
+              <li><Link href="/work/omnix" className="hover:text-primary transition-colors">OMNIX</Link></li>
+            </ul>
+            <h4 className="text-sm font-bold uppercase tracking-widest mt-8 mb-6">Resources</h4>
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li><Link href="/faq" className="hover:text-primary transition-colors">FAQ</Link></li>
               <li><Link href="/notes" className="hover:text-primary transition-colors">Engineering Notes</Link></li>
@@ -46,6 +49,11 @@ export default function Footer() {
           </div>
 
           <div>
+            <h4 className="text-sm font-bold uppercase tracking-widest mb-6">Connect</h4>
+            <ul className="space-y-3 text-sm text-muted-foreground mb-8">
+              <li><Link href="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
+              <li><Link href="/resume" className="hover:text-primary transition-colors">Resume</Link></li>
+            </ul>
             <h4 className="text-sm font-bold uppercase tracking-widest mb-6">Legal</h4>
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li><Link href="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link></li>

@@ -4,12 +4,23 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { FaGithub as Github } from "react-icons/fa";
+import OmnixCinematic from "@/components/projects/OmnixCinematic";
 
 export function generateStaticParams() {
   return projects.map((project) => ({
     slug: project.slug,
   }));
 }
+
+export const generateMetadata = ({ params }: { params: { slug: string } }) => {
+  const project = projects.find((p) => p.slug === params.slug);
+  if (!project) return { title: 'Not Found' };
+  
+  return {
+    title: `${project.title} — ${project.tagline} | Chirag Sharma`,
+    description: project.desc
+  };
+};
 
 export default function ProjectDetail({ params }: { params: { slug: string } }) {
   const project = projects.find((p) => p.slug === params.slug);
@@ -41,7 +52,7 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
           <div className="flex flex-wrap gap-4">
             {project.link && (
               <a href={project.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-bold rounded-full hover:bg-primary/90 transition-colors">
-                Live Demo <ExternalLink className="w-4 h-4" />
+                Live Website <ExternalLink className="w-4 h-4" />
               </a>
             )}
             {project.github && (
@@ -54,8 +65,15 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
 
         {/* Hero Image */}
         {project.img && (
-          <div className="w-full aspect-[21/9] relative rounded-3xl overflow-hidden bg-muted border border-border shadow-2xl mb-32">
+          <div className="w-full aspect-[21/9] relative rounded-3xl overflow-hidden bg-muted border border-border shadow-2xl mb-24">
             <Image src={project.img} alt={project.title} fill className="object-cover" priority />
+          </div>
+        )}
+
+        {/* OMNIX Special Architecture Narrative */}
+        {project.slug === 'omnix' && (
+          <div className="-mx-6 md:-mx-12 mb-32">
+            <OmnixCinematic />
           </div>
         )}
 
@@ -81,7 +99,7 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
                   <p className="text-lg text-muted-foreground leading-relaxed">{project.story.learned}</p>
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold mb-4">Challenges & Breakages</h3>
+                  <h3 className="text-2xl font-bold mb-4">Challenges & Insights</h3>
                   <p className="text-lg text-muted-foreground leading-relaxed">{project.story.broke}</p>
                 </div>
               </section>
@@ -89,7 +107,7 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
 
             {project.caseStudy?.architecture && (
               <section>
-                <h2 className="text-3xl font-bold mb-8">System Architecture</h2>
+                <h2 className="text-3xl font-bold mb-8">{project.slug === 'vertex-studio' ? 'Business System & Process' : 'System Architecture'}</h2>
                 <div className="space-y-6 relative before:absolute before:inset-0 before:ml-6 before:-translate-x-px before:h-full before:w-0.5 before:bg-gradient-to-b before:from-border before:to-transparent">
                   {project.caseStudy.architecture.map((step, i) => (
                     <div key={i} className="relative flex items-start group">
@@ -97,7 +115,7 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
                         <span className="text-xs font-bold text-muted-foreground group-hover:text-primary">0{i+1}</span>
                       </div>
                       <div className="ml-6 flex-1 pt-2 border border-transparent group-hover:border-border/50 group-hover:bg-muted/30 rounded-xl p-4 transition-colors">
-                        <h3 className="text-lg font-bold mb-2 text-foreground group-hover:text-primary transition-colors">{step.label}</h3>
+                        <h3 className="text-lg font-bold mb-2 text-foreground group-hover:text-primary transition-colors uppercase tracking-widest">{step.label}</h3>
                         <p className="text-muted-foreground leading-relaxed">{step.detail}</p>
                       </div>
                     </div>
@@ -150,10 +168,10 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
 
               {project.caseStudy?.metrics && (
                 <div>
-                  <h3 className="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-4">Key Features</h3>
+                  <h3 className="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-4">{project.slug === 'vertex-studio' ? 'Core Services' : 'Key Features'}</h3>
                   <ul className="space-y-3">
                     {project.caseStudy.metrics.map((metric, i) => (
-                      <li key={i} className="flex items-center gap-3 text-sm text-foreground">
+                      <li key={i} className="flex items-center gap-3 text-sm text-foreground font-medium">
                         <div className="w-1.5 h-1.5 rounded-full bg-primary" />
                         {metric}
                       </li>

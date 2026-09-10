@@ -216,96 +216,34 @@ function WorkContent() {
       </div>
 
       {/* Projects Grid */}
-      <div className="grid md:grid-cols-12 gap-8">
-        <AnimatePresence mode="popLayout">
-          {filteredProjects.map((project, i) => {
-            const isFeatured = project.flagship || project.featured;
-            const spanClass = isFeatured ? "md:col-span-12 lg:col-span-8" : "md:col-span-6 lg:col-span-4";
-            
-            return (
-            <motion.div
-              layout
-              key={project.slug}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.4 }}
-              className={`group relative flex flex-col bg-card border border-border rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1 ${spanClass}`}
-            >
-              <Link href={`/work/${project.slug}`} className={`block relative ${isFeatured ? 'aspect-[21/9]' : 'aspect-video'} overflow-hidden bg-muted`} data-cursor="view">
-                <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors z-10" />
-                {project.img ? (
-                  <Image src={project.img} alt={project.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
-                ) : (
-                  <div className="absolute inset-0 flex items-center justify-center font-mono text-muted-foreground/50 group-hover:scale-110 transition-transform duration-700">
-                    [ {project.title} ]
-                  </div>
-                )}
-                {project.flagship && (
-                  <div className="absolute top-4 left-4 z-20 px-3 py-1 bg-primary text-primary-foreground text-xs font-bold uppercase tracking-wider rounded-full shadow-lg">
-                    Flagship System
-                  </div>
-                )}
-              </Link>
-              
-              <div className="p-6 md:p-8 flex-1 flex flex-col">
-                <div className="flex justify-between items-start mb-4">
-                  <div className="text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">
-                    {project.type}
-                  </div>
-                  <div className="text-xs font-mono text-muted-foreground">{project.year}</div>
-                </div>
-
-                <Link href={`/work/${project.slug}`} data-cursor="view" className="group/title inline-block mb-3">
-                  <h3 className={`font-black group-hover/title:text-primary transition-colors tracking-tight flex items-center gap-2 ${isFeatured ? 'text-3xl md:text-4xl' : 'text-2xl'}`}>
-                    {project.title}
-                  </h3>
-                </Link>
-                
-                <p className="text-sm text-foreground font-medium mb-3">{project.tagline}</p>
-                <p className="text-sm text-muted-foreground line-clamp-2 mb-6 flex-1 max-w-2xl">{project.desc}</p>
-                
-                <div className="flex flex-wrap gap-2 mt-auto mb-6">
-                  {project.stack.slice(0, 5).map(tech => (
-                    <button 
-                      key={tech} 
-                      onClick={(e) => { e.preventDefault(); updateUrl("tech", tech); }}
-                      className="text-[10px] font-mono border border-border/50 bg-muted/50 px-2 py-1 rounded text-muted-foreground hover:text-foreground hover:border-primary/50 transition-colors"
-                    >
-                      {tech}
-                    </button>
-                  ))}
-                  {project.stack.length > 5 && (
-                    <span className="text-[10px] font-mono border border-border/50 bg-muted/50 px-2 py-1 rounded text-muted-foreground">
-                      +{project.stack.length - 5}
-                    </span>
-                  )}
-                </div>
-
-                <div className="flex items-center justify-between pt-4 border-t border-border/50">
-                  <div className="flex gap-3">
-                    {project.github && (
-                      <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors p-1" aria-label="GitHub">
-                        <Github className="w-5 h-5" />
-                      </a>
-                    )}
-                    {project.link && (
-                      <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors p-1" aria-label="Live Demo">
-                        <ExternalLink className="w-5 h-5" />
-                      </a>
-                    )}
-                  </div>
-                  <Link 
-                    href={`/work/${project.slug}`}
-                    className="flex items-center gap-1 text-sm font-bold text-primary group-hover:translate-x-1 transition-transform"
-                  >
-                    View Details <ArrowRight className="w-4 h-4" />
-                  </Link>
-                </div>
+      <div className="space-y-16">
+        {currentSort === "featured" && !currentSearch && currentCategory === "ALL" && currentTech === "ALL" && currentType === "ALL" ? (
+          <>
+            <div className="space-y-8">
+              <h2 className="text-xl font-bold uppercase tracking-widest text-primary border-b border-border pb-4">Featured Work</h2>
+              <div className="grid md:grid-cols-12 gap-8">
+                <AnimatePresence mode="popLayout">
+                  {filteredProjects.filter(p => p.flagship || p.featured).map(p => renderProjectCard(p))}
+                </AnimatePresence>
               </div>
-            </motion.div>
-          )})}
-        </AnimatePresence>
+            </div>
+
+            <div className="space-y-8">
+              <h2 className="text-xl font-bold uppercase tracking-widest text-muted-foreground border-b border-border pb-4">All Work</h2>
+              <div className="grid md:grid-cols-12 gap-8">
+                <AnimatePresence mode="popLayout">
+                  {filteredProjects.filter(p => !p.flagship && !p.featured).map(p => renderProjectCard(p))}
+                </AnimatePresence>
+              </div>
+            </div>
+          </>
+        ) : (
+          <div className="grid md:grid-cols-12 gap-8">
+            <AnimatePresence mode="popLayout">
+              {filteredProjects.map(p => renderProjectCard(p))}
+            </AnimatePresence>
+          </div>
+        )}
 
         {filteredProjects.length === 0 && (
           <div className="col-span-full py-24 text-center border border-dashed border-border rounded-2xl bg-muted/20">
@@ -322,6 +260,95 @@ function WorkContent() {
       </div>
     </div>
   );
+
+  function renderProjectCard(project: typeof projects[0]) {
+    const isFeatured = project.flagship || project.featured;
+    const spanClass = isFeatured ? "md:col-span-12 lg:col-span-8" : "md:col-span-6 lg:col-span-4";
+    
+    return (
+      <motion.div
+        layout
+        key={project.slug}
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.95 }}
+        transition={{ duration: 0.4 }}
+        className={`group relative flex flex-col bg-card border border-border rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1 ${spanClass}`}
+      >
+        <Link href={`/work/${project.slug}`} className={`block relative ${isFeatured ? 'aspect-[21/9]' : 'aspect-video'} overflow-hidden bg-muted`} data-cursor="view">
+          <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors z-10" />
+          {project.img ? (
+            <Image src={project.img} alt={project.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+          ) : (
+            <div className="absolute inset-0 flex items-center justify-center font-mono text-muted-foreground/50 group-hover:scale-110 transition-transform duration-700">
+              [ {project.title} ]
+            </div>
+          )}
+          {project.flagship && (
+            <div className="absolute top-4 left-4 z-20 px-3 py-1 bg-primary text-primary-foreground text-xs font-bold uppercase tracking-wider rounded-full shadow-lg">
+              Flagship System
+            </div>
+          )}
+        </Link>
+        
+        <div className="p-6 md:p-8 flex-1 flex flex-col">
+          <div className="flex justify-between items-start mb-4">
+            <div className="text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">
+              {project.type}
+            </div>
+            <div className="text-xs font-mono text-muted-foreground">{project.year}</div>
+          </div>
+
+          <Link href={`/work/${project.slug}`} data-cursor="view" className="group/title inline-block mb-3">
+            <h3 className={`font-black group-hover/title:text-primary transition-colors tracking-tight flex items-center gap-2 ${isFeatured ? 'text-3xl md:text-4xl' : 'text-2xl'}`}>
+              {project.title}
+            </h3>
+          </Link>
+          
+          <p className="text-sm text-foreground font-medium mb-3">{project.tagline}</p>
+          <p className="text-sm text-muted-foreground line-clamp-2 mb-6 flex-1 max-w-2xl">{project.desc}</p>
+          
+          <div className="flex flex-wrap gap-2 mt-auto mb-6">
+            {project.stack.slice(0, 5).map(tech => (
+              <button 
+                key={tech} 
+                onClick={(e) => { e.preventDefault(); updateUrl("tech", tech); }}
+                className="text-[10px] font-mono border border-border/50 bg-muted/50 px-2 py-1 rounded text-muted-foreground hover:text-foreground hover:border-primary/50 transition-colors"
+              >
+                {tech}
+              </button>
+            ))}
+            {project.stack.length > 5 && (
+              <span className="text-[10px] font-mono border border-border/50 bg-muted/50 px-2 py-1 rounded text-muted-foreground">
+                +{project.stack.length - 5}
+              </span>
+            )}
+          </div>
+
+          <div className="flex items-center justify-between pt-4 border-t border-border/50">
+            <div className="flex gap-3">
+              {project.github && (
+                <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors p-1" aria-label="GitHub">
+                  <Github className="w-5 h-5" />
+                </a>
+              )}
+              {project.link && (
+                <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors p-1" aria-label="Live Demo">
+                  <ExternalLink className="w-5 h-5" />
+                </a>
+              )}
+            </div>
+            <Link 
+              href={`/work/${project.slug}`}
+              className="flex items-center gap-1 text-sm font-bold text-primary group-hover:translate-x-1 transition-transform"
+            >
+              View Details <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
+      </motion.div>
+    );
+  }
 }
 
 export default function WorkClient() {

@@ -1,7 +1,7 @@
 import Hero from "@/components/hero/Hero";
 import WhatIBuild from "@/components/hero/WhatIBuild";
 import HowIThink from "@/components/hero/HowIThink";
-import OmnixCinematic from "@/components/projects/OmnixCinematic";
+import FeaturedWork from "@/components/projects/FeaturedWork";
 import AboutPreview from "@/components/layout/AboutPreview";
 import ContactCTA from "@/components/layout/ContactCTA";
 import AstaAssistant from "@/components/asta/AstaAssistant";
@@ -13,7 +13,7 @@ export default function Home() {
       <Hero />
       <WhatIBuild />
       <HowIThink />
-      <OmnixCinematic />
+      <FeaturedWork />
       <AboutPreview />
       <ContactCTA />
       <AstaAssistant />
