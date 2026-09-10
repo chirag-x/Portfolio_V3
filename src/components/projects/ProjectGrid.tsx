@@ -1,38 +1,61 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, ArrowRight } from "lucide-react";
 import { FaGithub as Github } from "react-icons/fa";
 import Link from "next/link";
 import { projects } from "@/data/projects";
+import Image from "next/image";
 
 export default function ProjectGrid() {
   const selectedProjects = projects.filter(p => !p.flagship);
 
   return (
-    <section className="py-24 bg-muted/20">
+    <section id="work" className="py-32 bg-background">
       <div className="container mx-auto px-6 md:px-12">
-        <div className="mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Selected Work</h2>
-          <p className="text-muted-foreground text-lg max-w-2xl">Practical applications built across the stack.</p>
+        <div className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div>
+            <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-4 uppercase">Selected Works</h2>
+            <p className="text-muted-foreground text-xl max-w-2xl">Practical applications built across the stack.</p>
+          </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="space-y-32">
           {selectedProjects.map((project, index) => (
             <motion.div
               key={project.slug}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="group relative flex flex-col justify-between rounded-xl border border-border bg-card p-6 shadow-sm transition-all hover:shadow-md hover:border-border/80"
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className={`flex flex-col gap-8 md:gap-16 items-center ${index % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'}`}
             >
-              <div>
-                <div className="flex justify-between items-start mb-4">
-                  <div className="px-2 py-1 rounded text-[10px] font-semibold tracking-wider uppercase bg-muted text-muted-foreground">
+              {/* Image/Visual Container */}
+              <div className="w-full md:w-1/2 group">
+                <Link href={`/projects/${project.slug}`} className="block relative aspect-[4/3] rounded-2xl overflow-hidden bg-muted border border-border shadow-2xl" data-cursor="view">
+                  <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
+                  {project.img ? (
+                    <Image 
+                      src={project.img} 
+                      alt={project.title} 
+                      fill 
+                      className="object-cover scale-[1.02] group-hover:scale-100 transition-transform duration-700 ease-out" 
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center font-mono text-muted-foreground/50 group-hover:scale-105 transition-transform duration-700">
+                      [ {project.title} Interface ]
+                    </div>
+                  )}
+                </Link>
+              </div>
+
+              {/* Content Container */}
+              <div className="w-full md:w-1/2 flex flex-col justify-center">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase bg-primary/10 text-primary">
                     {project.category}
                   </div>
-                  <div className="flex gap-2">
+                  <div className="flex gap-3">
                     {project.github && (
                       <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors" aria-label="GitHub">
                         <Github className="h-5 w-5" />
@@ -45,23 +68,34 @@ export default function ProjectGrid() {
                     )}
                   </div>
                 </div>
-                <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">{project.title}</h3>
-                <p className="text-sm font-medium text-muted-foreground mb-3">{project.tagline}</p>
-                <p className="text-sm text-muted-foreground mb-6 line-clamp-3">
+                
+                <Link href={`/projects/${project.slug}`} className="group inline-block" data-cursor="view">
+                  <h3 className="text-3xl md:text-5xl font-black mb-4 group-hover:text-primary transition-colors tracking-tight">
+                    {project.title}
+                  </h3>
+                </Link>
+                
+                <p className="text-xl font-medium text-foreground mb-4">{project.tagline}</p>
+                <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
                   {project.desc}
                 </p>
-              </div>
-              <div className="flex flex-wrap gap-2 mt-4">
-                {project.stack.slice(0, 4).map(tech => (
-                  <span key={tech} className="text-xs font-mono text-muted-foreground bg-muted/50 px-2 py-1 rounded">
-                    {tech}
-                  </span>
-                ))}
-                {project.stack.length > 4 && (
-                  <span className="text-xs font-mono text-muted-foreground bg-muted/50 px-2 py-1 rounded">
-                    +{project.stack.length - 4}
-                  </span>
-                )}
+
+                <div className="flex flex-wrap gap-2 mb-10">
+                  {project.stack.map(tech => (
+                    <span key={tech} className="text-sm font-medium text-muted-foreground bg-muted/50 border border-border/50 px-3 py-1.5 rounded-md">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <Link
+                  href={`/projects/${project.slug}`}
+                  className="group inline-flex items-center gap-2 text-primary font-bold text-lg hover:underline underline-offset-4"
+                  data-cursor="view"
+                >
+                  Read Case Study
+                  <ArrowRight className="h-5 w-5 group-hover:translate-x-2 transition-transform" />
+                </Link>
               </div>
             </motion.div>
           ))}
