@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, FileText, Code2 } from "lucide-react";
+import { ArrowRight, FileText } from "lucide-react";
 import { FaGithub as Github, FaLinkedin as Linkedin } from "react-icons/fa";
 import Link from "next/link";
 import { profile } from "@/data/profile";
@@ -15,156 +15,151 @@ export default function Hero() {
     offset: ["start start", "end start"]
   });
 
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, 200]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, 100]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, -50]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   return (
-    <section ref={containerRef} id="hero" className="relative min-h-screen flex items-center pt-24 overflow-hidden">
+    <section ref={containerRef} className="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-background pt-20">
       {/* Background System */}
-      <div className="absolute inset-0 pointer-events-none -z-10">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]"></div>
-        <div className="absolute top-1/4 -left-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] opacity-50 mix-blend-screen"></div>
-        <div className="absolute bottom-1/4 -right-1/4 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[120px] opacity-50 mix-blend-screen"></div>
-      </div>
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:3rem_3rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]"></div>
       
-      <div className="container mx-auto px-6 md:px-12 grid lg:grid-cols-2 gap-12 items-center z-10">
-        {/* Left Typography Content */}
-        <motion.div style={{ y: y1, opacity }} className="space-y-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-foreground leading-[1.05] uppercase">
-              Chirag <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary/80 to-blue-500/80">Sharma</span>
-            </h1>
-            <p className="text-xl md:text-2xl font-medium text-foreground mt-6 uppercase tracking-widest border-l-2 border-primary pl-4">
-              Full Stack Gen AI Developer
-            </p>
-          </motion.div>
+      {/* Ambient Glow */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px] mix-blend-screen pointer-events-none"></div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="space-y-6"
-          >
-            <p className="text-lg md:text-xl text-muted-foreground max-w-xl font-light leading-relaxed">
-              I build web products, AI systems, and automation tools that actually <span className="font-semibold text-foreground">solve problems</span>.
-            </p>
-            
-            <div className="text-sm font-mono text-muted-foreground space-y-1">
-              <p>B.Tech IT Student · RJIT, Gwalior</p>
-              <div className="flex items-center gap-2">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                </span>
-                <span className="text-green-500">Open to internships & freelance builds</span>
-              </div>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-wrap items-center gap-4 pt-4"
-          >
-            <Link
-              href="#work"
-              data-cursor="view"
-              className="group inline-flex items-center justify-center gap-2 rounded-full text-sm font-semibold transition-all focus-visible:outline-none bg-primary text-primary-foreground shadow-lg shadow-primary/20 hover:shadow-primary/40 h-12 px-8 py-2 overflow-hidden relative"
-            >
-              <span className="relative z-10 flex items-center gap-2">
-                Explore my work
-                <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </span>
-              <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
-            </Link>
-            <Link
-              href="/resume"
-              className="inline-flex items-center justify-center gap-2 rounded-full text-sm font-semibold transition-all focus-visible:outline-none border border-border bg-background shadow-sm hover:bg-muted h-12 px-8 py-2"
-            >
-              <FileText className="h-4 w-4" />
-              Download Resume
-            </Link>
-          </motion.div>
-
+      <div className="container mx-auto px-6 md:px-12 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+          
+          {/* Left: Identity */}
           <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.8 }}
-            className="flex items-center gap-6 pt-8 text-muted-foreground"
+            style={{ y: y1, opacity }}
+            className="flex flex-col items-center lg:items-start text-center lg:text-left z-20 order-2 lg:order-1"
           >
-            <a href={profile.socials.github} target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors"><Github className="w-5 h-5" /></a>
-            <a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors"><Linkedin className="w-5 h-5" /></a>
-            <a href={profile.socials.leetcode} target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors"><Code2 className="w-5 h-5" /></a>
-          </motion.div>
-        </motion.div>
-
-        {/* Right Portrait Component */}
-        <motion.div 
-          style={{ y: y2 }}
-          className="relative h-[600px] w-full flex items-center justify-center lg:justify-end hidden md:flex"
-        >
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
-            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-            transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="relative w-[400px] h-[550px]"
-          >
-            {/* Ambient Back Glow */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent blur-2xl rounded-[3rem]"></div>
-            
-            {/* The Image Container with Masking */}
-            <div className="absolute inset-0 rounded-[2rem] overflow-hidden border border-border/50 bg-muted/20 backdrop-blur-sm shadow-2xl group">
-              <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
-              
-              <Image 
-                src="/images/hero.png" 
-                alt="Chirag Sharma"
-                fill
-                className="object-cover object-top scale-105 group-hover:scale-100 transition-transform duration-700 ease-out grayscale-[20%] group-hover:grayscale-0"
-                priority
-              />
-              
-              {/* Subtle grain overlay */}
-              <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay z-20" style={{ backgroundImage: "url('https://grainy-gradients.vercel.app/noise.svg')" }}></div>
-            </div>
-
-            {/* Floating Technical Labels */}
             <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 1, type: "spring", stiffness: 100 }}
-              className="absolute top-16 -left-12 px-4 py-2 bg-background/90 backdrop-blur-md border border-border rounded-lg shadow-xl text-xs font-mono font-bold tracking-wider z-30"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.7 }}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase mb-6 border border-primary/20"
             >
-              <span className="text-primary mr-2">{"<"}</span>FULL STACK<span className="text-primary ml-2">{"/>"}</span>
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+              Full-Stack Gen AI Developer
             </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 1.2, type: "spring", stiffness: 100 }}
-              className="absolute bottom-32 -right-8 px-4 py-2 bg-background/90 backdrop-blur-md border border-border rounded-lg shadow-xl text-xs font-mono font-bold tracking-wider z-30 flex items-center gap-2"
+            
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.7 }}
+              className="text-5xl md:text-7xl lg:text-[5.5rem] font-black tracking-tighter leading-[1.1] mb-6"
             >
-              <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></div>
-              AI / ML
+              CHIRAG <br className="hidden lg:block"/> SHARMA<span className="text-primary">.</span>
+            </motion.h1>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.7 }}
+              className="space-y-4 mb-8 max-w-xl"
+            >
+              <p className="text-xl md:text-2xl text-foreground font-medium">
+                I build web products, AI systems & automation that actually do things.
+              </p>
+              <div className="text-muted-foreground text-sm font-mono flex flex-col md:flex-row md:items-center gap-2 justify-center lg:justify-start">
+                <span>B.Tech IT Student · RJIT, Gwalior</span>
+                <span className="hidden md:inline-block w-1.5 h-1.5 rounded-full bg-border"></span>
+                <span className="text-green-500 flex items-center gap-2 justify-center">
+                  <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+                  Open to internships & freelance
+                </span>
+              </div>
             </motion.div>
 
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.4, type: "spring", stiffness: 100 }}
-              className="absolute bottom-12 left-12 px-4 py-2 bg-background/90 backdrop-blur-md border border-border rounded-lg shadow-xl text-xs font-mono font-bold tracking-wider z-30 text-muted-foreground"
+              transition={{ delay: 0.4, duration: 0.7 }}
+              className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mb-8"
             >
-              AUTOMATION
+              <Link 
+                href="/work"
+                className="w-full sm:w-auto px-8 py-4 bg-foreground text-background font-bold rounded-full hover:bg-foreground/90 transition-all flex items-center justify-center gap-2 group shadow-xl"
+                data-cursor="view"
+              >
+                Explore my work
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link 
+                href="/resume"
+                className="w-full sm:w-auto px-8 py-4 bg-muted/50 backdrop-blur-md border border-border font-bold rounded-full hover:bg-muted transition-all flex items-center justify-center gap-2 group"
+              >
+                <FileText className="w-5 h-5 group-hover:-translate-y-1 transition-transform text-muted-foreground" />
+                Download resume
+              </Link>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6, duration: 1 }}
+              className="flex items-center gap-4 text-muted-foreground"
+            >
+              <a href={profile.socials.github} target="_blank" rel="noopener noreferrer" className="p-2 hover:text-foreground transition-colors" aria-label="GitHub">
+                <Github className="w-5 h-5" />
+              </a>
+              <a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer" className="p-2 hover:text-foreground transition-colors" aria-label="LinkedIn">
+                <Linkedin className="w-5 h-5" />
+              </a>
             </motion.div>
           </motion.div>
-        </motion.div>
+
+          {/* Right: Portrait */}
+          <motion.div 
+            style={{ y: y2, opacity }}
+            className="relative w-full max-w-[500px] aspect-[4/5] mx-auto z-10 order-1 lg:order-2"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, filter: "blur(20px)" }}
+              animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              className="absolute inset-0 rounded-3xl overflow-hidden border border-border/50 shadow-2xl"
+              style={{
+                clipPath: "polygon(0 0, 100% 0, 100% 100%, 10% 100%, 0 90%)"
+              }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent z-10"></div>
+              <div className="absolute inset-0 bg-[url('/noise.png')] opacity-20 mix-blend-overlay z-20 pointer-events-none"></div>
+              <Image
+                src="/images/hero.png"
+                alt={profile.name}
+                fill
+                priority
+                className="object-cover object-top hover:scale-105 transition-transform duration-1000"
+                sizes="(max-w-width: 768px) 100vw, 50vw"
+              />
+            </motion.div>
+
+            {/* Technical Metadata Floating Labels */}
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.8, duration: 0.5 }}
+              className="absolute top-1/4 -right-6 md:-right-12 z-30 bg-background/80 backdrop-blur-md border border-border px-4 py-2 rounded-xl shadow-lg hidden md:block"
+            >
+              <div className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest mb-1">Domain</div>
+              <div className="text-sm font-bold">AI Automation</div>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 1, duration: 0.5 }}
+              className="absolute bottom-1/4 -left-6 md:-left-12 z-30 bg-background/80 backdrop-blur-md border border-border px-4 py-2 rounded-xl shadow-lg hidden md:block"
+            >
+              <div className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest mb-1">Architecture</div>
+              <div className="text-sm font-bold">Full-Stack Systems</div>
+            </motion.div>
+          </motion.div>
+
+        </div>
       </div>
     </section>
   );

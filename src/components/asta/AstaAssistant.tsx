@@ -41,7 +41,7 @@ export default function AstaAssistant() {
     // Fast local routing interceptor
     const lowerText = text.toLowerCase();
     if (lowerText.includes("omnix")) {
-      router.push("/projects/omnix");
+      router.push("/work/omnix");
     } else if (lowerText.includes("contact") || lowerText.includes("hire") || lowerText.includes("email")) {
       router.push("/#contact");
     } else if (lowerText.includes("project") || lowerText.includes("work") || lowerText.includes("build")) {

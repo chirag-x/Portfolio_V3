@@ -31,7 +31,7 @@ export default function CommandPalette() {
   const commands = [
     { name: "Home", icon: <Home className="h-4 w-4" />, action: () => router.push("/") },
     { name: "View Projects", icon: <Briefcase className="h-4 w-4" />, action: () => router.push("/#work") },
-    { name: "Read OMNIX Case Study", icon: <Code className="h-4 w-4" />, action: () => router.push("/projects/omnix") },
+    { name: "Read OMNIX Case Study", icon: <Code className="h-4 w-4" />, action: () => router.push("/work/omnix") },
     { name: "Read Build Logs", icon: <FileText className="h-4 w-4" />, action: () => router.push("/notes") },
     { name: "View Resume", icon: <FileText className="h-4 w-4" />, action: () => router.push("/resume") },
     { name: "Contact Me", icon: <Mail className="h-4 w-4" />, action: () => router.push("/#contact") },

@@ -68,7 +68,7 @@ export default function FeaturedProject() {
 
               <div className="flex flex-wrap gap-4 mt-auto">
                 <Link
-                  href={`/projects/${flagship.slug}`}
+                  href={`/work/${flagship.slug}`}
                   className="inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring bg-primary text-primary-foreground shadow hover:bg-primary/90 h-10 px-6 py-2"
                 >
                   Read Case Study

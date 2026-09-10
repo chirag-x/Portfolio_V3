@@ -32,7 +32,7 @@ export default function ProjectGrid() {
             >
               {/* Image/Visual Container */}
               <div className="w-full md:w-1/2 group">
-                <Link href={`/projects/${project.slug}`} className="block relative aspect-[4/3] rounded-2xl overflow-hidden bg-muted border border-border shadow-2xl" data-cursor="view">
+                <Link href={`/work/${project.slug}`} className="block relative aspect-[4/3] rounded-2xl overflow-hidden bg-muted border border-border shadow-2xl" data-cursor="view">
                   <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
                   {project.img ? (
                     <Image 
@@ -69,7 +69,7 @@ export default function ProjectGrid() {
                   </div>
                 </div>
                 
-                <Link href={`/projects/${project.slug}`} className="group inline-block" data-cursor="view">
+                <Link href={`/work/${project.slug}`} className="group inline-block" data-cursor="view">
                   <h3 className="text-3xl md:text-5xl font-black mb-4 group-hover:text-primary transition-colors tracking-tight">
                     {project.title}
                   </h3>
@@ -89,7 +89,7 @@ export default function ProjectGrid() {
                 </div>
 
                 <Link
-                  href={`/projects/${project.slug}`}
+                  href={`/work/${project.slug}`}
                   className="group inline-flex items-center gap-2 text-primary font-bold text-lg hover:underline underline-offset-4"
                   data-cursor="view"
                 >

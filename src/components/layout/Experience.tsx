@@ -76,7 +76,7 @@ export default function Experience() {
                       transition={{ delay: i * 0.1 }}
                     >
                       <Link 
-                        href={`/projects/${project.slug}`}
+                        href={`/work/${project.slug}`}
                         className="group block p-4 rounded-xl border border-border bg-card hover:border-primary/50 transition-colors"
                       >
                         <div className="flex justify-between items-center mb-1">

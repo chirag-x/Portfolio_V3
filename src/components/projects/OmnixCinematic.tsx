@@ -7,11 +7,12 @@ import { ArrowRight, Terminal } from "lucide-react";
 import { projects } from "@/data/projects";
 
 const architectureNodes = [
-  { id: "user", label: "User Input", detail: '"Open notepad and check weather"' },
+  { id: "user", label: "User Goal", detail: '"Open notepad and check weather"' },
   { id: "perception", label: "Perception", detail: "YOLO detects screen state & UI bounding boxes" },
   { id: "reasoning", label: "Agent Brain", detail: "LLM analyzes intent vs current screen" },
   { id: "planning", label: "Planner", detail: "Generates execution step sequence" },
-  { id: "action", label: "Action Tools", detail: "Mouse, Keyboard, OS control via Playwright" },
+  { id: "action", label: "Tool Execution", detail: "Mouse, Keyboard, OS control via Playwright" },
+  { id: "memory", label: "Memory", detail: "Stores contextual execution context for next turns" },
   { id: "result", label: "Result", detail: "Task successfully completed" }
 ];
 
@@ -158,6 +159,13 @@ export default function OmnixCinematic() {
                 )}
 
                 {activeNode >= 5 && (
+                  <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="text-muted-foreground">
+                    <span className="text-teal-500">[Memory]</span> Archiving execution context.<br/>
+                    <span className="text-teal-500">[Memory]</span> Semantic index updated.
+                  </motion.div>
+                )}
+
+                {activeNode >= 6 && (
                   <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="text-green-500 font-bold">
                     [Result] Task executed successfully.
                   </motion.div>
@@ -173,7 +181,7 @@ export default function OmnixCinematic() {
             className="mt-16"
           >
             <Link
-              href={`/projects/${flagship.slug}`}
+              href={`/work/${flagship.slug}`}
               className="inline-flex items-center justify-center gap-2 rounded-full text-sm font-semibold transition-all focus-visible:outline-none bg-primary text-primary-foreground shadow-lg shadow-primary/20 hover:shadow-primary/40 h-12 px-8 py-2"
             >
               Read Full Case Study

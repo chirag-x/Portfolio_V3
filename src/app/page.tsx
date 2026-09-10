@@ -1,8 +1,7 @@
 import Hero from "@/components/hero/Hero";
 import WhatIBuild from "@/components/hero/WhatIBuild";
-import QuickProof from "@/components/hero/QuickProof";
+import HowIThink from "@/components/hero/HowIThink";
 import OmnixCinematic from "@/components/projects/OmnixCinematic";
-import ProjectGrid from "@/components/projects/ProjectGrid";
 import Experience from "@/components/layout/Experience";
 import About from "@/components/layout/About";
 import Contact from "@/components/layout/Contact";
@@ -14,9 +13,8 @@ export default function Home() {
     <>
       <Hero />
       <WhatIBuild />
-      <QuickProof />
+      <HowIThink />
       <OmnixCinematic />
-      <ProjectGrid />
       <Experience />
       <About />
       <Contact />
