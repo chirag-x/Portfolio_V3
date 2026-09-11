@@ -64,20 +64,20 @@ export default function Footer() {
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-8 border-t border-border/50">
           <div className="flex items-center gap-4">
-            <a href={profile.socials.githubUrl} target="_blank" rel="noopener noreferrer" className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-full transition-colors">
-              <Github className="h-5 w-5" />
+            <a href={profile.socials.githubUrl} target="_blank" rel="noopener noreferrer" className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-full transition-colors" aria-label="GitHub Profile">
+              <Github className="w-5 h-5" />
             </a>
-            <a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer" className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-full transition-colors">
-              <Linkedin className="h-5 w-5" />
+            <a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer" className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-full transition-colors" aria-label="LinkedIn Profile">
+              <Linkedin className="w-5 h-5" />
             </a>
-            <a href={profile.socials.instagram} target="_blank" rel="noopener noreferrer" className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-full transition-colors">
-              <Instagram className="h-5 w-5" />
+            <a href={profile.socials.instagram} target="_blank" rel="noopener noreferrer" className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-full transition-colors" aria-label="Instagram Profile">
+              <Instagram className="w-5 h-5" />
             </a>
-            <a href={profile.socials.discord} target="_blank" rel="noopener noreferrer" className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-full transition-colors">
-              <Discord className="h-5 w-5" />
+            <a href={profile.socials.discord} target="_blank" rel="noopener noreferrer" className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-full transition-colors" aria-label="Discord Profile">
+              <Discord className="w-5 h-5" />
             </a>
-            <a href={`mailto:${profile.email}`} className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-full transition-colors">
-              <Mail className="h-5 w-5" />
+            <a href={`mailto:${profile.email}`} className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-full transition-colors" aria-label="Email Me">
+              <Mail className="w-5 h-5" />
             </a>
           </div>
           
