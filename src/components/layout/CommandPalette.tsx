@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
-import { Search, Moon, Sun, Home, Briefcase, Mail, FileText, Code } from "lucide-react";
+import { Search, Moon, Sun, Home, Briefcase, Mail, FileText, Code, FolderGit2 } from "lucide-react";
+import { projects } from "@/data/projects";
 
 export default function CommandPalette() {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,19 +29,28 @@ export default function CommandPalette() {
 
   if (!isOpen) return null;
 
+  // Base system commands
   const commands = [
-    { name: "Home", icon: <Home className="h-4 w-4" />, action: () => router.push("/") },
-    { name: "View Projects", icon: <Briefcase className="h-4 w-4" />, action: () => router.push("/#work") },
-    { name: "Read OMNIX Case Study", icon: <Code className="h-4 w-4" />, action: () => router.push("/work/omnix") },
-    { name: "Read Build Logs", icon: <FileText className="h-4 w-4" />, action: () => router.push("/notes") },
+    { name: "Go to Home", icon: <Home className="h-4 w-4" />, action: () => router.push("/") },
+    { name: "View All Work", icon: <Briefcase className="h-4 w-4" />, action: () => router.push("/work") },
+    { name: "Lab / Experiments", icon: <Code className="h-4 w-4" />, action: () => router.push("/lab") },
     { name: "View Resume", icon: <FileText className="h-4 w-4" />, action: () => router.push("/resume") },
-    { name: "Contact Me", icon: <Mail className="h-4 w-4" />, action: () => router.push("/#contact") },
+    { name: "Contact Me", icon: <Mail className="h-4 w-4" />, action: () => router.push("/contact") },
     { 
       name: `Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Mode`, 
       icon: theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />, 
       action: () => setTheme(theme === 'dark' ? 'light' : 'dark') 
     },
   ];
+
+  // Dynamically append all projects for global search
+  projects.forEach((p) => {
+    commands.push({
+      name: `Project: ${p.title}`,
+      icon: <FolderGit2 className="h-4 w-4" />,
+      action: () => router.push(`/work/${p.slug}`)
+    });
+  });
 
   const filteredCommands = commands.filter(cmd => 
     cmd.name.toLowerCase().includes(search.toLowerCase())

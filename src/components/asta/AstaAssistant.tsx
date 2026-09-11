@@ -60,6 +60,7 @@ export default function AstaAssistant() {
       router.push("/faq");
     }
 
+    const userMessage = { role: "user" as const, content: text };
     const newMessages = [...messages, userMessage];
     setMessages(newMessages);
     setInput("");
