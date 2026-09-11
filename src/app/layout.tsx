@@ -125,7 +125,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${inter.className} bg-background text-foreground antialiased min-h-screen flex flex-col`}>
+      <body className={`${inter.className} bg-background text-foreground antialiased min-h-screen flex flex-col`} suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
