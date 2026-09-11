@@ -17,19 +17,28 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://chirag-webpage.netlify.app'),
+  metadataBase: new URL('https://chirag-portfolio-v3.netlify.app'),
   title: {
     default: "Chirag Sharma — Full Stack Gen AI Developer",
     template: "%s | Chirag Sharma"
   },
   description: "I build intelligent software systems across Web, AI, and Automation. Gwalior-based Full Stack Gen AI Developer.",
   keywords: [
-    "Chirag Sharma", "Chirag", "Chirag Gwalior", "Chirag Sharma Gwalior", "Web Developer Gwalior", "Software Engineer Gwalior",
-    "Full Stack Developer Gwalior", "Freelance Developer Gwalior", "Gwalior IT student", "RJIT Gwalior",
-    "Gen AI Developer", "AI Automation", "AI Agent Developer", "Next.js Developer", "React Developer",
-    "Vertex Studio Gwalior", "Web Agency Gwalior"
+    "Chirag Sharma", "Chirag Sharma Portfolio", "Chirag Sharma Gwalior", "Chirag Sharma RJIT", 
+    "Chirag Sharma Full Stack Developer", "Chirag Sharma Gen AI Developer", "Chirag Sharma MERN Developer", 
+    "Full Stack Gen AI Developer", "Generative AI Developer Portfolio", "MERN Stack Developer Portfolio", 
+    "React Developer India", "Node.js Developer India", "MongoDB Developer India", "Express.js Developer India", 
+    "Python Developer Portfolio", "AI Powered Web Developer", "AI Chatbot Developer", "DeepSeek API Integration", 
+    "OpenRouter AI Integration", "Voice AI Assistant Website", "AI Integrated Portfolio Website", 
+    "Smart Campus WiFi Monitoring System", "Mobile Attendance System Project", "Full Stack Developer in Gwalior", 
+    "Web Developer in Gwalior", "Gen AI Developer in India", "Indian Full Stack Developer", 
+    "Indian Gen AI Developer", "Full Stack Developer Internship Portfolio", "Gen AI Developer Internship Candidate", 
+    "BTech IT Student Portfolio", "RJIT IT Student Developer", "Final Year IT Student Portfolio", 
+    "MERN Stack Internship Portfolio", "AI Projects Portfolio", "Modern Web Development Portfolio", 
+    "Frontend Backend Developer Portfolio", "Full Stack Dashboard Project", "AI Integrated Web Applications", 
+    "React Node Mongo Developer", "Portfolio Website with AI Assistant", "Vertex Studio Gwalior", "Web Agency Gwalior"
   ],
-  authors: [{ name: "Chirag Sharma", url: "https://chirag-webpage.netlify.app" }],
+  authors: [{ name: "Chirag Sharma", url: "https://chirag-portfolio-v3.netlify.app" }],
   creator: "Chirag Sharma",
   alternates: {
     canonical: "/",
@@ -37,7 +46,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://chirag-webpage.netlify.app/",
+    url: "https://chirag-portfolio-v3.netlify.app/",
     title: "Chirag Sharma — Full Stack Gen AI Developer",
     description: "I build intelligent software systems across Web, AI, and Automation.",
     siteName: "Chirag Sharma Portfolio",
@@ -68,7 +77,13 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "google-site-verification=...",
+    google: "google-site-verification=fDmtOxIxWhLUqu4r_PYUZTa4C7fW2NHRNihINJgb-_Q",
+  },
+  other: {
+    "geo.region": "IN-MP",
+    "geo.placename": "Gwalior",
+    "geo.position": "26.2183;78.1828",
+    "ICBM": "26.2183, 78.1828"
   },
 };
 
@@ -76,7 +91,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Chirag Sharma",
-  "url": "https://chirag-webpage.netlify.app/",
+  "url": "https://chirag-portfolio-v3.netlify.app/",
   "jobTitle": "Full-Stack AI Developer",
   "address": {
     "@type": "PostalAddress",
@@ -90,7 +105,8 @@ const jsonLd = {
   },
   "sameAs": [
     "https://github.com/chirag-x",
-    "https://www.linkedin.com/in/chirag-sharma/"
+    "https://www.linkedin.com/in/chirag-sharma-aa1132329/",
+    "https://leetcode.com/u/TheChirag__X/"
   ],
   "knowsAbout": ["Web Development", "Artificial Intelligence", "Next.js", "React", "Python", "Autonomous Agents"]
 };

@@ -20,7 +20,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-2xl mb-4 text-foreground">1. Website Use</h2>
             <p className="text-muted-foreground leading-relaxed">
-              By accessing and using this website (chirag-webpage.netlify.app), you agree to these Terms and Conditions. This is a personal portfolio website intended to showcase my software engineering work, projects, and services. You agree to use the site for lawful, informational purposes only.
+              By accessing and using this website (chirag-portfolio-v3.netlify.app), you agree to these Terms and Conditions. This is a personal portfolio website intended to showcase my software engineering work, projects, and services. You agree to use the site for lawful, informational purposes only.
             </p>
           </section>
 

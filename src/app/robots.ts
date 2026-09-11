@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/'],
     },
-    sitemap: 'https://chirag-webpage.netlify.app/sitemap.xml',
+    sitemap: 'https://chirag-portfolio-v3.netlify.app/sitemap.xml',
   };
 }

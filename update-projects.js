@@ -1,5 +1,5 @@
-const fs = require('fs');
-let code = fs.readFileSync('src/data/projects.ts', 'utf8');
+import { readFileSync, writeFileSync } from 'fs';
+let code = readFileSync('src/data/projects.ts', 'utf8');
 
 // Replace specific project entries with augmented versions
 code = code.replace(/slug: 'smart-campus',([\s\S]*?)img: '\/images\/smart-campus\.png'/g, `slug: 'smart-campus',$1img: '/images/smart-campus.png',
@@ -58,4 +58,4 @@ code = code.replace(/slug: 'hotel-booking',([\s\S]*?)img: '\/images\/hotel\.png'
       metrics: ['REST API design', 'Database schema', 'Booking logic', 'Server-side validation']
     }`);
 
-fs.writeFileSync('src/data/projects.ts', code);
+writeFileSync('src/data/projects.ts', code);

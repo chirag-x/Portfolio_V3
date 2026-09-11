@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { projects } from '@/data/projects';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://chirag-webpage.netlify.app';
+  const baseUrl = 'https://chirag-portfolio-v3.netlify.app';
 
   // Core routes
   const routes = [
