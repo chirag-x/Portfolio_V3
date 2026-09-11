@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { profile } from "@/data/profile";
 import { projects } from "@/data/projects";
+import { useSoundEffects } from "@/hooks/useSoundEffects";
 
 type HistoryLine = {
   command: string;
@@ -16,6 +17,7 @@ export default function TerminalPage() {
   const inputRef = useRef<HTMLInputElement>(null);
   const endRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
+  const { playTyping, playClick } = useSoundEffects();
 
   useEffect(() => {
     inputRef.current?.focus();
@@ -30,6 +32,7 @@ export default function TerminalPage() {
 
   const handleCommand = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
+      playClick();
       const cmd = input.trim().toLowerCase();
       let output: string | React.ReactNode = "";
 
@@ -95,7 +98,7 @@ export default function TerminalPage() {
             ref={inputRef}
             type="text"
             value={input}
-            onChange={e => setInput(e.target.value)}
+            onChange={e => { playTyping(); setInput(e.target.value); }}
             onKeyDown={handleCommand}
             className="flex-1 bg-transparent outline-none text-green-500"
             autoFocus

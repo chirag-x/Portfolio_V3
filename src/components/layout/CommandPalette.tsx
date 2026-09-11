@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
+import { useSoundEffects } from "@/hooks/useSoundEffects";
 import { Search, Moon, Sun, Home, Briefcase, Mail, FileText, Code, FolderGit2 } from "lucide-react";
 import { projects } from "@/data/projects";
 
@@ -11,12 +12,16 @@ export default function CommandPalette() {
   const [search, setSearch] = useState("");
   const router = useRouter();
   const { setTheme, theme } = useTheme();
+  const { playSwoosh, playClick } = useSoundEffects();
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
-        setIsOpen((open) => !open);
+        setIsOpen((open) => {
+          if (!open) playSwoosh();
+          return !open;
+        });
       }
       if (e.key === "Escape") {
         setIsOpen(false);
@@ -94,9 +99,9 @@ export default function CommandPalette() {
                   <button
                     className="w-full flex items-center gap-3 px-3 py-3 text-sm text-foreground hover:bg-accent hover:text-accent-foreground rounded-lg transition-colors text-left"
                     onClick={() => {
-                      cmd.action();
+                      playClick();
                       setIsOpen(false);
-                      setSearch("");
+                      cmd.action();
                     }}
                   >
                     <span className="text-muted-foreground">{cmd.icon}</span>

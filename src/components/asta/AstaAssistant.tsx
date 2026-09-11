@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, X, Loader2, Sparkles } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useSoundEffects } from "@/hooks/useSoundEffects";
 
 type Message = {
   role: "user" | "assistant";
@@ -28,6 +29,7 @@ export default function AstaAssistant() {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
+  const { playSwoosh, playClick, playTyping } = useSoundEffects();
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -194,7 +196,7 @@ export default function AstaAssistant() {
                 <input
                   type="text"
                   value={input}
-                  onChange={(e) => setInput(e.target.value)}
+                  onChange={(e) => { playTyping(); setInput(e.target.value); }}
                   placeholder="Query ASTA..."
                   className="flex-1 bg-background border border-border rounded-full pl-5 pr-12 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all font-medium placeholder:text-muted-foreground/50"
                 />
