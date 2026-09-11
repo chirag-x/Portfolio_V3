@@ -161,7 +161,7 @@ export default function AboutPage() {
             
             <div>
               <h2 className="text-sm font-bold tracking-widest uppercase text-primary mb-6">Currently Learning</h2>
-              <ul className="space-y-3">
+              <ul className="space-y-3 mb-10">
                 {profile.learning.map((l) => (
                   <li key={l.topic} className="flex items-start gap-3 text-sm">
                     <div className="mt-1 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
@@ -171,6 +171,24 @@ export default function AboutPage() {
                     </div>
                   </li>
                 ))}
+              </ul>
+
+              <h2 className="text-sm font-bold tracking-widest uppercase text-primary mb-6">Currently Building</h2>
+              <ul className="space-y-4">
+                <li className="p-4 bg-muted/20 border border-border rounded-xl">
+                  <div className="flex justify-between items-start mb-2">
+                    <strong className="text-foreground">OMNIX Agent</strong>
+                    <span className="text-[10px] uppercase font-bold tracking-widest text-orange-500 bg-orange-500/10 px-2 py-0.5 rounded">Building</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground">Adding continuous voice-mode and smarter UI-grounding for Windows automation.</p>
+                </li>
+                <li className="p-4 bg-muted/20 border border-border rounded-xl">
+                  <div className="flex justify-between items-start mb-2">
+                    <strong className="text-foreground">Vertex Studio Systems</strong>
+                    <span className="text-[10px] uppercase font-bold tracking-widest text-green-500 bg-green-500/10 px-2 py-0.5 rounded">Live</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground">Scaling the business operations and launching new digital product offerings.</p>
+                </li>
               </ul>
             </div>
 

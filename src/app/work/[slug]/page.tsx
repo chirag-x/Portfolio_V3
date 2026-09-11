@@ -50,6 +50,9 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
             <div className="px-3 py-1 bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider rounded-full">
               {project.type}
             </div>
+            <div className={`px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full ${project.status === 'LIVE' ? 'bg-green-500/10 text-green-500' : project.status === 'BUILDING' ? 'bg-orange-500/10 text-orange-500' : 'bg-muted text-muted-foreground'}`}>
+              {project.status}
+            </div>
             <div className="text-muted-foreground font-mono text-sm">{project.year}</div>
           </div>
           
@@ -112,6 +115,20 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
               </section>
             )}
 
+            {project.caseStudy?.problem && (
+              <section>
+                <h2 className="text-3xl font-bold mb-6">The Problem</h2>
+                <p className="text-lg text-muted-foreground leading-relaxed">{project.caseStudy.problem}</p>
+              </section>
+            )}
+
+            {project.caseStudy?.approach && (
+              <section>
+                <h2 className="text-3xl font-bold mb-6">My Approach</h2>
+                <p className="text-lg text-muted-foreground leading-relaxed">{project.caseStudy.approach}</p>
+              </section>
+            )}
+
             {project.caseStudy?.architecture && (
               <section>
                 <h2 className="text-3xl font-bold mb-8">{project.slug === 'vertex-studio' ? 'Business System & Process' : 'System Architecture'}</h2>
@@ -142,6 +159,20 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
                     </div>
                   ))}
                 </div>
+              </section>
+            )}
+
+            {project.caseStudy?.outcome && (
+              <section>
+                <h2 className="text-3xl font-bold mb-6">Outcome</h2>
+                <p className="text-lg text-muted-foreground leading-relaxed">{project.caseStudy.outcome}</p>
+              </section>
+            )}
+
+            {project.caseStudy?.learnings && (
+              <section>
+                <h2 className="text-3xl font-bold mb-6">Learnings</h2>
+                <p className="text-lg text-muted-foreground leading-relaxed">{project.caseStudy.learnings}</p>
               </section>
             )}
             

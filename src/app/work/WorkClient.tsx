@@ -18,6 +18,7 @@ function WorkContent() {
   const currentTech = searchParams.get("tech") || "ALL";
   const currentType = searchParams.get("type") || "ALL";
   const currentSort = searchParams.get("sort") || "featured";
+  const currentStatus = searchParams.get("status") || "ALL";
   const currentSearch = searchParams.get("search") || "";
 
   const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -32,6 +33,7 @@ function WorkContent() {
 
   const allTech = ["ALL", ...Array.from(new Set(projects.flatMap(p => p.stack)))];
   const allTypes = ["ALL", ...Array.from(new Set(projects.map(p => p.type)))];
+  const allStatuses = ["ALL", ...Array.from(new Set(projects.map(p => p.status)))];
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -68,6 +70,11 @@ function WorkContent() {
       result = result.filter(p => p.type === currentType);
     }
 
+    // Filter Status
+    if (currentStatus !== "ALL") {
+      result = result.filter(p => p.status === currentStatus);
+    }
+
     // Search
     if (currentSearch) {
       const q = currentSearch.toLowerCase();
@@ -85,10 +92,12 @@ function WorkContent() {
       result.sort((a, b) => parseInt(b.year) - parseInt(a.year));
     } else if (currentSort === "oldest") {
       result.sort((a, b) => parseInt(a.year) - parseInt(b.year));
+    } else if (currentSort === "a-z") {
+      result.sort((a, b) => a.title.localeCompare(b.title));
     }
 
     return result;
-  }, [currentCategory, currentTech, currentType, currentSort, currentSearch]);
+  }, [currentCategory, currentTech, currentType, currentStatus, currentSort, currentSearch]);
 
   return (
     <div className="space-y-8">
@@ -166,19 +175,34 @@ function WorkContent() {
                 </div>
               </div>
               <div>
-                <h3 className="text-sm font-bold uppercase tracking-wider mb-4 text-primary">Type</h3>
-                <div className="flex flex-col gap-2 items-start">
-                  {allTypes.map(type => (
-                    <button
-                      key={type}
-                      onClick={() => updateUrl("type", type)}
-                      className={`text-sm font-medium px-3 py-1 rounded-md transition-colors ${
-                        currentType === type ? "bg-foreground text-background" : "hover:bg-muted text-muted-foreground"
-                      }`}
-                    >
-                      {type}
-                    </button>
-                  ))}
+                <h3 className="text-sm font-bold uppercase tracking-wider mb-4 text-primary">Status & Type</h3>
+                <div className="flex flex-col gap-4">
+                  <div className="flex flex-wrap gap-2">
+                    {allStatuses.map(status => (
+                      <button
+                        key={status}
+                        onClick={() => updateUrl("status", status)}
+                        className={`text-xs font-bold px-2 py-1 rounded transition-colors ${
+                          currentStatus === status ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:bg-muted/80"
+                        }`}
+                      >
+                        {status}
+                      </button>
+                    ))}
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {allTypes.map(type => (
+                      <button
+                        key={type}
+                        onClick={() => updateUrl("type", type)}
+                        className={`text-xs font-medium px-2 py-1 rounded transition-colors ${
+                          currentType === type ? "bg-foreground text-background" : "hover:bg-muted text-muted-foreground"
+                        }`}
+                      >
+                        {type}
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </div>
               <div>
@@ -187,7 +211,8 @@ function WorkContent() {
                   {[
                     { id: "featured", label: "Featured First" },
                     { id: "newest", label: "Newest" },
-                    { id: "oldest", label: "Oldest" }
+                    { id: "oldest", label: "Oldest" },
+                    { id: "a-z", label: "A - Z" }
                   ].map(sort => (
                     <button
                       key={sort.id}
@@ -208,7 +233,7 @@ function WorkContent() {
 
       <div className="flex items-center justify-between text-muted-foreground text-sm font-mono">
         <div>SHOWING {filteredProjects.length} PROJECTS</div>
-        {(currentCategory !== "ALL" || currentTech !== "ALL" || currentType !== "ALL" || currentSearch) && (
+        {(currentCategory !== "ALL" || currentTech !== "ALL" || currentType !== "ALL" || currentStatus !== "ALL" || currentSearch) && (
           <button onClick={() => router.replace(pathname, { scroll: false })} className="hover:text-foreground hover:underline">
             Clear Filters
           </button>
@@ -293,8 +318,13 @@ function WorkContent() {
         
         <div className="p-6 md:p-8 flex-1 flex flex-col">
           <div className="flex justify-between items-start mb-4">
-            <div className="text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">
-              {project.type}
+            <div className="flex items-center gap-2">
+              <div className="text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">
+                {project.type}
+              </div>
+              <div className={`text-xs font-bold uppercase tracking-wider px-2 py-1 rounded ${project.status === 'LIVE' ? 'bg-green-500/10 text-green-500' : project.status === 'BUILDING' ? 'bg-orange-500/10 text-orange-500' : 'bg-muted text-muted-foreground'}`}>
+                {project.status}
+              </div>
             </div>
             <div className="text-xs font-mono text-muted-foreground">{project.year}</div>
           </div>

@@ -48,12 +48,11 @@ const SERVICES = [
 ];
 
 const PROCESS = [
-  { step: "01", title: "Understand", desc: "Deep dive into the problem, business goals, and technical requirements." },
-  { step: "02", title: "Plan", desc: "Define architecture, tech stack, UX flow, and sprint milestones." },
-  { step: "03", title: "Build", desc: "Write clean, scalable, and maintainable code with constant communication." },
-  { step: "04", title: "Test", desc: "Rigorous manual and automated testing across devices and edge cases." },
-  { step: "05", title: "Launch", desc: "Deploy to production, configure CI/CD, and monitor performance." },
-  { step: "06", title: "Improve", desc: "Iterate based on analytics, user feedback, and shifting requirements." },
+  { step: "01", title: "Discover", desc: "Understand the problem, business goals, and technical requirements." },
+  { step: "02", title: "Plan", desc: "Define the product/system direction, architecture, and tech stack." },
+  { step: "03", title: "Build", desc: "Develop the experience and technical system." },
+  { step: "04", title: "Test", desc: "Validate behavior and quality." },
+  { step: "05", title: "Iterate", desc: "Improve based on feedback and results." },
 ];
 
 export default function ServicesPage() {

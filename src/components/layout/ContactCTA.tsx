@@ -16,7 +16,7 @@ export default function ContactCTA() {
           viewport={{ once: true }}
           className="max-w-2xl mx-auto space-y-8"
         >
-          <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase">Let's Build Something</h2>
+          <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase">Let's Build Something Useful.</h2>
           <p className="text-xl text-muted-foreground leading-relaxed">
             I'm currently {profile.availability.toLowerCase()}. If you have a project that needs building or a problem that needs solving, let's talk.
           </p>

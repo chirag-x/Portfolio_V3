@@ -1,5 +1,6 @@
 export type ProjectCategory = "WEB" | "FULL-STACK" | "AI / ML" | "AUTOMATION" | "AI AGENTS" | "BACKEND" | "UI / FRONTEND" | "EXPERIMENTS" | "BUSINESS" | "AGENCY";
 export type ProjectType = "PROJECT" | "SYSTEM" | "EXPERIMENT" | "CLONE" | "REDESIGN" | "AI SYSTEM" | "AUTOMATION" | "BUSINESS";
+export type ProjectStatus = "LIVE" | "BUILDING" | "EXPERIMENT" | "ARCHIVED";
 
 export type ProjectStory = {
   built: string;
@@ -8,24 +9,34 @@ export type ProjectStory = {
 };
 
 export type CaseStudy = {
+  problem?: string;
+  solution?: string;
+  approach?: string;
+  outcome?: string;
+  learnings?: string;
+  highlights?: string[];
   metrics?: string[];
   architecture?: { label: string; detail: string }[];
   challenges?: string[];
 };
 
 export type Project = {
+  id?: string;
   title: string;
   slug: string;
   tagline: string;
+  shortDescription?: string;
   desc: string;
   category: ProjectCategory[];
   type: ProjectType;
   year: string;
-  status: "Completed" | "In Development" | "Archived";
+  status: ProjectStatus;
+  role?: string;
   stack: string[];
   link?: string;
   github?: string;
   img?: string;
+  gallery?: string[];
   flagship?: boolean;
   featured?: boolean;
   story?: ProjectStory;
@@ -41,7 +52,7 @@ export const projects: Project[] = [
     category: ['AI AGENTS', 'AI / ML', 'AUTOMATION'],
     type: 'SYSTEM',
     year: '2026',
-    status: 'In Development',
+    status: 'BUILDING',
     link: 'https://omnix-website.netlify.app/',
     github: 'https://github.com/chirag-x',
     stack: ['Python', 'PyQt6', 'Ultralytics YOLO', 'Playwright', 'PyAutoGUI', 'Sentence Transformers', 'Edge TTS', 'LLM APIs'],
@@ -54,6 +65,9 @@ export const projects: Project[] = [
       broke: 'Dynamic desktop environments are unpredictable. OMNIX uses observe, understand, plan, act, verify, and recover loops to make execution more reliable.'
     },
     caseStudy: {
+      problem: 'Most LLM tools are text-in, text-out chatbots. They don\'t natively understand the graphical interface of a computer, making them unable to automate real, dynamic desktop tasks where UI elements constantly change position and state.',
+      approach: 'Instead of hardcoding macros, I built an architecture that combines computer vision (YOLO) with LLM reasoning. The agent takes a screenshot, detects UI elements, plans a sequence of actions, executes them via PyAutoGUI, and verifies the outcome before proceeding.',
+      outcome: 'A working local AI desktop agent that can navigate Windows applications, read visual data, and execute multi-step workflows based purely on natural language goals.',
       metrics: ['Autonomous agent', 'Computer vision', 'Semantic memory', 'Browser automation', 'Voice pipeline'],
       architecture: [
         { label: 'Input + Context', detail: 'Natural-language and voice commands are combined with screen state, system context, memory, and user intent.' },
@@ -76,7 +90,7 @@ export const projects: Project[] = [
     category: ['BUSINESS', 'AGENCY', 'WEB', 'FULL-STACK'],
     type: 'BUSINESS',
     year: '2026',
-    status: 'Completed',
+    status: 'LIVE',
     link: 'https://vertex-studio-official.netlify.app/',
     github: 'https://github.com/chirag-x/portfolio',
     stack: ['React', 'Next.js', 'Node.js', 'Tailwind CSS', 'Figma'],
@@ -89,6 +103,9 @@ export const projects: Project[] = [
       broke: 'Initially, the offering was too broad. I had to refine the business system (Discovery -> Design -> Development -> Testing -> Launch) and focus on specific deliverables like Landing Pages, QR Menus, and Local SEO to streamline operations.'
     },
     caseStudy: {
+      problem: 'Local businesses struggle to establish a professional digital presence. Agencies are either too expensive, or cheap templates fail to deliver performance and SEO.',
+      approach: 'I started Vertex Studio to offer premium, full-stack digital solutions at competitive rates. I handle the entire pipeline: from sales and discovery, to UI/UX design in Figma, and high-performance development in React/Next.js.',
+      outcome: 'A growing digital agency that has delivered production-grade websites, improved local search rankings for businesses, and generated measurable inbound leads.',
       metrics: [
         'Website Design & Redesign',
         'Landing Pages & Funnels',
@@ -120,7 +137,7 @@ export const projects: Project[] = [
     category: ['FULL-STACK', 'WEB'],
     type: 'PROJECT',
     year: '2025',
-    status: 'Completed',
+    status: 'LIVE',
     link: 'https://github.com/chirag-x/Smart--campus',
     github: 'https://github.com/chirag-x/Smart--campus',
     stack: ['React', 'Node.js', 'MongoDB', 'Express'],
@@ -135,7 +152,7 @@ export const projects: Project[] = [
     category: ['WEB', 'UI / FRONTEND'],
     type: 'PROJECT',
     year: '2025',
-    status: 'Completed',
+    status: 'LIVE',
     link: 'https://royal-fitness-club-gwalior.netlify.app/',
     stack: ['React', 'CSS', 'JavaScript', 'HTML5'],
     featured: true,
@@ -149,7 +166,7 @@ export const projects: Project[] = [
     category: ['WEB', 'UI / FRONTEND'],
     type: 'PROJECT',
     year: '2025',
-    status: 'Completed',
+    status: 'LIVE',
     link: 'https://macromeals.netlify.app/',
     stack: ['React', 'Tailwind CSS', 'JavaScript'],
     featured: true,
@@ -163,7 +180,7 @@ export const projects: Project[] = [
     category: ['WEB', 'UI / FRONTEND'],
     type: 'PROJECT',
     year: '2024',
-    status: 'Completed',
+    status: 'LIVE',
     link: 'https://catering-project-chirag.netlify.app/',
     stack: ['HTML', 'CSS', 'JavaScript'],
     img: '/images/catering.png'
@@ -176,7 +193,7 @@ export const projects: Project[] = [
     category: ['UI / FRONTEND', 'WEB'],
     type: 'REDESIGN',
     year: '2024',
-    status: 'Completed',
+    status: 'LIVE',
     link: 'https://tute-dude-clone-chirag.netlify.app/',
     github: 'https://github.com/chirag-x/portfolio',
     stack: ['HTML', 'CSS', 'JavaScript'],
@@ -190,7 +207,7 @@ export const projects: Project[] = [
     category: ['UI / FRONTEND', 'WEB'],
     type: 'CLONE',
     year: '2024',
-    status: 'Completed',
+    status: 'LIVE',
     link: 'https://projectchirag-50.netlify.app/',
     github: 'https://github.com/chirag-x/portfolio',
     stack: ['React', 'CSS', 'JavaScript'],
@@ -204,7 +221,7 @@ export const projects: Project[] = [
     category: ['BACKEND', 'WEB'],
     type: 'PROJECT',
     year: '2024',
-    status: 'Completed',
+    status: 'LIVE',
     link: 'https://hotel-project-chirag.netlify.app/',
     github: 'https://github.com/chirag-x/portfolio',
     stack: ['Node.js', 'Express', 'JavaScript', 'MongoDB'],
