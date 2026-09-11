@@ -1,13 +1,13 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { profile } from "@/data/profile";
 import { projects } from "@/data/projects";
 
 type HistoryLine = {
   command: string;
-  output: string | JSX.Element;
+  output: string | React.ReactNode;
 };
 
 export default function TerminalPage() {
@@ -31,7 +31,7 @@ export default function TerminalPage() {
   const handleCommand = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       const cmd = input.trim().toLowerCase();
-      let output: string | JSX.Element = "";
+      let output: string | React.ReactNode = "";
 
       switch (cmd) {
         case "help":
@@ -58,7 +58,7 @@ export default function TerminalPage() {
             const slug = cmd.split(" ")[1];
             const prj = projects.find(p => p.slug === slug);
             if (prj) {
-              output = `${prj.title}\n======================\n${prj.description}\n\nTech Stack: ${prj.tech.join(", ")}`;
+              output = `${prj.title}\n======================\n${prj.desc}\n\nTech Stack: ${prj.stack.join(", ")}`;
             } else {
               output = `cat: ${slug}: No such project`;
             }
