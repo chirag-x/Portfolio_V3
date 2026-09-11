@@ -92,20 +92,27 @@ export default function AstaAssistant() {
     <>
       <AnimatePresence>
         {!isOpen && (
-          <motion.button
+          <motion.div
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => setIsOpen(true)}
-            data-cursor="ask"
-            className="fixed bottom-6 right-6 h-14 w-14 rounded-full bg-primary text-primary-foreground shadow-2xl shadow-primary/20 flex items-center justify-center z-50 overflow-hidden group"
-            aria-label="Open ASTA Intelligence"
+            className="fixed bottom-6 right-6 z-50 flex flex-col items-center gap-2"
           >
-            <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.2)_50%,transparent_75%)] bg-[length:250%_250%,100%_100%] bg-[position:-100%_0,0_0] bg-no-repeat group-hover:animate-shimmer" />
-            <Sparkles className="h-6 w-6 relative z-10" />
-          </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setIsOpen(prev => { if (!prev) playSwoosh(); return !prev; })}
+              data-cursor="ask"
+              className="h-14 w-14 rounded-full bg-primary text-primary-foreground shadow-2xl shadow-primary/20 flex items-center justify-center overflow-hidden group relative"
+              aria-label="Open ASTA Intelligence"
+            >
+              <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.2)_50%,transparent_75%)] bg-[length:250%_250%,100%_100%] bg-[position:-100%_0,0_0] bg-no-repeat group-hover:animate-shimmer" />
+              <Sparkles className="h-6 w-6 relative z-10" />
+            </motion.button>
+            <span className="text-[10px] font-bold tracking-widest uppercase text-foreground/70 bg-background/80 px-2 py-0.5 rounded-full border border-border/50 backdrop-blur-md shadow-sm">
+              Ask ASTA
+            </span>
+          </motion.div>
         )}
       </AnimatePresence>
 

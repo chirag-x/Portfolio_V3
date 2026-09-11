@@ -7,8 +7,6 @@ import FeaturedWork from "@/components/projects/FeaturedWork";
 import Capabilities from "@/components/layout/Capabilities";
 import AboutPreview from "@/components/layout/AboutPreview";
 import ContactCTA from "@/components/layout/ContactCTA";
-import AstaAssistant from "@/components/asta/AstaAssistant";
-import CommandPalette from "@/components/layout/CommandPalette";
 
 import { getLeetCodeStats } from "@/lib/leetcode";
 
@@ -26,8 +24,6 @@ export default async function Home() {
       <Capabilities leetCodeCount={leetCodeCount} />
       <AboutPreview />
       <ContactCTA />
-      <AstaAssistant />
-      <CommandPalette />
     </>
   );
 }

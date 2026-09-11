@@ -7,6 +7,7 @@ import Link from "next/link";
 import { profile } from "@/data/profile";
 import Image from "next/image";
 import { useRef } from "react";
+import ParticleNetwork from "@/components/canvas/ParticleNetwork";
 
 export default function Hero() {
   const containerRef = useRef(null);
@@ -21,6 +22,7 @@ export default function Hero() {
 
   return (
     <section ref={containerRef} className="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-background pt-20">
+      <ParticleNetwork />
       {/* Background System */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:3rem_3rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]"></div>
       

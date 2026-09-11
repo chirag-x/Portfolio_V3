@@ -77,7 +77,7 @@ export default function TerminalPage() {
 
   return (
     <div 
-      className="min-h-screen bg-black text-green-500 font-mono p-6 cursor-text"
+      className="min-h-[calc(100vh-80px)] bg-black text-[#0F0] font-mono p-6 pt-32 cursor-text selection:bg-[#0F0] selection:text-black"
       onClick={() => inputRef.current?.focus()}
     >
       <div className="max-w-4xl mx-auto flex flex-col gap-2 text-sm sm:text-base">
@@ -85,22 +85,22 @@ export default function TerminalPage() {
           <div key={i}>
             {line.command && (
               <div className="flex gap-2">
-                <span className="text-green-500">guest@chirag-os:~$</span>
-                <span>{line.command}</span>
+                <span className="text-[#0F0] font-bold">guest@chirag-os:~$</span>
+                <span className="text-white/90">{line.command}</span>
               </div>
             )}
-            <div className="whitespace-pre-wrap text-green-400 opacity-90">{line.output}</div>
+            <div className="whitespace-pre-wrap text-[#0F0]/90 mt-1 mb-2">{line.output}</div>
           </div>
         ))}
         <div className="flex gap-2">
-          <span className="text-green-500">guest@chirag-os:~$</span>
+          <span className="text-[#0F0] font-bold">guest@chirag-os:~$</span>
           <input
             ref={inputRef}
             type="text"
             value={input}
             onChange={e => { playTyping(); setInput(e.target.value); }}
             onKeyDown={handleCommand}
-            className="flex-1 bg-transparent outline-none text-green-500"
+            className="flex-1 bg-transparent outline-none text-white font-bold"
             autoFocus
           />
         </div>

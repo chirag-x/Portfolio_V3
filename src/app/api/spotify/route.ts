@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   const client_id = process.env.SPOTIFY_CLIENT_ID;
   const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
@@ -24,7 +26,7 @@ export async function GET() {
         grant_type: "refresh_token",
         refresh_token,
       }),
-      next: { revalidate: 3600 } // Cache token for 1 hour
+      cache: 'no-store' // Cache token for 1 hour
     });
 
     const { access_token } = await response.json();
@@ -33,7 +35,7 @@ export async function GET() {
       headers: {
         Authorization: `Bearer ${access_token}`,
       },
-      next: { revalidate: 15 } // Revalidate playing status every 15 seconds
+      cache: 'no-store' // Revalidate playing status every 15 seconds
     });
 
     if (nowPlaying.status === 204 || nowPlaying.status > 400) {

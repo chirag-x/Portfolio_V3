@@ -52,7 +52,7 @@ function ParticleCloud() {
 
 export default function ParticleNetwork() {
   return (
-    <div className="absolute inset-0 w-full h-full pointer-events-none z-0" style={{ minHeight: '100%' }}>
+    <div className="absolute inset-0 w-full h-full pointer-events-none z-0 opacity-20 md:opacity-100" style={{ minHeight: '100%' }}>
       <Canvas camera={{ position: [0, 0, 4] }}>
         <ParticleCloud />
       </Canvas>

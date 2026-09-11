@@ -33,7 +33,7 @@ export async function POST(req: Request) {
         "X-Title": "ASTA Portfolio AI"
       },
       body: JSON.stringify({
-        model: "meta-llama/llama-3.1-8b-instruct:free",
+        model: "cohere/north-mini-code:free",
         max_tokens: 300,
         temperature: 0.7,
         messages: apiMessages

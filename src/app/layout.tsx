@@ -19,7 +19,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://chirag-portfolio-v3.netlify.app'),
   title: {
-    default: "Chirag Sharma — Full Stack Gen AI Developer",
+    default: "Chirag Sharma | Full Stack Gen AI Developer",
     template: "%s | Chirag Sharma"
   },
   description: "I build intelligent software systems across Web, AI, and Automation. Gwalior-based Full Stack Gen AI Developer.",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://chirag-portfolio-v3.netlify.app/",
-    title: "Chirag Sharma — Full Stack Gen AI Developer",
+    title: "Chirag Sharma | Full Stack Gen AI Developer",
     description: "I build intelligent software systems across Web, AI, and Automation.",
     siteName: "Chirag Sharma Portfolio",
     images: [
@@ -55,13 +55,13 @@ export const metadata: Metadata = {
         url: "/images/hero.png",
         width: 1200,
         height: 630,
-        alt: "Chirag Sharma - Full Stack Gen AI Developer",
+        alt: "Chirag Sharma | Full Stack Gen AI Developer",
       }
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Chirag Sharma — Full Stack Gen AI Developer",
+    title: "Chirag Sharma | Full Stack Gen AI Developer",
     description: "I build intelligent software systems across Web, AI, and Automation.",
     images: ["/images/hero.png"],
   },
