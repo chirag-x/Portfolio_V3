@@ -1,38 +1,77 @@
-import { profile } from "@/data/profile";
+import { Metadata } from "next";
+import Link from "next/link";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "Privacy Policy for chiragsharma.dev",
+  description: "Privacy policy and data collection practices for Chirag Sharma's portfolio.",
 };
 
 export default function PrivacyPage() {
   return (
     <div className="pt-32 pb-24 min-h-screen bg-background">
-      <div className="container mx-auto px-6 md:px-12 max-w-4xl prose prose-invert">
-        <h1 className="text-4xl md:text-6xl font-black tracking-tighter mb-12 uppercase not-prose">Privacy Policy</h1>
-        
-        <p className="text-muted-foreground mb-8">Last updated: September 2026</p>
-
-        <h3>1. Information Collection</h3>
-        <p>
-          This portfolio website is a static site designed to showcase my engineering work. It does not actively track users, use intrusive tracking cookies, or collect personally identifiable information directly through custom forms.
+      <div className="container mx-auto px-6 md:px-12 max-w-3xl">
+        <h1 className="text-4xl md:text-6xl font-black tracking-tighter mb-6 uppercase">Privacy Policy</h1>
+        <p className="text-muted-foreground mb-16 pb-8 border-b border-border/50">
+          Last updated: September 2024
         </p>
 
-        <h3>2. Analytics and Third-Party Services</h3>
-        <p>
-          The site may use basic, privacy-respecting analytics (like Vercel Analytics or Netlify Analytics) strictly to monitor site performance and overall traffic trends. These services may collect anonymous data such as device type, browser, and generalized location.
-        </p>
+        <div className="prose prose-invert prose-headings:font-bold prose-headings:tracking-tight prose-a:text-primary prose-a:no-underline hover:prose-a:underline max-w-none space-y-12">
+          
+          <section>
+            <h2 className="text-2xl mb-4 text-foreground">1. Introduction</h2>
+            <p className="text-muted-foreground leading-relaxed">
+              This Privacy Policy applies to the personal developer portfolio of Chirag Sharma. I believe in minimal data collection. This website does not use tracking cookies, analytics pixels, or advertising frameworks. 
+            </p>
+          </section>
 
-        <h3>3. External Links</h3>
-        <p>
-          This website contains links to external sites (such as GitHub, LinkedIn, or live project demos). I am not responsible for the privacy practices or the content of those external websites.
-        </p>
+          <section>
+            <h2 className="text-2xl mb-4 text-foreground">2. Information Collected</h2>
+            <p className="text-muted-foreground leading-relaxed">
+              The only information collected on this website is the information you explicitly provide when using the Contact form. This includes:
+            </p>
+            <ul className="list-disc pl-5 mt-4 text-muted-foreground space-y-2">
+              <li>Your name</li>
+              <li>Your email address</li>
+              <li>The contents of your message</li>
+            </ul>
+          </section>
 
-        <h3>4. Contact Information</h3>
-        <p>
-          If you contact me via email ({profile.email}), your email address and any information you provide will only be used to respond to your inquiry and will not be shared with third parties.
-        </p>
+          <section>
+            <h2 className="text-2xl mb-4 text-foreground">3. How Information is Used</h2>
+            <p className="text-muted-foreground leading-relaxed">
+              The information submitted via the contact form is sent directly to my personal email inbox (or securely processed by Netlify Forms) solely for the purpose of reading and responding to your inquiry. Your information is never sold, shared, or used for marketing lists.
+            </p>
+          </section>
 
+          <section>
+            <h2 className="text-2xl mb-4 text-foreground">4. Third-Party Services</h2>
+            <p className="text-muted-foreground leading-relaxed">
+              This website is hosted on Netlify. Netlify may collect standard server access logs (such as IP addresses and user agents) for security and operational purposes. Please refer to Netlify's Privacy Policy for more details. The ASTA AI assistant communicates with an AI backend, but it does not store personally identifiable data from your chat session beyond processing the immediate response.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl mb-4 text-foreground">5. Data Retention & Security</h2>
+            <p className="text-muted-foreground leading-relaxed">
+              Contact form submissions are kept in my email archive indefinitely for professional record-keeping unless you request their deletion. This website is secured via HTTPS to protect data in transit.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl mb-4 text-foreground">6. Your Rights</h2>
+            <p className="text-muted-foreground leading-relaxed">
+              You have the right to request the deletion of any personal correspondence you have sent me through this website. You can do so by emailing me directly.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl mb-4 text-foreground">7. Contact</h2>
+            <p className="text-muted-foreground leading-relaxed">
+              If you have any questions about this Privacy Policy, please reach out via the <Link href="/contact">Contact form</Link> or email me directly at chiragsharmawork95@gmail.com.
+            </p>
+          </section>
+
+        </div>
       </div>
     </div>
   );

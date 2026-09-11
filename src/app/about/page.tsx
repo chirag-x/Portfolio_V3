@@ -72,7 +72,6 @@ export default function AboutPage() {
               alt="Chirag Sharma" 
               fill 
               className="object-cover z-10" 
-              onError={(e) => e.currentTarget.style.display = 'none'}
             />
           </div>
         </div>

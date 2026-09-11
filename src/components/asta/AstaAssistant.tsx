@@ -42,12 +42,20 @@ export default function AstaAssistant() {
     const lowerText = text.toLowerCase();
     if (lowerText.includes("omnix")) {
       router.push("/work/omnix");
-    } else if (lowerText.includes("vertex") || lowerText.includes("studio") || lowerText.includes("agency") || lowerText.includes("business")) {
+    } else if (lowerText.includes("vertex") || lowerText.includes("studio") || lowerText.includes("agency")) {
       router.push("/work/vertex-studio");
-    } else if (lowerText.includes("contact") || lowerText.includes("hire") || lowerText.includes("email")) {
+    } else if (lowerText.includes("contact") || lowerText.includes("hire") || lowerText.includes("email") || lowerText.includes("connect")) {
       router.push("/contact");
     } else if (lowerText.includes("project") || lowerText.includes("work") || lowerText.includes("build") || lowerText.includes("featured")) {
       router.push("/work");
+    } else if (lowerText.includes("about") || lowerText.includes("background") || lowerText.includes("who is")) {
+      router.push("/about");
+    } else if (lowerText.includes("service") || lowerText.includes("offer")) {
+      router.push("/services");
+    } else if (lowerText.includes("lab") || lowerText.includes("experiment") || lowerText.includes("prototype")) {
+      router.push("/lab");
+    } else if (lowerText.includes("faq") || lowerText.includes("question")) {
+      router.push("/faq");
     }
 
     const userMessage = { role: "user" as const, content: text };

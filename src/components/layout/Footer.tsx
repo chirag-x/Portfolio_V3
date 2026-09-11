@@ -41,18 +41,17 @@ export default function Footer() {
             <h4 className="text-sm font-bold uppercase tracking-widest mt-8 mb-6">Resources</h4>
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li><Link href="/faq" className="hover:text-primary transition-colors">FAQ</Link></li>
-              <li><Link href="/notes" className="hover:text-primary transition-colors">Engineering Notes</Link></li>
-              <li><a href={profile.socials.github} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">GitHub</a></li>
-              <li><a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">LinkedIn</a></li>
-              <li><a href={profile.socials.leetcode} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">LeetCode</a></li>
+              <li><Link href="/resume" className="hover:text-primary transition-colors">Resume</Link></li>
+              <li><Link href="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 className="text-sm font-bold uppercase tracking-widest mb-6">Connect</h4>
             <ul className="space-y-3 text-sm text-muted-foreground mb-8">
-              <li><Link href="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
-              <li><Link href="/resume" className="hover:text-primary transition-colors">Resume</Link></li>
+              <li><a href={profile.socials.github} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">GitHub</a></li>
+              <li><a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">LinkedIn</a></li>
+              <li><a href={`mailto:${profile.email}`} className="hover:text-primary transition-colors">Email</a></li>
             </ul>
             <h4 className="text-sm font-bold uppercase tracking-widest mb-6">Legal</h4>
             <ul className="space-y-3 text-sm text-muted-foreground">
@@ -83,7 +82,7 @@ export default function Footer() {
           </div>
           
           <p className="text-sm text-muted-foreground font-mono">
-            &copy; 2026 {profile.name}. All rights reserved.
+            &copy; {new Date().getFullYear()} {profile.name}. All rights reserved.
           </p>
         </div>
       </div>
