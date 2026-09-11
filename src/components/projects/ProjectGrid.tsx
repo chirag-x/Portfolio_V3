@@ -56,13 +56,13 @@ export default function ProjectGrid() {
                     {project.category}
                   </div>
                   <div className="flex gap-3">
-                    {project.github && (
-                      <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors" aria-label="GitHub">
+                    {project.githubUrl && (
+                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors" aria-label="GitHub">
                         <Github className="h-5 w-5" />
                       </a>
                     )}
-                    {project.link && (
-                      <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors" aria-label="Live Demo">
+                    {project.liveUrl && (
+                      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors" aria-label="Live Demo">
                         <ExternalLink className="h-5 w-5" />
                       </a>
                     )}

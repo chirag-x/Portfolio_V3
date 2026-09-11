@@ -27,11 +27,11 @@ const JOURNEY = [
 ];
 
 const WHAT_I_BUILD = [
-  { title: "WEB", desc: "Fast, responsive, accessible web applications.", link: "/work?tech=React" },
-  { title: "AI", desc: "Integrating LLMs and generative capabilities into products.", link: "/work/omnix" },
-  { title: "AUTOMATION", desc: "Scripts and systems that eliminate repetitive tasks.", link: "/lab" },
-  { title: "AI AGENTS", desc: "Autonomous software that can reason and execute.", link: "/work/omnix" },
-  { title: "FULL-STACK SYSTEMS", desc: "End-to-end products, from database to UI.", link: "/work" },
+  { title: "WEB", desc: "Fast, responsive, accessible web applications.", liveUrl: "/work?tech=React" },
+  { title: "AI", desc: "Integrating LLMs and generative capabilities into products.", liveUrl: "/work/omnix" },
+  { title: "AUTOMATION", desc: "Scripts and systems that eliminate repetitive tasks.", liveUrl: "/lab" },
+  { title: "AI AGENTS", desc: "Autonomous software that can reason and execute.", liveUrl: "/work/omnix" },
+  { title: "FULL-STACK SYSTEMS", desc: "End-to-end products, from database to UI.", liveUrl: "/work" },
 ];
 
 export default function AboutPage() {
@@ -85,7 +85,7 @@ export default function AboutPage() {
             {WHAT_I_BUILD.map((item) => (
               <Link 
                 key={item.title} 
-                href={item.link}
+                href={item.liveUrl}
                 className="group p-6 bg-card border border-border rounded-2xl hover:border-primary/50 transition-colors flex flex-col"
               >
                 <h3 className="font-bold text-lg mb-3 flex items-center justify-between">

@@ -8,7 +8,7 @@ export const profile = {
   description: "Full-stack developer focused on building AI-powered products, automation systems, and thoughtful digital experiences.",
   availability: "Open to internships and freelance builds",
   socials: {
-    github: "https://github.com/chirag-x",
+    githubUrl: "https://github.com/chirag-x",
     linkedin: "https://www.linkedin.com/in/chirag-sharma-aa1132329",
     leetcode: "https://leetcode.com/u/TheChirag__X/",
     instagram: "https://www.instagram.com/thechirag__x",

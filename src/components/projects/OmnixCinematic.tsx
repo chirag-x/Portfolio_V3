@@ -146,7 +146,7 @@ export default function OmnixCinematic() {
                   <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="text-muted-foreground">
                     <span className="text-orange-500">[Planner]</span> Generating execution steps:<br/>
                     &nbsp;&nbsp;1. Press Win Key<br/>
-                    &nbsp;&nbsp;2. Type "Notepad"<br/>
+                    &nbsp;&nbsp;2. Type &quot;Notepad&quot;<br/>
                     &nbsp;&nbsp;3. Press Enter
                   </motion.div>
                 )}
@@ -177,8 +177,8 @@ export default function OmnixCinematic() {
           </div>
 
           <motion.div 
-            style={{ opacity: useTransform(smoothProgress, [0.8, 1], [0, 1]) }}
-            className="mt-16"
+            className="mt-16 transition-opacity duration-500"
+            style={{ opacity: activeNode >= 6 ? 1 : 0 }}
           >
             <Link
               href={`/work/${flagship.slug}`}

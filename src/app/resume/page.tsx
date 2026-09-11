@@ -35,7 +35,7 @@ export default function ResumePage() {
                 <MapPin className="h-4 w-4" />
                 {profile.location}
               </span>
-              <a href={profile.socials.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-foreground">
+              <a href={profile.socials.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-foreground">
                 <ExternalLink className="h-4 w-4" />
                 GitHub
               </a>

@@ -49,7 +49,7 @@ export default function Footer() {
           <div>
             <h4 className="text-sm font-bold uppercase tracking-widest mb-6">Connect</h4>
             <ul className="space-y-3 text-sm text-muted-foreground mb-8">
-              <li><a href={profile.socials.github} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">GitHub</a></li>
+              <li><a href={profile.socials.githubUrl} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">GitHub</a></li>
               <li><a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">LinkedIn</a></li>
               <li><a href={`mailto:${profile.email}`} className="hover:text-primary transition-colors">Email</a></li>
             </ul>
@@ -64,7 +64,7 @@ export default function Footer() {
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-8 border-t border-border/50">
           <div className="flex items-center gap-4">
-            <a href={profile.socials.github} target="_blank" rel="noopener noreferrer" className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-full transition-colors">
+            <a href={profile.socials.githubUrl} target="_blank" rel="noopener noreferrer" className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-full transition-colors">
               <Github className="h-5 w-5" />
             </a>
             <a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer" className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-full transition-colors">

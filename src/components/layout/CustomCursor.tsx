@@ -20,9 +20,9 @@ export default function CustomCursor() {
     const isDesktop = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
     const isReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     
-    if (!isDesktop || isReducedMotion) {
-      setIsVisible(false);
-      return;
+    if (isDesktop && !isReducedMotion) {
+      const timer = setTimeout(() => setIsVisible(true), 0);
+      return () => clearTimeout(timer);
     }
 
     const moveCursor = (e: MouseEvent) => {

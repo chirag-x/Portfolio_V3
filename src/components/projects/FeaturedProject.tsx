@@ -74,9 +74,9 @@ export default function FeaturedProject() {
                   Read Case Study
                   <ArrowRight className="h-4 w-4" />
                 </Link>
-                {flagship.github && (
+                {flagship.githubUrl && (
                   <a
-                    href={flagship.github}
+                    href={flagship.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-10 px-6 py-2"

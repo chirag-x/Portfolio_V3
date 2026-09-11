@@ -35,13 +35,6 @@ function WorkContent() {
   const allTypes = ["ALL", ...Array.from(new Set(projects.map(p => p.type)))];
   const allStatuses = ["ALL", ...Array.from(new Set(projects.map(p => p.status)))];
 
-  useEffect(() => {
-    const handler = setTimeout(() => {
-      updateUrl("search", searchValue);
-    }, 300);
-    return () => clearTimeout(handler);
-  }, [searchValue]);
-
   const updateUrl = (key: string, value: string) => {
     const params = new URLSearchParams(searchParams);
     if (value === "ALL" || value === "") {
@@ -51,6 +44,13 @@ function WorkContent() {
     }
     router.replace(`${pathname}?${params.toString()}`, { scroll: false });
   };
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      updateUrl("search", searchValue);
+    }, 300);
+    return () => clearTimeout(handler);
+  }, [searchValue]);
 
   const filteredProjects = useMemo(() => {
     let result = [...projects];
@@ -357,13 +357,13 @@ function WorkContent() {
 
           <div className="flex items-center justify-between pt-4 border-t border-border/50">
             <div className="flex gap-3">
-              {project.github && (
-                <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors p-1" aria-label="GitHub">
+              {project.githubUrl && (
+                <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors p-1" aria-label="GitHub">
                   <Github className="w-5 h-5" />
                 </a>
               )}
-              {project.link && (
-                <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors p-1" aria-label="Live Demo">
+              {project.liveUrl && (
+                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors p-1" aria-label="Live Demo">
                   <ExternalLink className="w-5 h-5" />
                 </a>
               )}

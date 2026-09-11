@@ -22,7 +22,7 @@ Information about Chirag Sharma:
 - 300+ DSA problems solved.
 - Open for internships and freelance opportunities.
 - Email: chiragsharmawork95@gmail.com
-- GitHub: github.com/chirag-x
+- githubUrl: github.com/chirag-x
 - LinkedIn: linkedin.com/in/chirag-sharma-aa1132329
 
 Greeting Examples:

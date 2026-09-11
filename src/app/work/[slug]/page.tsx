@@ -2,7 +2,7 @@ import { projects } from "@/data/projects";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ExternalLink } from "lucide-react";
+import { ArrowLeft, ArrowRight, ExternalLink } from "lucide-react";
 import { FaGithub as Github } from "react-icons/fa";
 import OmnixCinematic from "@/components/projects/OmnixCinematic";
 
@@ -39,10 +39,14 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
   return (
     <div className="pt-32 pb-24 min-h-screen bg-background">
       <div className="container mx-auto px-6 md:px-12">
-        <Link href="/work" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-12">
-          <ArrowLeft className="w-4 h-4" />
-          Back to Work
-        </Link>
+        <div className="flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-muted-foreground mb-12">
+          <Link href="/work" className="hover:text-foreground transition-colors flex items-center gap-2">
+            <ArrowLeft className="w-4 h-4" />
+            Work
+          </Link>
+          <span>/</span>
+          <span className="text-foreground">{project.title}</span>
+        </div>
 
         {/* Hero Section */}
         <div className="max-w-4xl mb-20">
@@ -60,13 +64,13 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
           <p className="text-2xl text-muted-foreground font-medium mb-10">{project.tagline}</p>
           
           <div className="flex flex-wrap gap-4">
-            {project.link && (
-              <a href={project.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-bold rounded-full hover:bg-primary/90 transition-colors">
-                Live Website <ExternalLink className="w-4 h-4" />
+            {project.liveUrl && (
+              <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-bold rounded-full hover:bg-primary/90 transition-colors">
+                Visit Live Project <ExternalLink className="w-4 h-4" />
               </a>
             )}
-            {project.github && (
-              <a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-card border border-border font-bold rounded-full hover:bg-muted hover:border-border/80 transition-colors">
+            {project.githubUrl && (
+              <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-card border border-border font-bold rounded-full hover:bg-muted hover:border-border/80 transition-colors">
                 <Github className="w-4 h-4" /> View Source
               </a>
             )}
@@ -222,6 +226,41 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
           </div>
           
         </div>
+
+        {/* Previous / Next Navigation */}
+        <div className="mt-32 pt-16 border-t border-border grid sm:grid-cols-2 gap-8">
+          {(() => {
+            const currentIndex = projects.findIndex(p => p.slug === project.slug);
+            const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null;
+            const nextProject = currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null;
+
+            return (
+              <>
+                <div>
+                  {prevProject && (
+                    <Link href={`/work/${prevProject.slug}`} className="group flex flex-col items-start gap-2 text-muted-foreground hover:text-foreground transition-colors">
+                      <span className="text-xs font-bold uppercase tracking-widest flex items-center gap-2">
+                        <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> Previous Project
+                      </span>
+                      <span className="text-xl md:text-2xl font-black">{prevProject.title}</span>
+                    </Link>
+                  )}
+                </div>
+                <div className="flex sm:justify-end text-right">
+                  {nextProject && (
+                    <Link href={`/work/${nextProject.slug}`} className="group flex flex-col sm:items-end gap-2 text-muted-foreground hover:text-foreground transition-colors">
+                      <span className="text-xs font-bold uppercase tracking-widest flex items-center gap-2">
+                        Next Project <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      </span>
+                      <span className="text-xl md:text-2xl font-black">{nextProject.title}</span>
+                    </Link>
+                  )}
+                </div>
+              </>
+            );
+          })()}
+        </div>
+
       </div>
     </div>
   );

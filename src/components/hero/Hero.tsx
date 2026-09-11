@@ -102,7 +102,7 @@ export default function Hero() {
               transition={{ delay: 0.6, duration: 1 }}
               className="flex items-center gap-4 text-muted-foreground"
             >
-              <a href={profile.socials.github} target="_blank" rel="noopener noreferrer" className="p-2 hover:text-foreground transition-colors" aria-label="GitHub">
+              <a href={profile.socials.githubUrl} target="_blank" rel="noopener noreferrer" className="p-2 hover:text-foreground transition-colors" aria-label="GitHub">
                 <Github className="w-5 h-5" />
               </a>
               <a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer" className="p-2 hover:text-foreground transition-colors" aria-label="LinkedIn">

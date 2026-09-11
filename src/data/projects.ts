@@ -33,8 +33,8 @@ export type Project = {
   status: ProjectStatus;
   role?: string;
   stack: string[];
-  link?: string;
-  github?: string;
+  liveUrl?: string;
+  githubUrl?: string;
   img?: string;
   gallery?: string[];
   flagship?: boolean;
@@ -53,8 +53,8 @@ export const projects: Project[] = [
     type: 'SYSTEM',
     year: '2026',
     status: 'BUILDING',
-    link: 'https://omnix-website.netlify.app/',
-    github: 'https://github.com/chirag-x',
+    liveUrl: 'https://omnix-website.netlify.app/',
+    githubUrl: 'https://github.com/chirag-x',
     stack: ['Python', 'PyQt6', 'Ultralytics YOLO', 'Playwright', 'PyAutoGUI', 'Sentence Transformers', 'Edge TTS', 'LLM APIs'],
     featured: true,
     flagship: true,
@@ -91,8 +91,8 @@ export const projects: Project[] = [
     type: 'BUSINESS',
     year: '2026',
     status: 'LIVE',
-    link: 'https://vertex-studio-official.netlify.app/',
-    github: 'https://github.com/chirag-x/portfolio',
+    liveUrl: 'https://vertex-studio-official.netlify.app/',
+    githubUrl: 'https://github.com/chirag-x/portfolio',
     stack: ['React', 'Next.js', 'Node.js', 'Tailwind CSS', 'Figma'],
     featured: true,
     flagship: true,
@@ -138,8 +138,8 @@ export const projects: Project[] = [
     type: 'PROJECT',
     year: '2025',
     status: 'LIVE',
-    link: 'https://github.com/chirag-x/Smart--campus',
-    github: 'https://github.com/chirag-x/Smart--campus',
+    liveUrl: 'https://github.com/chirag-x/Smart--campus',
+    githubUrl: 'https://github.com/chirag-x/Smart--campus',
     stack: ['React', 'Node.js', 'MongoDB', 'Express'],
     featured: true,
     img: '/images/smart-campus.png'
@@ -153,7 +153,7 @@ export const projects: Project[] = [
     type: 'PROJECT',
     year: '2025',
     status: 'LIVE',
-    link: 'https://royal-fitness-club-gwalior.netlify.app/',
+    liveUrl: 'https://royal-fitness-club-gwalior.netlify.app/',
     stack: ['React', 'CSS', 'JavaScript', 'HTML5'],
     featured: true,
     img: '/images/royal-fitness.png'
@@ -167,7 +167,7 @@ export const projects: Project[] = [
     type: 'PROJECT',
     year: '2025',
     status: 'LIVE',
-    link: 'https://macromeals.netlify.app/',
+    liveUrl: 'https://macromeals.netlify.app/',
     stack: ['React', 'Tailwind CSS', 'JavaScript'],
     featured: true,
     img: '/images/macro-meals.png'
@@ -181,7 +181,7 @@ export const projects: Project[] = [
     type: 'PROJECT',
     year: '2024',
     status: 'LIVE',
-    link: 'https://catering-project-chirag.netlify.app/',
+    liveUrl: 'https://catering-project-chirag.netlify.app/',
     stack: ['HTML', 'CSS', 'JavaScript'],
     img: '/images/catering.png'
   },
@@ -194,8 +194,8 @@ export const projects: Project[] = [
     type: 'REDESIGN',
     year: '2024',
     status: 'LIVE',
-    link: 'https://tute-dude-clone-chirag.netlify.app/',
-    github: 'https://github.com/chirag-x/portfolio',
+    liveUrl: 'https://tute-dude-clone-chirag.netlify.app/',
+    githubUrl: 'https://github.com/chirag-x/portfolio',
     stack: ['HTML', 'CSS', 'JavaScript'],
     img: '/images/tutedude.png'
   },
@@ -208,8 +208,8 @@ export const projects: Project[] = [
     type: 'CLONE',
     year: '2024',
     status: 'LIVE',
-    link: 'https://projectchirag-50.netlify.app/',
-    github: 'https://github.com/chirag-x/portfolio',
+    liveUrl: 'https://projectchirag-50.netlify.app/',
+    githubUrl: 'https://github.com/chirag-x/portfolio',
     stack: ['React', 'CSS', 'JavaScript'],
     img: '/images/netflix.png'
   },
@@ -222,8 +222,8 @@ export const projects: Project[] = [
     type: 'PROJECT',
     year: '2024',
     status: 'LIVE',
-    link: 'https://hotel-project-chirag.netlify.app/',
-    github: 'https://github.com/chirag-x/portfolio',
+    liveUrl: 'https://hotel-project-chirag.netlify.app/',
+    githubUrl: 'https://github.com/chirag-x/portfolio',
     stack: ['Node.js', 'Express', 'JavaScript', 'MongoDB'],
     img: '/images/hotel.png'
   }

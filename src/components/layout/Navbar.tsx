@@ -21,7 +21,10 @@ export default function Navbar() {
     setIsScrolled(latest > 50);
   });
 
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    const timer = setTimeout(() => setMounted(true), 0);
+    return () => clearTimeout(timer);
+  }, []);
 
   const navLinks = [
     { name: "Home", href: "/" },

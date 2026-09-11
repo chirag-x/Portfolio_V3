@@ -12,7 +12,7 @@ const SERVICES = [
     icon: Layers,
     title: "Full-Stack Web Development",
     desc: "End-to-end development of modern web applications. From database architecture and backend APIs to responsive, high-performance React/Next.js interfaces. I build robust systems that scale.",
-    proof: { label: "See Vertex Studio", link: "/work/vertex-studio" }
+    proof: { label: "See Vertex Studio", liveUrl: "/work/vertex-studio" }
   },
   {
     icon: Bot,
@@ -23,7 +23,7 @@ const SERVICES = [
     icon: Cog,
     title: "AI Agents & Automation",
     desc: "Designing autonomous software that can perceive, reason, and execute tasks. Browser automation, desktop automation, and intelligent background workers.",
-    proof: { label: "See OMNIX Architecture", link: "/work/omnix" }
+    proof: { label: "See OMNIX Architecture", liveUrl: "/work/omnix" }
   },
   {
     icon: Layout,
@@ -83,7 +83,7 @@ export default function ServicesPage() {
                   <p className="text-sm text-muted-foreground leading-relaxed mb-8 flex-1">{service.desc}</p>
                   
                   {service.proof && (
-                    <Link href={service.proof.link} className="inline-flex items-center text-sm font-bold text-primary group/link">
+                    <Link href={service.proof.liveUrl} className="inline-flex items-center text-sm font-bold text-primary group/link">
                       {service.proof.label}
                       <ArrowRight className="w-4 h-4 ml-1 group-hover/link:translate-x-1 transition-transform" />
                     </Link>
