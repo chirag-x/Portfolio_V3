@@ -60,8 +60,8 @@ export default function AstaAssistant() {
       router.push("/faq");
     }
 
-    const userMessage = { role: "user" as const, content: text };
-    setMessages(prev => [...prev, userMessage]);
+    const newMessages = [...messages, userMessage];
+    setMessages(newMessages);
     setInput("");
     setIsLoading(true);
 
@@ -69,7 +69,8 @@ export default function AstaAssistant() {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: text })
+        // Map to standard format and only send last 5 to keep payload light
+        body: JSON.stringify({ messages: newMessages.slice(-6) })
       });
       
       const data = await res.json();

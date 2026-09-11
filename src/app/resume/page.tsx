@@ -1,5 +1,5 @@
 import { profile } from "@/data/profile";
-import { ExternalLink, Mail, MapPin, Phone } from "lucide-react";
+import { Download, ExternalLink, Mail, MapPin, Phone } from "lucide-react";
 import PrintButton from "@/components/ui/PrintButton";
 
 export const metadata = {
@@ -16,7 +16,17 @@ export default function ResumePage() {
             <h1 className="text-4xl font-extrabold tracking-tight mb-2">{profile.name}</h1>
             <p className="text-xl text-primary font-medium">{profile.role}</p>
           </div>
-          <PrintButton />
+          <div className="flex items-center gap-4">
+            <a 
+              href="/Chirag_Sharma_Resume.pdf" 
+              download="Chirag_Sharma_Resume.pdf"
+              className="inline-flex items-center justify-center gap-2 rounded-md text-sm font-bold transition-colors bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm h-10 px-6 py-2 print:hidden"
+            >
+              <Download className="h-4 w-4" />
+              Download PDF
+            </a>
+            <PrintButton />
+          </div>
         </div>
 
         <div className="bg-card border border-border rounded-xl shadow-sm p-8 md:p-12 space-y-12">
@@ -118,11 +128,14 @@ export default function ResumePage() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold mb-6 tracking-tight">Additional</h2>
+            <h2 className="text-2xl font-bold mb-6 tracking-tight">Technical Certifications & Achievements</h2>
             <ul className="space-y-2 text-muted-foreground list-disc list-inside">
-              <li>Solved 300+ Data Structures and Algorithms problems on LeetCode.</li>
-              <li>Currently exploring advanced PyTorch implementations and scalable system design.</li>
-              <li>Active in building tools that combine AI reasoning with real-world automation.</li>
+              <li>Python Assessment Certification – LearnTube.ai (Feb 2026)</li>
+              <li>Career Essentials in Generative AI – Microsoft & LinkedIn (Jul 2026)</li>
+              <li>Build Your Generative AI Productivity Skills – Microsoft & LinkedIn (Jul 2026)</li>
+              <li>Full Stack Web Engineering Certification – Tutedude</li>
+              <li>Algorithmic Problem Solving: Solved 300+ DSA problems on LeetCode</li>
+              <li>Currently exploring advanced PyTorch implementations and scalable system design</li>
             </ul>
           </section>
 
