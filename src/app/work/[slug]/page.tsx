@@ -135,6 +135,17 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
               </section>
             )}
 
+            {project.caseStudy?.metrics && (
+              <section>
+                <h2 className="text-3xl font-bold mb-6">Key Features & Metrics</h2>
+                <ul className="list-disc list-inside space-y-2 text-lg text-muted-foreground leading-relaxed">
+                  {project.caseStudy.metrics.map((metric, i) => (
+                    <li key={i}>{metric}</li>
+                  ))}
+                </ul>
+              </section>
+            )}
+
             {project.caseStudy?.architecture && (
               <section>
                 <h2 className="text-3xl font-bold mb-8">{project.slug === 'vertex-studio' ? 'Business System & Process' : 'System Architecture'}</h2>

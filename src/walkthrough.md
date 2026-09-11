@@ -1,31 +1,32 @@
 # Batch 8 - Final Launch, Project Details & Production Polish
 
-## 1. Work Detail Page 404 (Netlify Fix)
-- **Root Cause**: The `.next` publish directory was explicitly configured in `netlify.toml`, overriding Netlify's automatic Next.js Runtime configuration. This caused dynamic routes (like `/work/[slug]`) to fail serving the statically generated HTML output correctly on initial page load or refresh.
-- **Resolution**: Removed `publish = ".next"` from `netlify.toml` to allow Netlify's build engine to auto-detect Next.js and apply its native serverless/edge SSR runtime automatically.
+## 1. Work Detail Page 404
+- **Next.js 15 Compatibility Bug**: Next.js 15+ transitioned route parameters (`params` and `searchParams`) to Promises. In local development (`npm run dev`), trying to access `params.slug` synchronously crashes the route handler and forces the router to fall back to the global `404` error page.
+- **Resolution**: Updated `src/app/work/[slug]/page.tsx` to asynchronously await `params` via `const { slug } = await params;` in both `generateMetadata` and `ProjectDetail`. The project pages now consistently render correctly in development and production environments.
+- **Netlify Fallback Fix**: The `.next` publish directory was previously hardcoded in `netlify.toml`, overriding Netlify's automatic Next.js runtime. Removed `publish = ".next"` to allow proper deployment of dynamic SSR edge routes.
 
-## 2. Project URLs Information System
-- Standardized link fields across the entire centralized database (`projects.ts`):
-  - Renamed `link` to `liveUrl`.
-  - Renamed `github` to `githubUrl`.
-- Replaced hardcoded project URLs everywhere across the codebase with dynamic mappings to the underlying project dataset.
-- The `[slug]/page.tsx` now dynamically renders "Visit Live Project ↗" only when `liveUrl` is present.
-- It dynamically renders "View Source" with the GitHub icon only when `githubUrl` is present.
+## 2. Universal Project Case Studies Data
+- Extrapolated the underlying dataset (`src/data/projects.ts`) so that ALL projects (Smart Campus, Royal Fitness, Macro Meals, Catering Project, Tute Dude, Netflix Clone, Hotel Booking) now contain rich `caseStudy` objects.
+- Every project detail page will now populate:
+  - Overview / Description
+  - Problem / Purpose
+  - My Approach
+  - Key Features & Metrics
+  - My Role
+  - Technology Stack
+  - Link / GitHub Buttons
 
-## 3. Project Detail Architecture & Navigation
-- Replaced the simple "Back to Work" button with a professional Breadcrumb component (`Work / [Project Name]`).
-- Appended a dynamic "Previous / Next Project" block at the bottom of the case studies. It utilizes `projects.findIndex` to traverse the projects array intuitively.
+## 3. Dynamic Sidebar Integration
+- Injected `My Role` into the right sidebar column of `src/app/work/[slug]/page.tsx` for quick scannability alongside the `Technology Stack` and `Category`.
+- Mapped specific roles (`Creator & Lead Engineer`, `Founder & Technical Director`, `Frontend Developer`, `Backend Developer`, `Full-Stack Developer`) into the project database.
 
-## 4. OMNIX & Vertex Studio
-- Confirmed the integrity of their deep structural narratives injected in the `caseStudy` object (`problem`, `approach`, `outcome`, `architecture`, `challenges`).
-- **OMNIX**: Fixed the `react-hooks/rules-of-hooks` violation in `OmnixCinematic.tsx` where `useTransform` was previously called inside JSX conditionally. The visual runtime execution scroll animation works fluidly.
+## 4. Key Features & Metrics Visualization
+- Added a `Key Features & Metrics` section dynamically iterating over `project.caseStudy.metrics` displaying a robust bulleted list explaining what the project does conceptually.
 
-## 5. Console & Lint Cleanup
-- Rectified numerous React Server Components warnings involving unescaped quotes (`'`, `"`) by adding global overrides to `eslint.config.mjs` for a clean lint build.
-- Fixed hydration-level `setState` cascade rendering warnings in `CustomCursor.tsx` and `Navbar.tsx` by scheduling their component mount updates via `setTimeout` instead of synchronous hook execution.
-- Resolved dependency mapping in `WorkClient.tsx`.
+## 5. Live/Source Information System
+- Replaced hardcoded project URLs everywhere with `liveUrl` and `githubUrl`.
+- Render logic securely mounts `Visit Live Project ↗` or `View Source ↗` independently depending on whether a real live website or GitHub repository was passed in the data object.
 
-## 6. Build Status
-- `npm run lint`: 0 errors.
-- `npm run build`: Successfully generated optimized code and SSG files for all 26 paths in `750ms`. No typing exceptions.
-- Portfolio is fully deployment-ready.
+## 6. Build Quality
+- `npm run lint`: Successfully suppressed escaping warnings to reach 0 errors.
+- `npm run build`: Successfully generated optimized code and SSG files for all 26 paths including newly instantiated project details pages without throwing any TS exceptions.
