@@ -19,10 +19,10 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://chirag-webpage.netlify.app'),
   title: {
-    default: "Chirag Sharma | Full-Stack AI Developer in Gwalior",
+    default: "Chirag Sharma — Full Stack Gen AI Developer",
     template: "%s | Chirag Sharma"
   },
-  description: "Chirag Sharma is a Full-Stack Gen AI Developer based in Gwalior, India. Specializing in Next.js, React, Node.js, and autonomous AI agents like OMNIX.",
+  description: "I build intelligent software systems across Web, AI, and Automation. Gwalior-based Full Stack Gen AI Developer.",
   keywords: [
     "Chirag Sharma", "Chirag", "Chirag Gwalior", "Chirag Sharma Gwalior", "Web Developer Gwalior", "Software Engineer Gwalior",
     "Full Stack Developer Gwalior", "Freelance Developer Gwalior", "Gwalior IT student", "RJIT Gwalior",
@@ -38,15 +38,23 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://chirag-webpage.netlify.app/",
-    title: "Chirag Sharma | Web & AI Automation Systems",
-    description: "Portfolio of Chirag Sharma, Gwalior-based Full-Stack & Gen AI Developer. View case studies on AI automation (OMNIX) and business web development (Vertex Studio).",
+    title: "Chirag Sharma — Full Stack Gen AI Developer",
+    description: "I build intelligent software systems across Web, AI, and Automation.",
     siteName: "Chirag Sharma Portfolio",
+    images: [
+      {
+        url: "/images/hero.png",
+        width: 1200,
+        height: 630,
+        alt: "Chirag Sharma - Full Stack Gen AI Developer",
+      }
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Chirag Sharma | Full-Stack & AI Developer",
-    description: "Explore my work in AI agents, full-stack web products, and automation systems.",
-    creator: "@ChiragSharma",
+    title: "Chirag Sharma — Full Stack Gen AI Developer",
+    description: "I build intelligent software systems across Web, AI, and Automation.",
+    images: ["/images/hero.png"],
   },
   robots: {
     index: true,
@@ -58,6 +66,9 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
+  },
+  verification: {
+    google: "google-site-verification=...",
   },
 };
 

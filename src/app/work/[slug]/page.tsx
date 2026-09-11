@@ -16,6 +16,13 @@ export const generateMetadata = ({ params }: { params: { slug: string } }) => {
   const project = projects.find((p) => p.slug === params.slug);
   if (!project) return { title: 'Not Found' };
   
+  if (project.slug === 'omnix') {
+    return { title: 'OMNIX — Autonomous AI Desktop Agent', description: project.desc };
+  }
+  if (project.slug === 'vertex-studio') {
+    return { title: 'Vertex Studio — Digital Growth Studio', description: project.desc };
+  }
+  
   return {
     title: `${project.title} — ${project.tagline}`,
     description: project.desc

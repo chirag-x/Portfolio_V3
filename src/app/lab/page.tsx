@@ -5,7 +5,7 @@ import { projects } from "@/data/projects";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Lab",
+  title: "Lab — Experiments in AI, Automation & Software",
   description: "A space for experiments, prototypes, ideas, AI explorations, and automation tests.",
 };
 

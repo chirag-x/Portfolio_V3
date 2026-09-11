@@ -5,7 +5,7 @@ import { ArrowRight, Code2, Cpu, Brain, Layers, Globe, Code, ArrowUpRight } from
 import { profile } from "@/data/profile";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About Chirag Sharma — Full Stack Gen AI Developer",
   description: "Learn more about Chirag Sharma, my engineering journey, philosophy, and what I build.",
 };
 

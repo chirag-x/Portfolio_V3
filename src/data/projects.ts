@@ -1,13 +1,5 @@
-export type ArchitectureStep = {
-  label: string;
-  detail: string;
-};
-
-export type CaseStudy = {
-  metrics: string[];
-  architecture: ArchitectureStep[];
-  challenges: string[];
-};
+export type ProjectCategory = "WEB" | "FULL-STACK" | "AI / ML" | "AUTOMATION" | "AI AGENTS" | "BACKEND" | "UI / FRONTEND" | "EXPERIMENTS" | "BUSINESS" | "AGENCY";
+export type ProjectType = "PROJECT" | "SYSTEM" | "EXPERIMENT" | "CLONE" | "REDESIGN" | "AI SYSTEM" | "AUTOMATION" | "BUSINESS";
 
 export type ProjectStory = {
   built: string;
@@ -15,8 +7,11 @@ export type ProjectStory = {
   broke: string;
 };
 
-export type ProjectCategory = "WEB" | "FULL-STACK" | "AI / ML" | "AUTOMATION" | "AI AGENTS" | "BACKEND" | "UI / FRONTEND" | "EXPERIMENTS" | "BUSINESS" | "AGENCY";
-export type ProjectType = "PROJECT" | "SYSTEM" | "EXPERIMENT" | "CLONE" | "REDESIGN" | "AI SYSTEM" | "AUTOMATION" | "BUSINESS";
+export type CaseStudy = {
+  metrics?: string[];
+  architecture?: { label: string; detail: string }[];
+  challenges?: string[];
+};
 
 export type Project = {
   title: string;
@@ -45,9 +40,9 @@ export const projects: Project[] = [
     desc: 'Multimodal AI desktop agent that can understand natural-language goals, perceive a Windows screen, plan tasks, control apps, automate browsers, use memory, and recover during execution.',
     category: ['AI AGENTS', 'AI / ML', 'AUTOMATION'],
     type: 'SYSTEM',
-    year: '2024',
+    year: '2026',
     status: 'In Development',
-    link: 'https://github.com/chirag-x',
+    link: 'https://omnix-website.netlify.app/',
     github: 'https://github.com/chirag-x',
     stack: ['Python', 'PyQt6', 'Ultralytics YOLO', 'Playwright', 'PyAutoGUI', 'Sentence Transformers', 'Edge TTS', 'LLM APIs'],
     featured: true,
@@ -56,7 +51,7 @@ export const projects: Project[] = [
     story: {
       built: 'A modular Windows desktop agent with reasoning, vision, memory, task planning, browser automation, voice input, and desktop control.',
       learned: 'How to design AI systems that combine reasoning, perception, memory, planning, and real-world tool execution instead of treating an LLM as a chat-only API.',
-      broke: 'Dynamic desktop environments are unpredictable — OMNIX uses observe, understand, plan, act, verify, and recover loops to make execution more reliable.'
+      broke: 'Dynamic desktop environments are unpredictable. OMNIX uses observe, understand, plan, act, verify, and recover loops to make execution more reliable.'
     },
     caseStudy: {
       metrics: ['Autonomous agent', 'Computer vision', 'Semantic memory', 'Browser automation', 'Voice pipeline'],
@@ -74,28 +69,13 @@ export const projects: Project[] = [
     }
   },
   {
-    slug: 'smart-campus',
-    title: 'Smart Campus WiFi System',
-    tagline: 'Real-world campus monitoring system',
-    desc: 'Full-stack academic project with live dashboards for monitoring campus WiFi networks.',
-    category: ['FULL-STACK', 'WEB'],
-    type: 'PROJECT',
-    year: '2023',
-    status: 'Completed',
-    link: 'https://github.com/chirag-x/Smart--campus',
-    github: 'https://github.com/chirag-x/Smart--campus',
-    stack: ['React', 'Node.js', 'MongoDB', 'Express'],
-    featured: true,
-    img: '/images/smart-campus.png'
-  },
-  {
     slug: 'vertex-studio',
     title: 'Vertex Studio',
     tagline: 'Digital Growth Studio',
     desc: 'An agency/business I operate, focused on building websites, digital experiences and growth systems for real businesses. Vertex Studio provides end-to-end digital services including web development, marketing, and SEO.',
     category: ['BUSINESS', 'AGENCY', 'WEB', 'FULL-STACK'],
     type: 'BUSINESS',
-    year: '2023',
+    year: '2026',
     status: 'Completed',
     link: 'https://vertex-studio-official.netlify.app/',
     github: 'https://github.com/chirag-x/portfolio',
@@ -106,7 +86,7 @@ export const projects: Project[] = [
     story: {
       built: 'Vertex Studio is a real digital growth agency I operate. I built the business infrastructure, client-facing portfolio, pricing calculator, and lead generation funnels from scratch to serve real-world clients.',
       learned: 'How to transition from purely writing code to operating a digital business. This project taught me product thinking, client conversion, and how to sell technical services (like SEO, maintenance, and web redesigns) to non-technical business owners.',
-      broke: 'Initially, the offering was too broad. I had to refine the business system (Discovery → Design → Development → Testing → Launch) and focus on specific deliverables like Landing Pages, QR Menus, and Local SEO to streamline operations.'
+      broke: 'Initially, the offering was too broad. I had to refine the business system (Discovery -> Design -> Development -> Testing -> Launch) and focus on specific deliverables like Landing Pages, QR Menus, and Local SEO to streamline operations.'
     },
     caseStudy: {
       metrics: [
@@ -133,18 +113,73 @@ export const projects: Project[] = [
     }
   },
   {
+    slug: 'smart-campus',
+    title: 'Smart Campus WiFi System',
+    tagline: 'Real-world campus monitoring system',
+    desc: 'Full-stack academic project with live dashboards for monitoring campus WiFi networks.',
+    category: ['FULL-STACK', 'WEB'],
+    type: 'PROJECT',
+    year: '2025',
+    status: 'Completed',
+    link: 'https://github.com/chirag-x/Smart--campus',
+    github: 'https://github.com/chirag-x/Smart--campus',
+    stack: ['React', 'Node.js', 'MongoDB', 'Express'],
+    featured: true,
+    img: '/images/smart-campus.png'
+  },
+  {
+    slug: 'royal-fitness',
+    title: 'Royal Fitness Club',
+    tagline: 'Gym & Fitness Platform',
+    desc: 'A modern, responsive website for Royal Fitness Club, Gwalior, featuring memberships and classes.',
+    category: ['WEB', 'UI / FRONTEND'],
+    type: 'PROJECT',
+    year: '2025',
+    status: 'Completed',
+    link: 'https://royal-fitness-club-gwalior.netlify.app/',
+    stack: ['React', 'CSS', 'JavaScript', 'HTML5'],
+    featured: true,
+    img: '/images/royal-fitness.png'
+  },
+  {
+    slug: 'macro-meals',
+    title: 'Macro Meals',
+    tagline: 'Healthy Food Delivery UI',
+    desc: 'A clean and responsive food delivery platform focused on healthy, macro-calculated meals.',
+    category: ['WEB', 'UI / FRONTEND'],
+    type: 'PROJECT',
+    year: '2025',
+    status: 'Completed',
+    link: 'https://macromeals.netlify.app/',
+    stack: ['React', 'Tailwind CSS', 'JavaScript'],
+    featured: true,
+    img: '/images/macro-meals.png'
+  },
+  {
+    slug: 'catering-project',
+    title: 'Catering Services',
+    tagline: 'Event Catering Platform',
+    desc: 'A professional website for catering services, showcasing menus, events, and booking forms.',
+    category: ['WEB', 'UI / FRONTEND'],
+    type: 'PROJECT',
+    year: '2024',
+    status: 'Completed',
+    link: 'https://catering-project-chirag.netlify.app/',
+    stack: ['HTML', 'CSS', 'JavaScript'],
+    img: '/images/catering.png'
+  },
+  {
     slug: 'tutedude',
     title: 'Tute Dude Redesign',
     tagline: 'Platform Redesign',
     desc: 'Full-stack redesign of Tute Dude with improved navigation, layout, and user experience.',
     category: ['UI / FRONTEND', 'WEB'],
     type: 'REDESIGN',
-    year: '2023',
+    year: '2024',
     status: 'Completed',
     link: 'https://tute-dude-clone-chirag.netlify.app/',
     github: 'https://github.com/chirag-x/portfolio',
     stack: ['HTML', 'CSS', 'JavaScript'],
-    featured: true,
     img: '/images/tutedude.png'
   },
   {
@@ -154,7 +189,7 @@ export const projects: Project[] = [
     desc: 'React-based streaming UI with dynamic content rendering and responsive layout.',
     category: ['UI / FRONTEND', 'WEB'],
     type: 'CLONE',
-    year: '2023',
+    year: '2024',
     status: 'Completed',
     link: 'https://projectchirag-50.netlify.app/',
     github: 'https://github.com/chirag-x/portfolio',
@@ -168,7 +203,7 @@ export const projects: Project[] = [
     desc: 'Node.js + Express backend with booking logic and structured API design.',
     category: ['BACKEND', 'WEB'],
     type: 'PROJECT',
-    year: '2023',
+    year: '2024',
     status: 'Completed',
     link: 'https://hotel-project-chirag.netlify.app/',
     github: 'https://github.com/chirag-x/portfolio',

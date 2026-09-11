@@ -90,8 +90,10 @@ export default function Navbar() {
             </button>
             
             <button 
-              className="md:hidden flex p-2 text-muted-foreground hover:text-foreground"
+              className="md:hidden flex p-2 text-muted-foreground hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md"
               onClick={() => setIsOpen(!isOpen)}
+              aria-expanded={isOpen}
+              aria-label="Toggle navigation menu"
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>

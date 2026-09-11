@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Layers, Bot, Cog, Layout, Database, Smartphone, Activity } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Services",
+  title: "Services — Full Stack, AI & Automation",
   description: "What I can build. Full-stack development, AI automation, and digital products.",
 };
 

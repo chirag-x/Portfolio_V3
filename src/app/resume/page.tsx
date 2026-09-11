@@ -1,5 +1,6 @@
 import { profile } from "@/data/profile";
-import { Download, ExternalLink, Mail, MapPin, Phone } from "lucide-react";
+import { ExternalLink, Mail, MapPin, Phone } from "lucide-react";
+import PrintButton from "@/components/ui/PrintButton";
 
 export const metadata = {
   title: "Resume",
@@ -15,12 +16,7 @@ export default function ResumePage() {
             <h1 className="text-4xl font-extrabold tracking-tight mb-2">{profile.name}</h1>
             <p className="text-xl text-primary font-medium">{profile.role}</p>
           </div>
-          <button 
-            className="inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-10 px-6 py-2"
-          >
-            <Download className="h-4 w-4" />
-            Download PDF
-          </button>
+          <PrintButton />
         </div>
 
         <div className="bg-card border border-border rounded-xl shadow-sm p-8 md:p-12 space-y-12">

@@ -2,8 +2,8 @@ import WorkClient from "./WorkClient";
 import { projects } from "@/data/projects";
 
 export const metadata = {
-  title: "Work",
-  description: "Projects, experiments and systems I've built.",
+  title: "Projects & Work",
+  description: "Projects, experiments and systems I've built. Selected work from Chirag Sharma.",
 };
 
 export default function WorkPage() {
