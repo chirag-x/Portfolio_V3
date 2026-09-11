@@ -11,10 +11,12 @@ type Message = {
 };
 
 const SUGGESTIONS = [
-  "What is Vertex Studio?",
+  "What does Chirag build?",
   "Tell me about OMNIX",
-  "Show me featured work",
-  "How to contact him?",
+  "What is Vertex Studio?",
+  "Show me his best work",
+  "What services does he offer?",
+  "How can I contact him?",
 ];
 
 export default function AstaAssistant() {

@@ -1,7 +1,10 @@
 import Hero from "@/components/hero/Hero";
 import WhatIBuild from "@/components/hero/WhatIBuild";
 import HowIThink from "@/components/hero/HowIThink";
+import OmnixStory from "@/components/story/OmnixStory";
+import VertexStory from "@/components/story/VertexStory";
 import FeaturedWork from "@/components/projects/FeaturedWork";
+import Capabilities from "@/components/layout/Capabilities";
 import AboutPreview from "@/components/layout/AboutPreview";
 import ContactCTA from "@/components/layout/ContactCTA";
 import AstaAssistant from "@/components/asta/AstaAssistant";
@@ -13,7 +16,10 @@ export default function Home() {
       <Hero />
       <WhatIBuild />
       <HowIThink />
+      <OmnixStory />
+      <VertexStory />
       <FeaturedWork />
+      <Capabilities />
       <AboutPreview />
       <ContactCTA />
       <AstaAssistant />
