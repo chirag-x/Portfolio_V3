@@ -1,37 +1,126 @@
-export const metadata = {
+import { Metadata } from "next";
+import Link from "next/link";
+import { ArrowRight, Layers, Bot, Cog, Layout, Database, Smartphone, Activity } from "lucide-react";
+
+export const metadata: Metadata = {
   title: "Services",
-  description: "Web development, AI automation, and system architecture services.",
+  description: "What I can build. Full-stack development, AI automation, and digital products.",
 };
+
+const SERVICES = [
+  {
+    icon: Layers,
+    title: "Full-Stack Web Development",
+    desc: "End-to-end development of modern web applications. From database architecture and backend APIs to responsive, high-performance React/Next.js interfaces. I build robust systems that scale.",
+    proof: { label: "See Vertex Studio", link: "/work/vertex-studio" }
+  },
+  {
+    icon: Bot,
+    title: "AI Integration & Workflows",
+    desc: "Integrating large language models (LLMs) and intelligent capabilities into existing products. Building AI-assisted applications, intelligent features, and generative workflows."
+  },
+  {
+    icon: Cog,
+    title: "AI Agents & Automation",
+    desc: "Designing autonomous software that can perceive, reason, and execute tasks. Browser automation, desktop automation, and intelligent background workers.",
+    proof: { label: "See OMNIX Architecture", link: "/work/omnix" }
+  },
+  {
+    icon: Layout,
+    title: "Website Design & Redesign",
+    desc: "Modernizing outdated websites or building them from scratch. Focusing on responsive UI, UX improvements, performance optimization, and high-converting landing pages."
+  },
+  {
+    icon: Database,
+    title: "Backend & API Development",
+    desc: "Architecting server-side logic and database structures. Building REST APIs, integrating third-party services, and ensuring secure data flow."
+  },
+  {
+    icon: Smartphone,
+    title: "Product & UI Development",
+    desc: "Translating complex logic into intuitive SaaS interfaces, interactive dashboards, and polished product experiences that users actually want to engage with."
+  },
+  {
+    icon: Activity,
+    title: "Maintenance & Growth",
+    desc: "Ongoing development for existing projects. Bug fixing, feature additions, performance monitoring, and ensuring the product evolves with its users."
+  }
+];
+
+const PROCESS = [
+  { step: "01", title: "Understand", desc: "Deep dive into the problem, business goals, and technical requirements." },
+  { step: "02", title: "Plan", desc: "Define architecture, tech stack, UX flow, and sprint milestones." },
+  { step: "03", title: "Build", desc: "Write clean, scalable, and maintainable code with constant communication." },
+  { step: "04", title: "Test", desc: "Rigorous manual and automated testing across devices and edge cases." },
+  { step: "05", title: "Launch", desc: "Deploy to production, configure CI/CD, and monitor performance." },
+  { step: "06", title: "Improve", desc: "Iterate based on analytics, user feedback, and shifting requirements." },
+];
 
 export default function ServicesPage() {
   return (
     <div className="pt-32 pb-24 min-h-screen bg-background">
-      <div className="container mx-auto px-6 md:px-12">
-        <h1 className="text-4xl md:text-6xl font-black tracking-tighter mb-4 uppercase">SERVICES</h1>
-        <p className="text-xl text-muted-foreground mb-16 max-w-2xl">
-          What I can build for you. From high-performance web products to autonomous AI systems.
-        </p>
+      {/* HERO */}
+      <section className="container mx-auto px-6 md:px-12 mb-24">
+        <div className="max-w-4xl">
+          <h1 className="text-4xl md:text-6xl font-black tracking-tighter mb-6 uppercase">What I can build.</h1>
+          <p className="text-xl text-muted-foreground leading-relaxed">
+            I take ideas and turn them into working digital systems. Whether it's a full-stack SaaS product, a high-performance business website, or integrating autonomous AI workflows, I handle the engineering from database to deployment.
+          </p>
+        </div>
+      </section>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="p-8 bg-card border border-border rounded-3xl hover:border-primary/50 transition-colors">
-            <div className="w-12 h-12 bg-primary/10 text-primary flex items-center justify-center rounded-xl mb-6 text-xl font-bold">01</div>
-            <h2 className="text-2xl font-bold uppercase tracking-widest mb-4">Web Engineering</h2>
-            <p className="text-muted-foreground leading-relaxed">
-              Full-stack application development using modern frameworks like React, Next.js, and Node.js. 
-              I build performant, responsive, and accessible digital products from the database up to the UI.
-            </p>
-          </div>
-          
-          <div className="p-8 bg-card border border-border rounded-3xl hover:border-primary/50 transition-colors">
-            <div className="w-12 h-12 bg-primary/10 text-primary flex items-center justify-center rounded-xl mb-6 text-xl font-bold">02</div>
-            <h2 className="text-2xl font-bold uppercase tracking-widest mb-4">AI Automation & Agents</h2>
-            <p className="text-muted-foreground leading-relaxed">
-              Integrating Large Language Models, Computer Vision, and autonomous agent systems (like OMNIX) into practical workflows. 
-              Automating repetitive tasks through intelligent scripts and robust APIs.
-            </p>
+      {/* SERVICES LIST */}
+      <section className="border-t border-border/50 bg-muted/10">
+        <div className="container mx-auto px-6 md:px-12 py-24">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {SERVICES.map((service, i) => {
+              const Icon = service.icon;
+              return (
+                <div key={i} className="group p-8 bg-card border border-border rounded-2xl hover:border-primary/50 transition-colors flex flex-col">
+                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform">
+                    <Icon className="w-6 h-6" />
+                  </div>
+                  <h3 className="font-bold text-xl mb-4 text-foreground">{service.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-8 flex-1">{service.desc}</p>
+                  
+                  {service.proof && (
+                    <Link href={service.proof.link} className="inline-flex items-center text-sm font-bold text-primary group/link">
+                      {service.proof.label}
+                      <ArrowRight className="w-4 h-4 ml-1 group-hover/link:translate-x-1 transition-transform" />
+                    </Link>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* THE PROCESS */}
+      <section className="container mx-auto px-6 md:px-12 py-32 border-t border-border/50">
+        <h2 className="text-sm font-bold tracking-widest uppercase text-primary mb-16 text-center">The Process</h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+          {PROCESS.map((p) => (
+            <div key={p.step} className="relative">
+              <div className="text-6xl font-black text-muted-foreground/10 absolute -top-10 -left-4 pointer-events-none select-none">
+                {p.step}
+              </div>
+              <h3 className="font-bold text-xl mb-3 text-foreground relative z-10">{p.title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed relative z-10">{p.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="border-t border-border/50 bg-primary text-primary-foreground py-24 text-center">
+        <div className="container mx-auto px-6 md:px-12">
+          <h2 className="text-3xl md:text-5xl font-black tracking-tighter mb-8">Have something in mind?</h2>
+          <Link href="/contact" className="inline-flex items-center px-8 py-4 bg-background text-foreground font-bold rounded-full hover:bg-muted transition-colors">
+            Let's talk <ArrowRight className="ml-2 w-4 h-4" />
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }
