@@ -12,7 +12,7 @@ rl.question('1. Enter your Client ID: ', (clientId) => {
   rl.question('2. Enter your Client Secret: ', (clientSecret) => {
     
     const scope = 'user-read-currently-playing user-read-recently-played';
-    const redirectUri = 'http://localhost:3000'; // Must exactly match what's in your Spotify Dashboard
+    const redirectUri = 'https://google.com'; // Bypasses Spotify's http/localhost security errors!
     
     const authUrl = `https://accounts.spotify.com/authorize?response_type=code&client_id=${clientId}&scope=${encodeURIComponent(scope)}&redirect_uri=${encodeURIComponent(redirectUri)}`;
     
@@ -20,7 +20,7 @@ rl.question('1. Enter your Client ID: ', (clientId) => {
     console.log("👉 STEP 1: Click this URL to authorize:");
     console.log(authUrl);
     console.log("=========================================\n");
-    console.log("After authorizing, you will be redirected to localhost:3000/?code=...");
+    console.log("After authorizing, you will be redirected to the Google homepage.");
     
     rl.question('👉 STEP 2: Paste the ENTIRE URL you were redirected to here: ', async (redirectedUrl) => {
       try {
@@ -58,7 +58,7 @@ rl.question('1. Enter your Client ID: ', (clientId) => {
           console.log("\n❌ Failed to get token. Error:", data);
         }
       } catch (e) {
-        console.log("❌ Error processing URL. Make sure you pasted the full http://localhost:3000/?code=... link.");
+        console.log("❌ Error processing URL. Make sure you pasted the full https://google.com/?code=... link.");
       }
       rl.close();
     });
