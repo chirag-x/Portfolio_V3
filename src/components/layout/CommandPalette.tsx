@@ -52,6 +52,12 @@ export default function CommandPalette() {
     });
   });
 
+  commands.push({
+    name: "Initialize CHIRAG-OS (Terminal)",
+    icon: <Code className="h-4 w-4 text-green-500" />,
+    action: () => router.push("/terminal")
+  });
+
   const filteredCommands = commands.filter(cmd => 
     cmd.name.toLowerCase().includes(search.toLowerCase())
   );

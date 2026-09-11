@@ -103,10 +103,10 @@ export default function Hero() {
               className="flex items-center gap-4 text-muted-foreground"
             >
               <a href={profile.socials.githubUrl} target="_blank" rel="noopener noreferrer" className="p-2 hover:text-foreground transition-colors" aria-label="GitHub">
-                <Github className="w-5 h-5" />
+                <Github className="w-7 h-7" />
               </a>
               <a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer" className="p-2 hover:text-foreground transition-colors" aria-label="LinkedIn">
-                <Linkedin className="w-5 h-5" />
+                <Linkedin className="w-7 h-7" />
               </a>
             </motion.div>
           </motion.div>

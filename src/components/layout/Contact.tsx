@@ -17,11 +17,20 @@ export default function Contact() {
     const formData = new FormData(form);
 
     try {
+      // 1. Submit to Netlify
       await fetch("/__forms.html", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams(formData as unknown as Record<string, string>).toString(),
       });
+
+      // 2. Submit to Discord Webhook
+      await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(Object.fromEntries(formData)),
+      }).catch(err => console.error("Discord error:", err)); // Don't block Netlify success if Discord fails
+
       setSubmitted(true);
     } catch (error) {
       console.error(error);

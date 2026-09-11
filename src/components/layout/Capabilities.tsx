@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { profile } from "@/data/profile";
 import { CheckCircle2 } from "lucide-react";
 
-export default function Capabilities() {
+export default function Capabilities({ leetCodeCount = 300 }: { leetCodeCount?: number }) {
   return (
     <section className="py-32 bg-background relative overflow-hidden border-t border-border/50">
       <div className="container mx-auto px-6 md:px-12 relative z-10">
@@ -31,7 +31,9 @@ export default function Capabilities() {
                   transition={{ delay: i * 0.1 }}
                   className="p-6 bg-card border border-border rounded-2xl"
                 >
-                  <div className="text-3xl font-black text-foreground mb-1">{stat.value}</div>
+                  <div className="text-3xl font-black text-foreground mb-1">
+                    {stat.label.includes("DSA") ? `${leetCodeCount}+` : stat.value}
+                  </div>
                   <div className="text-sm text-muted-foreground font-medium uppercase tracking-wider">{stat.label}</div>
                 </motion.div>
               ))}

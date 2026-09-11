@@ -10,7 +10,11 @@ import ContactCTA from "@/components/layout/ContactCTA";
 import AstaAssistant from "@/components/asta/AstaAssistant";
 import CommandPalette from "@/components/layout/CommandPalette";
 
-export default function Home() {
+import { getLeetCodeStats } from "@/lib/leetcode";
+
+export default async function Home() {
+  const leetCodeCount = await getLeetCodeStats("TheChirag__X");
+
   return (
     <>
       <Hero />
@@ -19,7 +23,7 @@ export default function Home() {
       <OmnixStory />
       <VertexStory />
       <FeaturedWork />
-      <Capabilities />
+      <Capabilities leetCodeCount={leetCodeCount} />
       <AboutPreview />
       <ContactCTA />
       <AstaAssistant />

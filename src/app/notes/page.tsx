@@ -1,9 +1,14 @@
+import { getAllNotesMeta } from "@/lib/mdx";
+import Link from "next/link";
+
 export const metadata = {
   title: "Build Logs",
   description: "Engineering notes, build logs, and thoughts on AI and web development.",
 };
 
-export default function NotesPage() {
+export default async function NotesPage() {
+  const notes = await getAllNotesMeta();
+
   return (
     <div className="min-h-screen pt-32 pb-24 bg-background">
       <div className="container mx-auto px-6 max-w-3xl">
@@ -13,40 +18,30 @@ export default function NotesPage() {
         </p>
 
         <div className="space-y-12">
-          <article className="border-b border-border pb-12">
-            <header className="mb-4">
-              <div className="text-sm text-primary font-mono mb-2">March 15, 2024</div>
-              <h2 className="text-2xl font-bold hover:text-primary transition-colors cursor-pointer">
-                Building OMNIX's Perception System
-              </h2>
-            </header>
-            <div className="prose prose-invert max-w-none text-muted-foreground">
-              <h3 className="text-foreground text-lg font-semibold mt-4 mb-2">Problem</h3>
-              <p className="mb-4">Standard LLMs are blind to the desktop. To make an autonomous agent, it needs to see UI elements to know where to click or type.</p>
-              
-              <h3 className="text-foreground text-lg font-semibold mt-4 mb-2">Approach</h3>
-              <p className="mb-4">Initially, I tried using pure OCR, but it failed to understand UI hierarchy (like buttons vs text). I shifted to using Ultralytics YOLO to detect interactive bounding boxes combined with accessibility trees.</p>
-              
-              <h3 className="text-foreground text-lg font-semibold mt-4 mb-2">Failed attempts</h3>
-              <p className="mb-4">Taking screenshots every 100ms melted the CPU. The agent loop had to become discrete: Observe (take one frame) → Plan → Act → Verify.</p>
-
-              <h3 className="text-foreground text-lg font-semibold mt-4 mb-2">Lesson</h3>
-              <p>Vision-language models alone aren't enough for reliable computer control. You need a structured symbolic representation of the screen (bounding boxes) that an LLM can reason over.</p>
-            </div>
-          </article>
-
-          <article className="border-b border-border pb-12">
-            <header className="mb-4">
-              <div className="text-sm text-primary font-mono mb-2">January 20, 2024</div>
-              <h2 className="text-2xl font-bold hover:text-primary transition-colors cursor-pointer">
-                Why I migrated to Next.js API Routes for ASTA
-              </h2>
-            </header>
-            <div className="prose prose-invert max-w-none text-muted-foreground">
-              <p>The previous iteration of ASTA used a separate Express server running on Render. It worked, but suffered from cold starts and CORS headaches.</p>
-              <p className="mt-4">Moving to Next.js Route Handlers reduced the architecture complexity, improved latency by running on the edge, and secured the OpenRouter API keys without managing a separate backend deployment.</p>
-            </div>
-          </article>
+          {notes.length === 0 ? (
+            <p className="text-muted-foreground">No notes published yet.</p>
+          ) : (
+            notes.map((note) => (
+              <article key={note.slug} className="border-b border-border pb-12 group">
+                <header className="mb-4">
+                  <div className="text-sm text-primary font-mono mb-2">
+                    {new Date(note.date).toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })}
+                  </div>
+                  <Link href={`/notes/${note.slug}`}>
+                    <h2 className="text-2xl font-bold group-hover:text-primary transition-colors cursor-pointer">
+                      {note.title}
+                    </h2>
+                  </Link>
+                </header>
+                {note.summary && (
+                  <p className="text-muted-foreground mb-4">{note.summary}</p>
+                )}
+                <Link href={`/notes/${note.slug}`} className="text-primary font-bold text-sm hover:underline">
+                  Read more →
+                </Link>
+              </article>
+            ))
+          )}
         </div>
       </div>
     </div>

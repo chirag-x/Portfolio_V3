@@ -2,6 +2,7 @@ import Link from "next/link";
 import { profile } from "@/data/profile";
 import { Mail } from "lucide-react";
 import { FaGithub as Github, FaLinkedin as Linkedin, FaInstagram as Instagram, FaDiscord as Discord } from "react-icons/fa";
+import SpotifyWidget from "./SpotifyWidget";
 
 export default function Footer() {
   return (
@@ -19,6 +20,9 @@ export default function Footer() {
             <p className="text-sm text-muted-foreground leading-relaxed mt-4">
               {profile.tagline}
             </p>
+            <div className="mt-6">
+              <SpotifyWidget />
+            </div>
           </div>
 
           <div>
@@ -49,9 +53,15 @@ export default function Footer() {
           <div>
             <h4 className="text-sm font-bold uppercase tracking-widest mb-6">Connect</h4>
             <ul className="space-y-3 text-sm text-muted-foreground mb-8">
-              <li><a href={profile.socials.githubUrl} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">GitHub</a></li>
-              <li><a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">LinkedIn</a></li>
-              <li><a href={`mailto:${profile.email}`} className="hover:text-primary transition-colors">Email</a></li>
+              <li><a href={profile.socials.githubUrl} target="_blank" rel="noopener noreferrer" className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-full transition-colors" aria-label="GitHub Profile">
+              <Github className="w-5 h-5" />
+            </a></li>
+              <li><a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer" className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-full transition-colors" aria-label="LinkedIn Profile">
+              <Linkedin className="w-5 h-5" />
+            </a></li>
+              <li><a href={`mailto:${profile.email}`} className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-full transition-colors" aria-label="Email Me">
+              <Mail className="w-5 h-5" />
+            </a></li>
             </ul>
             <h4 className="text-sm font-bold uppercase tracking-widest mb-6">Legal</h4>
             <ul className="space-y-3 text-sm text-muted-foreground">
