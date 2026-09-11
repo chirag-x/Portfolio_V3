@@ -23,7 +23,7 @@ export default function VertexStory() {
             className="order-2 lg:order-1 relative aspect-[4/3] rounded-3xl overflow-hidden border border-border shadow-2xl group"
           >
             {vertex.img && (
-              <Image src={vertex.img} alt="Vertex Studio" fill className="object-cover group-hover:scale-105 transition-transform duration-1000" />
+              <Image src={vertex.img} alt="Vertex Studio" fill sizes="100vw" className="object-cover group-hover:scale-105 transition-transform duration-1000" />
             )}
             <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors z-10" />
           </motion.div>

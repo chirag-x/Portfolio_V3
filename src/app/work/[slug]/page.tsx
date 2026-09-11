@@ -82,7 +82,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
         {/* Hero Image */}
         {project.img && (
           <div className="w-full aspect-[21/9] relative rounded-3xl overflow-hidden bg-muted border border-border shadow-2xl mb-24">
-            <Image src={project.img} alt={project.title} fill className="object-cover" priority />
+            <Image src={project.img} alt={project.title} fill sizes="100vw" className="object-cover" priority />
           </div>
         )}
 

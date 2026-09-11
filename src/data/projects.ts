@@ -58,7 +58,7 @@ export const projects: Project[] = [
     stack: ['Python', 'PyQt6', 'Ultralytics YOLO', 'Playwright', 'PyAutoGUI', 'Sentence Transformers', 'Edge TTS', 'LLM APIs'],
     featured: true,
     flagship: true,
-    img: '/images/omnix-preview.svg',
+    img: '/images/Omnix_website.png',
     story: {
       built: 'A modular Windows desktop agent with reasoning, vision, memory, task planning, browser automation, voice input, and desktop control.',
       learned: 'How to design AI systems that combine reasoning, perception, memory, planning, and real-world tool execution instead of treating an LLM as a chat-only API.',
@@ -129,27 +129,7 @@ export const projects: Project[] = [
       ]
     }
   },
-  {
-    slug: 'smart-campus',
-    title: 'Smart Campus WiFi System',
-    tagline: 'Real-world campus monitoring system',
-    desc: 'Full-stack academic project with live dashboards for monitoring campus WiFi networks.',
-    category: ['FULL-STACK', 'WEB'],
-    type: 'PROJECT',
-    year: '2025',
-    status: 'LIVE',
-    liveUrl: 'https://github.com/chirag-x/Smart--campus',
-    githubUrl: 'https://github.com/chirag-x/Smart--campus',
-    stack: ['React', 'Node.js', 'MongoDB', 'Express'],
-    featured: true,
-    img: '/images/smart-campus.png',
-    role: 'Full-Stack Developer',
-    caseStudy: {
-      problem: 'Managing and monitoring campus WiFi networks efficiently requires real-time dashboards and robust backend tracking.',
-      approach: 'Built a full-stack academic project integrating a Node/Express backend with MongoDB, and a React frontend for live data visualization.',
-      metrics: ['Real-time dashboard', 'Network monitoring', 'Database integration', 'Responsive UI']
-    }
-  },
+  
   {
     slug: 'royal-fitness',
     title: 'Royal Fitness Club',
@@ -171,6 +151,26 @@ export const projects: Project[] = [
     }
   },
   {
+    slug: 'apex-details',
+    title: 'Apex Details',
+    tagline: 'Professional Services Platform',
+    desc: 'A modern, responsive website for Apex Details, showcasing services and client testimonials.',
+    category: ['WEB', 'UI / FRONTEND'],
+    type: 'PROJECT',
+    year: '2025',
+    status: 'LIVE',
+    liveUrl: 'https://jovial-brioche-f4f676.netlify.app/',
+    stack: ['React', 'CSS', 'JavaScript', 'HTML5'],
+    featured: true,
+    img: '/images/apex-details.png',
+    role: 'Frontend Developer',
+    caseStudy: {
+      problem: 'Apex Details needed a modern, responsive website to showcase their professional services and client testimonials.',
+      approach: 'Developed a clean, user-friendly interface using React and CSS, focusing on service presentation and client engagement.',
+      metrics: ['Service showcase', 'Client testimonials', 'Responsive design', 'User engagement']
+    }
+  },
+  {
     slug: 'macro-meals',
     title: 'Macro Meals',
     tagline: 'Healthy Food Delivery UI',
@@ -188,6 +188,26 @@ export const projects: Project[] = [
       problem: 'Health-conscious consumers need a fast, intuitive way to browse and order macro-calculated meals online.',
       approach: 'Created a clean, conversion-focused user interface using React and Tailwind CSS for optimal performance and aesthetics.',
       metrics: ['Food menu UI', 'Macro-nutrient display', 'Responsive layout', 'Fast load times']
+    }
+  },
+  {
+    slug: 'smart-campus',
+    title: 'Smart Campus WiFi System',
+    tagline: 'Real-world campus monitoring system',
+    desc: 'Full-stack academic project with live dashboards for monitoring campus WiFi networks.',
+    category: ['FULL-STACK', 'WEB'],
+    type: 'PROJECT',
+    year: '2025',
+    status: 'LIVE',
+    liveUrl: 'https://luminous-blini-2839b3.netlify.app/',
+    githubUrl: 'https://github.com/chirag-x/Smart--campus',
+    stack: ['React', 'Node.js', 'MongoDB', 'Express'],
+    img: '/images/smart-campus.png',
+    role: 'Full-Stack Developer',
+    caseStudy: {
+      problem: 'Managing and monitoring campus WiFi networks efficiently requires real-time dashboards and robust backend tracking.',
+      approach: 'Built a full-stack academic project integrating a Node/Express backend with MongoDB, and a React frontend for live data visualization.',
+      metrics: ['Real-time dashboard', 'Network monitoring', 'Database integration', 'Responsive UI']
     }
   },
   {

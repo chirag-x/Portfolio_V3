@@ -78,7 +78,7 @@ export default function LabPage() {
               >
                 <div className="relative aspect-video rounded-2xl overflow-hidden border border-border mb-4 bg-muted">
                   {project.img ? (
-                    <Image src={project.img} alt={project.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                    <Image src={project.img} alt={project.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center font-mono text-muted-foreground">[{project.title}]</div>
                   )}

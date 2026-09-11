@@ -248,7 +248,7 @@ function WorkContent() {
               <h2 className="text-xl font-bold uppercase tracking-widest text-primary border-b border-border pb-4">Featured Work</h2>
               <div className="grid md:grid-cols-12 gap-8">
                 <AnimatePresence mode="popLayout">
-                  {filteredProjects.filter(p => p.flagship || p.featured).map(p => renderProjectCard(p))}
+                  {filteredProjects.filter(p => p.flagship || p.featured).map(p => renderProjectCard(p, "featured"))}
                 </AnimatePresence>
               </div>
             </div>
@@ -257,7 +257,7 @@ function WorkContent() {
               <h2 className="text-xl font-bold uppercase tracking-widest text-muted-foreground border-b border-border pb-4">All Work</h2>
               <div className="grid md:grid-cols-12 gap-8">
                 <AnimatePresence mode="popLayout">
-                  {filteredProjects.filter(p => !p.flagship && !p.featured).map(p => renderProjectCard(p))}
+                  {filteredProjects.filter(p => !p.flagship && !p.featured).map(p => renderProjectCard(p, "all"))}
                 </AnimatePresence>
               </div>
             </div>
@@ -265,7 +265,7 @@ function WorkContent() {
         ) : (
           <div className="grid md:grid-cols-12 gap-8">
             <AnimatePresence mode="popLayout">
-              {filteredProjects.map(p => renderProjectCard(p))}
+              {filteredProjects.map(p => renderProjectCard(p, "search"))}
             </AnimatePresence>
           </div>
         )}
@@ -286,24 +286,24 @@ function WorkContent() {
     </div>
   );
 
-  function renderProjectCard(project: typeof projects[0]) {
+  function renderProjectCard(project: typeof projects[0], prefix: string) {
     const isFeatured = project.flagship || project.featured;
     const spanClass = isFeatured ? "md:col-span-12 lg:col-span-8" : "md:col-span-6 lg:col-span-4";
     
     return (
       <motion.div
         layout
-        key={project.slug}
-        initial={{ opacity: 0, scale: 0.95 }}
+        initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.95 }}
+        exit={{ opacity: 0, scale: 0.9 }}
         transition={{ duration: 0.4 }}
+        key={`${prefix}-${project.slug}`}
         className={`group relative flex flex-col bg-card border border-border rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1 ${spanClass}`}
       >
         <Link href={`/work/${project.slug}`} className={`block relative ${isFeatured ? 'aspect-[21/9]' : 'aspect-video'} overflow-hidden bg-muted`} data-cursor="view">
           <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors z-10" />
           {project.img ? (
-            <Image src={project.img} alt={project.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+            <Image src={project.img} alt={project.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
           ) : (
             <div className="absolute inset-0 flex items-center justify-center font-mono text-muted-foreground/50 group-hover:scale-110 transition-transform duration-700">
               [ {project.title} ]

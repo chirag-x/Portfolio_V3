@@ -55,7 +55,7 @@ export default function OmnixStory() {
             className="relative aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black/50"
           >
             {omnix.img && (
-              <Image src={omnix.img} alt="OMNIX Interface" fill className="object-cover opacity-80" />
+              <Image src={omnix.img} alt="OMNIX Interface" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover opacity-80" />
             )}
             <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] to-transparent"></div>
           </motion.div>

@@ -76,7 +76,7 @@ export default function CustomCursor() {
       animate={{
         width: isHovered ? (cursorText ? 64 : 48) : 16,
         height: isHovered ? (cursorText ? 64 : 48) : 16,
-        backgroundColor: "white",
+        backgroundColor: "#ffffff",
         borderRadius: "9999px",
         opacity: 1
       }}

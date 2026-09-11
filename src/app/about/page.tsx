@@ -70,7 +70,8 @@ export default function AboutPage() {
             <Image 
               src="/images/hero.png" 
               alt="Chirag Sharma" 
-              fill 
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover z-10" 
             />
           </div>
