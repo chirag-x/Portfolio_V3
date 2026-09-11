@@ -142,7 +142,13 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/chirag-x/Smart--campus',
     stack: ['React', 'Node.js', 'MongoDB', 'Express'],
     featured: true,
-    img: '/images/smart-campus.png'
+    img: '/images/smart-campus.png',
+    role: 'Full-Stack Developer',
+    caseStudy: {
+      problem: 'Managing and monitoring campus WiFi networks efficiently requires real-time dashboards and robust backend tracking.',
+      approach: 'Built a full-stack academic project integrating a Node/Express backend with MongoDB, and a React frontend for live data visualization.',
+      metrics: ['Real-time dashboard', 'Network monitoring', 'Database integration', 'Responsive UI']
+    }
   },
   {
     slug: 'royal-fitness',
@@ -156,7 +162,13 @@ export const projects: Project[] = [
     liveUrl: 'https://royal-fitness-club-gwalior.netlify.app/',
     stack: ['React', 'CSS', 'JavaScript', 'HTML5'],
     featured: true,
-    img: '/images/royal-fitness.png'
+    img: '/images/royal-fitness.png',
+    role: 'Frontend Developer',
+    caseStudy: {
+      problem: 'A local gym needed a digital presence to showcase memberships, classes, and facilities to attract new members.',
+      approach: 'Designed and developed a modern, responsive landing page with engaging UI elements and clear calls to action.',
+      metrics: ['Membership showcase', 'Class schedules', 'Responsive design', 'Modern UI']
+    }
   },
   {
     slug: 'macro-meals',
@@ -170,7 +182,13 @@ export const projects: Project[] = [
     liveUrl: 'https://macromeals.netlify.app/',
     stack: ['React', 'Tailwind CSS', 'JavaScript'],
     featured: true,
-    img: '/images/macro-meals.png'
+    img: '/images/macro-meals.png',
+    role: 'Frontend Developer',
+    caseStudy: {
+      problem: 'Health-conscious consumers need a fast, intuitive way to browse and order macro-calculated meals online.',
+      approach: 'Created a clean, conversion-focused user interface using React and Tailwind CSS for optimal performance and aesthetics.',
+      metrics: ['Food menu UI', 'Macro-nutrient display', 'Responsive layout', 'Fast load times']
+    }
   },
   {
     slug: 'catering-project',
@@ -183,7 +201,13 @@ export const projects: Project[] = [
     status: 'LIVE',
     liveUrl: 'https://catering-project-chirag.netlify.app/',
     stack: ['HTML', 'CSS', 'JavaScript'],
-    img: '/images/catering.png'
+    img: '/images/catering.png',
+    role: 'Web Developer',
+    caseStudy: {
+      problem: 'A catering service required an online platform to display their menus, previous events, and allow clients to book services.',
+      approach: 'Built a structured, accessible website using HTML, CSS, and JavaScript to handle booking forms and media galleries.',
+      metrics: ['Event galleries', 'Booking forms', 'Menu presentation', 'Interactive UI']
+    }
   },
   {
     slug: 'tutedude',
@@ -197,7 +221,13 @@ export const projects: Project[] = [
     liveUrl: 'https://tute-dude-clone-chirag.netlify.app/',
     githubUrl: 'https://github.com/chirag-x/portfolio',
     stack: ['HTML', 'CSS', 'JavaScript'],
-    img: '/images/tutedude.png'
+    img: '/images/tutedude.png',
+    role: 'Frontend Developer',
+    caseStudy: {
+      problem: 'The original Tute Dude platform lacked a modern, engaging user experience for students.',
+      approach: 'Executed a complete redesign of the platform interface, focusing on improved navigation, layout consistency, and user flow.',
+      metrics: ['UI Redesign', 'Improved navigation', 'Responsive layout', 'User flow optimization']
+    }
   },
   {
     slug: 'netflix-clone',
@@ -211,7 +241,13 @@ export const projects: Project[] = [
     liveUrl: 'https://projectchirag-50.netlify.app/',
     githubUrl: 'https://github.com/chirag-x/portfolio',
     stack: ['React', 'CSS', 'JavaScript'],
-    img: '/images/netflix.png'
+    img: '/images/netflix.png',
+    role: 'Frontend Developer',
+    caseStudy: {
+      problem: 'Learning to handle dynamic content rendering and complex state management in a large-scale media application.',
+      approach: 'Developed a visually accurate Netflix clone using React, implementing horizontal scrolling lists and dynamic media loading.',
+      metrics: ['Dynamic content rendering', 'Media galleries', 'Complex UI state', 'Responsive design']
+    }
   },
   {
     slug: 'hotel-booking',
@@ -225,6 +261,12 @@ export const projects: Project[] = [
     liveUrl: 'https://hotel-project-chirag.netlify.app/',
     githubUrl: 'https://github.com/chirag-x/portfolio',
     stack: ['Node.js', 'Express', 'JavaScript', 'MongoDB'],
-    img: '/images/hotel.png'
+    img: '/images/hotel.png',
+    role: 'Backend Developer',
+    caseStudy: {
+      problem: 'A hotel booking system requires robust server-side logic to handle reservations, availability, and user data safely.',
+      approach: 'Engineered a RESTful API backend using Node.js, Express, and MongoDB to manage the core booking logic and data persistence.',
+      metrics: ['REST API design', 'Database schema', 'Booking logic', 'Server-side validation']
+    }
   }
 ];

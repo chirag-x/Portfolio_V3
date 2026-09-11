@@ -12,8 +12,9 @@ export function generateStaticParams() {
   }));
 }
 
-export const generateMetadata = ({ params }: { params: { slug: string } }) => {
-  const project = projects.find((p) => p.slug === params.slug);
+export const generateMetadata = async ({ params }: { params: Promise<{ slug: string }> }) => {
+  const { slug } = await params;
+  const project = projects.find((p) => p.slug === slug);
   if (!project) return { title: 'Not Found' };
   
   if (project.slug === 'omnix') {
@@ -29,8 +30,9 @@ export const generateMetadata = ({ params }: { params: { slug: string } }) => {
   };
 };
 
-export default function ProjectDetail({ params }: { params: { slug: string } }) {
-  const project = projects.find((p) => p.slug === params.slug);
+export default async function ProjectDetail({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const project = projects.find((p) => p.slug === slug);
 
   if (!project) {
     notFound();
@@ -186,6 +188,15 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
           <div className="lg:col-span-4">
             <div className="sticky top-32 space-y-12">
               
+              {project.role && (
+                <div>
+                  <h3 className="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-4">My Role</h3>
+                  <div className="text-foreground font-medium">
+                    {project.role}
+                  </div>
+                </div>
+              )}
+
               <div>
                 <h3 className="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-4">Technology Stack</h3>
                 <div className="flex flex-wrap gap-2">
