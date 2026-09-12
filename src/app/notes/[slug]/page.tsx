@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import ViewCounter from "@/components/layout/ViewCounter";
+import NoteSummarizer from "@/components/notes/NoteSummarizer";
 
 export async function generateStaticParams() {
   const notes = await getAllNotesMeta();
@@ -48,7 +49,9 @@ export default async function NotePage({ params }: { params: Promise<{ slug: str
           </h1>
         </header>
 
-        <article className="prose prose-invert prose-lg max-w-none prose-headings:text-foreground prose-a:text-primary hover:prose-a:text-primary/80">
+        <NoteSummarizer content={note.content} />
+
+        <article className="prose prose-invert prose-lg max-w-none prose-headings:font-bold prose-a:text-primary hover:prose-a:text-primary/80 prose-img:rounded-xl">
           <MDXRemote source={note.content} />
         </article>
       </div>

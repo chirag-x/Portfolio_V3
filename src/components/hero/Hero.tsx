@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, FileText } from "lucide-react";
-import { FaGithub as Github, FaLinkedin as Linkedin } from "react-icons/fa";
+import { FaGithub as Github, FaInstagram as Instagram, FaLinkedin as Linkedin } from "react-icons/fa";
 import Link from "next/link";
 import { profile } from "@/data/profile";
 import Image from "next/image";
@@ -109,6 +109,9 @@ export default function Hero() {
               </a>
               <a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer" className="p-2 hover:text-foreground transition-colors" aria-label="LinkedIn">
                 <Linkedin className="w-7 h-7" />
+              </a>
+              <a href={profile.socials.instagram} target="_blank" rel="noopener noreferrer" className="p-2 hover:text-foreground transition-colors" aria-label="Instagram">
+                <Instagram className="w-7 h-7" />
               </a>
             </motion.div>
           </motion.div>

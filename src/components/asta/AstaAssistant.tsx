@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, X, Loader2, Sparkles } from "lucide-react";
+import { Send, X, Loader2, Sparkles, Mic, MicOff } from "lucide-react";
 import { useRouter, usePathname } from "next/navigation";
 import { useSoundEffects } from "@/hooks/useSoundEffects";
 
@@ -24,6 +24,8 @@ export default function AstaAssistant() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState("");
+  const [isListening, setIsListening] = useState(false);
+  const [isVoiceMode, setIsVoiceMode] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     { role: "assistant", content: "I am ASTA — Portfolio Intelligence. Ask me anything about Chirag's work, experience, or let me navigate the site for you." }
   ]);
@@ -39,6 +41,31 @@ export default function AstaAssistant() {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  const startListening = () => {
+    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      alert("Your browser does not support Voice AI mode. Try Chrome or Edge.");
+      return;
+    }
+    const recognition = new SpeechRecognition();
+    recognition.lang = 'en-US';
+    recognition.interimResults = false;
+    
+    recognition.onstart = () => setIsListening(true);
+    
+    recognition.onresult = (event: any) => {
+      const transcript = event.results[0][0].transcript;
+      setInput(transcript);
+      handleSend(transcript); // auto send!
+    };
+    
+    recognition.onerror = () => setIsListening(false);
+    recognition.onend = () => setIsListening(false);
+    
+    setIsVoiceMode(true);
+    recognition.start();
+  };
 
   const handleSend = async (text: string = input) => {
     if (!text.trim() || isLoading) return;
@@ -81,6 +108,15 @@ export default function AstaAssistant() {
       
       if (data.reply) {
         setMessages(prev => [...prev, { role: "assistant", content: data.reply }]);
+        
+        if (isVoiceMode && 'speechSynthesis' in window) {
+          // Cancel any ongoing speech
+          window.speechSynthesis.cancel();
+          const utterance = new SpeechSynthesisUtterance(data.reply);
+          utterance.rate = 1.05;
+          utterance.pitch = 0.9; // Slightly robotic/serious AI tone
+          window.speechSynthesis.speak(utterance);
+        }
       }
     } catch (error) {
       setMessages(prev => [...prev, { role: "assistant", content: "System connection interrupted. Please try again." }]);
@@ -207,16 +243,27 @@ export default function AstaAssistant() {
                   type="text"
                   value={input}
                   onChange={(e) => { playTyping(); setInput(e.target.value); }}
-                  placeholder="Query ASTA..."
-                  className="flex-1 bg-background border border-border rounded-full pl-5 pr-12 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all font-medium placeholder:text-muted-foreground/50"
+                  placeholder={isListening ? "Listening..." : "Query ASTA..."}
+                  className="flex-1 bg-background border border-border rounded-full pl-5 pr-20 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all font-medium placeholder:text-muted-foreground/50"
                 />
-                <button
-                  type="submit"
-                  disabled={!input.trim() || isLoading}
-                  className="absolute right-1.5 h-9 w-9 rounded-full bg-primary text-primary-foreground flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed transition-transform active:scale-95"
-                >
-                  <Send className="h-4 w-4 ml-0.5" />
-                </button>
+                <div className="absolute right-1.5 flex items-center gap-1">
+                  <button
+                    type="button"
+                    onClick={startListening}
+                    disabled={isListening || isLoading}
+                    className={`h-9 w-9 rounded-full flex items-center justify-center transition-transform active:scale-95 ${isListening ? "bg-red-500 text-white animate-pulse" : "bg-muted text-muted-foreground hover:text-foreground"}`}
+                    title="Voice Mode"
+                  >
+                    {isListening ? <Mic className="h-4 w-4" /> : <MicOff className="h-4 w-4" />}
+                  </button>
+                  <button
+                    type="submit"
+                    disabled={!input.trim() || isLoading}
+                    className="h-9 w-9 rounded-full bg-primary text-primary-foreground flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed transition-transform active:scale-95"
+                  >
+                    <Send className="h-4 w-4 ml-0.5" />
+                  </button>
+                </div>
               </form>
             </div>
           </motion.div>

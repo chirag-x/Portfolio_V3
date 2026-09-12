@@ -6,6 +6,7 @@ import { profile } from "@/data/profile";
 import { Mail } from "lucide-react";
 import { FaGithub as Github, FaLinkedin as Linkedin, FaInstagram as Instagram, FaDiscord as Discord } from "react-icons/fa";
 import SpotifyWidget from "./SpotifyWidget";
+import GithubWidget from "./GithubWidget";
 
 export default function Footer() {
   const pathname = usePathname();
@@ -26,8 +27,9 @@ export default function Footer() {
             <p className="text-sm text-muted-foreground leading-relaxed mt-4">
               {profile.tagline}
             </p>
-            <div className="mt-6">
+            <div className="mt-6 space-y-4">
               <SpotifyWidget />
+              <GithubWidget />
             </div>
           </div>
 
