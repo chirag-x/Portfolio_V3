@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import { useSoundEffects } from "@/hooks/useSoundEffects";
-import { Search, Moon, Sun, Home, Briefcase, Mail, FileText, Code, FolderGit2 } from "lucide-react";
+import { Search, Home, Briefcase, Code, FileText, Mail, Moon, Sun, FolderGit2, X, Activity } from "lucide-react";
 import { projects } from "@/data/projects";
 
 export default function CommandPalette() {
@@ -50,10 +50,26 @@ export default function CommandPalette() {
     { name: "View Resume", icon: <FileText className="h-4 w-4" />, action: () => router.push("/resume") },
     { name: "Contact Me", icon: <Mail className="h-4 w-4" />, action: () => router.push("/contact") },
     { 
-      name: `Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Mode`, 
-      icon: theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />, 
-      action: () => setTheme(theme === 'dark' ? 'light' : 'dark') 
+      name: "Copy Email Address", 
+      icon: <Mail className="h-4 w-4" />, 
+      action: () => { navigator.clipboard.writeText("contact@chirag.com"); alert("Email copied!"); } 
     },
+    { 
+      name: `Switch to Light Mode`, 
+      icon: <Sun className="h-4 w-4" />, 
+      action: () => setTheme('light') 
+    },
+    { 
+      name: `Switch to Dark Mode`, 
+      icon: <Moon className="h-4 w-4" />, 
+      action: () => setTheme('dark') 
+    },
+    { 
+      name: `Initialize Matrix Theme`, 
+      icon: <Code className="h-4 w-4 text-primary" />, 
+      action: () => setTheme('matrix') 
+    },
+    { name: "View Visitor Analytics (Hidden)", icon: <Activity className="h-4 w-4" />, action: () => router.push("/analytics") },
   ];
 
   // Dynamically append all projects for global search

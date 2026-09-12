@@ -27,7 +27,7 @@ export default function AnalyticsDashboard() {
     );
   }
 
-  if (!data || data.length === 0) {
+  if (!data || !Array.isArray(data) || data.length === 0) {
     return (
       <div className="text-center text-muted-foreground p-12 border border-border/50 rounded-2xl bg-muted/10">
         No traffic data collected yet.

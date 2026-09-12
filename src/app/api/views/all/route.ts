@@ -7,7 +7,7 @@ const dataFile = path.join(process.cwd(), "data", "views.json");
 export async function GET() {
   try {
     if (!fs.existsSync(dataFile)) {
-      return NextResponse.json({ views: {} });
+      return NextResponse.json([]);
     }
     const data = fs.readFileSync(dataFile, "utf8");
     const views = JSON.parse(data);

@@ -12,7 +12,8 @@
 /%TEMP%/
 /.vscode/
 .vscode
-
+.cli
+/cli/
 # testing
 /coverage
 
