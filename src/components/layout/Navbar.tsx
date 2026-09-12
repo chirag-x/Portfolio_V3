@@ -35,7 +35,7 @@ export default function Navbar() {
     { name: "Notes", href: "/notes" },
     { name: "Guestbook", href: "/guestbook" },
     { name: "Resume", href: "/resume" },
-    { name: "Contact", href: "/contact" },
+    { name: "Hire Me", href: "/hire" },
   ];
 
   if (pathname === "/terminal") return null;

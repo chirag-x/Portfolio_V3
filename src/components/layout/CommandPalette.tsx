@@ -48,7 +48,7 @@ export default function CommandPalette() {
     { name: "View All Work", icon: <Briefcase className="h-4 w-4" />, action: () => router.push("/work") },
     { name: "Lab / Experiments", icon: <Code className="h-4 w-4" />, action: () => router.push("/lab") },
     { name: "View Resume", icon: <FileText className="h-4 w-4" />, action: () => router.push("/resume") },
-    { name: "Contact Me", icon: <Mail className="h-4 w-4" />, action: () => router.push("/contact") },
+    { name: "Hire Me / Project Inquiry", icon: <Mail className="h-4 w-4" />, action: () => router.push("/hire") },
     { 
       name: "Copy Email Address", 
       icon: <Mail className="h-4 w-4" />, 

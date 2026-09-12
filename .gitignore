@@ -10,7 +10,7 @@
 !.yarn/releases
 !.yarn/versions
 /%TEMP%/
-/.vscode/
+/vscode/
 .vscode
 .cli
 /cli/

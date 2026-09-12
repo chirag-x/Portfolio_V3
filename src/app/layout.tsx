@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     siteName: "Chirag Sharma Portfolio",
     images: [
       {
-        url: "/images/hero.png",
+        url: "/api/og",
         width: 1200,
         height: 630,
         alt: "Chirag Sharma | Full Stack Gen AI Developer",

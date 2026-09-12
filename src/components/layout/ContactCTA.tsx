@@ -23,10 +23,10 @@ export default function ContactCTA() {
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
             <Link 
-              href="/contact"
+              href="/hire"
               className="w-full sm:w-auto px-8 py-4 bg-primary text-primary-foreground font-bold rounded-full hover:bg-primary/90 transition-all flex items-center justify-center gap-2 group shadow-lg shadow-primary/20"
             >
-              Get in touch
+              Start Project Inquiry
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             <a 
