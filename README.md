@@ -1,12 +1,12 @@
 # 🚀 Chirag Sharma - Portfolio V3 Master Report
 
-This document serves as the ultimate architectural blueprint and feature breakdown for your newly upgraded **Portfolio V3**. It details the tech stack, the massive feature list, the hidden Easter eggs, and the advanced systems running under the hood.
+This document serves as the ultimate architectural blueprint and feature breakdown for my newly upgraded **Portfolio V3**. It details the tech stack, the massive feature list, the hidden Easter eggs, and the advanced systems running under the hood.
 
 ---
 
 ## 🛠️ Tech Stack & Architecture
 
-Your portfolio is built on a highly modern, edge-ready architecture designed for maximum performance, SEO, and interactivity.
+My portfolio is built on a highly modern, edge-ready architecture designed for maximum performance, SEO, and interactivity.
 
 - **Framework:** Next.js 16 (App Router)
 - **Language:** TypeScript (Strict Mode)
@@ -62,7 +62,7 @@ Your portfolio is built on a highly modern, edge-ready architecture designed for
 
 ## 🕵️‍♂️ Hidden Secrets & Easter Eggs
 
-Your portfolio is packed with hidden interactions designed to impress other developers who know where to look.
+My portfolio is packed with hidden interactions designed to impress other developers who know where to look.
 
 ### 1. The Konami Code
 - If a user types the classic Konami Code sequence on their keyboard:
@@ -89,7 +89,7 @@ Your portfolio is packed with hidden interactions designed to impress other deve
 
 ## 📈 Deployment & Next Steps
 
-Your application is currently perfectly stable, compiles with zero errors, and is fully optimized for production.
+My application is currently perfectly stable, compiles with zero errors, and is fully optimized for production.
 
 **To deploy this masterpiece:**
 1. Commit all your changes to GitHub.
