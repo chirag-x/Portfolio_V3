@@ -42,3 +42,16 @@ export const getAllNotesMeta = async (): Promise<NoteMeta[]> => {
     
   return notes;
 };
+
+export const getAllNotesFull = async () => {
+  if (!fs.existsSync(rootDirectory)) return [];
+  const files = fs.readdirSync(rootDirectory);
+  return files
+    .filter((file) => file.endsWith(".mdx"))
+    .map((file) => {
+      const filePath = path.join(rootDirectory, file);
+      const fileContent = fs.readFileSync(filePath, "utf8");
+      const { data, content } = matter(fileContent);
+      return { meta: { ...data, slug: file.replace(/\.mdx$/, "") } as NoteMeta, content };
+    });
+};

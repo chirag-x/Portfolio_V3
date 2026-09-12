@@ -15,12 +15,18 @@ export default function CommandPalette() {
   const { setTheme, theme } = useTheme();
   const { playSwoosh, playClick } = useSoundEffects();
 
+  const [searchResults, setSearchResults] = useState<any[]>([]);
+
   useEffect(() => {
-    fetch('/api/search')
-      .then(res => res.json())
-      .then(data => setNotes(data))
-      .catch(console.error);
-  }, []);
+    if (search.length > 2) {
+      fetch(`/api/search?q=${encodeURIComponent(search)}`)
+        .then(res => res.json())
+        .then(data => setSearchResults(data))
+        .catch(console.error);
+    } else {
+      setSearchResults([]);
+    }
+  }, [search]);
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -43,7 +49,7 @@ export default function CommandPalette() {
   if (!isOpen) return null;
 
   // Base system commands
-  const commands = [
+  const commands: { name: string; icon: React.ReactNode; action: () => void; snippet?: string }[] = [
     { name: "Go to Home", icon: <Home className="h-4 w-4" />, action: () => router.push("/") },
     { name: "View All Work", icon: <Briefcase className="h-4 w-4" />, action: () => router.push("/work") },
     { name: "Lab / Experiments", icon: <Code className="h-4 w-4" />, action: () => router.push("/lab") },
@@ -72,21 +78,13 @@ export default function CommandPalette() {
     { name: "View Visitor Analytics (Hidden)", icon: <Activity className="h-4 w-4" />, action: () => router.push("/analytics") },
   ];
 
-  // Dynamically append all projects for global search
-  projects.forEach((p) => {
+  // Map API search results into commands
+  searchResults.forEach((res) => {
     commands.push({
-      name: `Project: ${p.title}`,
-      icon: <FolderGit2 className="h-4 w-4" />,
-      action: () => router.push(`/work/${p.slug}`)
-    });
-  });
-
-  // Dynamically append all MDX notes for global search
-  notes.forEach((n) => {
-    commands.push({
-      name: `Read: ${n.title}`,
-      icon: <FileText className="h-4 w-4" />,
-      action: () => router.push(`/notes/${n.slug}`)
+      name: `${res.type === 'note' ? 'Read' : 'Project'}: ${res.title}`,
+      icon: res.type === 'note' ? <FileText className="h-4 w-4 text-primary" /> : <FolderGit2 className="h-4 w-4 text-primary" />,
+      action: () => router.push(res.href),
+      snippet: res.snippet
     });
   });
 
@@ -97,7 +95,7 @@ export default function CommandPalette() {
   });
 
   const filteredCommands = commands.filter(cmd => 
-    cmd.name.toLowerCase().includes(search.toLowerCase())
+    cmd.name.toLowerCase().includes(search.toLowerCase()) || cmd.snippet
   );
 
   return (
@@ -130,15 +128,28 @@ export default function CommandPalette() {
               {filteredCommands.map((cmd, i) => (
                 <li key={i}>
                   <button
-                    className="w-full flex items-center gap-3 px-3 py-3 text-sm text-foreground hover:bg-accent hover:text-accent-foreground rounded-lg transition-colors text-left"
+                    className="w-full flex items-center gap-3 px-3 py-3 text-sm text-foreground hover:bg-accent hover:text-accent-foreground rounded-lg transition-colors text-left group"
                     onClick={() => {
                       playClick();
                       setIsOpen(false);
                       cmd.action();
                     }}
                   >
-                    <span className="text-muted-foreground">{cmd.icon}</span>
-                    {cmd.name}
+                    <div className="flex items-center space-x-3">
+                      <div className="text-muted-foreground group-hover:text-foreground transition-colors">
+                        {cmd.icon}
+                      </div>
+                      <div className="flex flex-col text-left">
+                        <span className="text-foreground font-medium group-hover:text-primary transition-colors">
+                          {cmd.name}
+                        </span>
+                        {(cmd as any).snippet && (
+                          <span className="text-xs text-muted-foreground mt-0.5 line-clamp-1 italic">
+                            {(cmd as any).snippet}
+                          </span>
+                        )}
+                      </div>
+                    </div>
                   </button>
                 </li>
               ))}

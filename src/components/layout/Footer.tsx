@@ -5,8 +5,9 @@ import { usePathname } from "next/navigation";
 import { profile } from "@/data/profile";
 import { Mail } from "lucide-react";
 import { FaGithub as Github, FaLinkedin as Linkedin, FaInstagram as Instagram, FaDiscord as Discord } from "react-icons/fa";
-import SpotifyWidget from "./SpotifyWidget";
 import GithubWidget from "./GithubWidget";
+import SpotifyWidget from "./SpotifyWidget";
+import InstallAppButton from "./InstallAppButton";
 
 export default function Footer() {
   const pathname = usePathname();
@@ -59,6 +60,7 @@ export default function Footer() {
               <li><Link href="/resume" className="hover:text-primary transition-colors">Resume</Link></li>
               <li><Link href="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
               <li><Link href="/hire" className="hover:text-primary transition-colors">Hire Me</Link></li>
+              <InstallAppButton />
             </ul>
           </div>
 

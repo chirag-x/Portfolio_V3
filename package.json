@@ -4,12 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",
+    "@ducanh2912/next-pwa": "^10.2.9",
     "@giscus/react": "^3.1.0",
     "@google/genai": "^2.22.0",
     "@hookform/resolvers": "^5.9.1",
