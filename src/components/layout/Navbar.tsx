@@ -32,9 +32,13 @@ export default function Navbar() {
     { name: "About", href: "/about" },
     { name: "Services", href: "/services" },
     { name: "Lab", href: "/lab" },
+    { name: "Notes", href: "/notes" },
+    { name: "Guestbook", href: "/guestbook" },
     { name: "Resume", href: "/resume" },
     { name: "Contact", href: "/contact" },
   ];
+
+  if (pathname === "/terminal") return null;
 
   return (
     <motion.header

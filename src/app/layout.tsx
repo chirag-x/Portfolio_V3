@@ -6,6 +6,10 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import CustomCursor from "@/components/layout/CustomCursor";
 import ScrollProgress from "@/components/layout/ScrollProgress";
+import PageTransition from "@/components/layout/PageTransition";
+import EasterEggProvider from "@/components/layout/EasterEggProvider";
+import AstaAssistant from "@/components/asta/AstaAssistant";
+import CommandPalette from "@/components/layout/CommandPalette";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -134,10 +138,15 @@ export default function RootLayout({
         >
           <ScrollProgress />
           <CustomCursor />
+          <EasterEggProvider />
+          <AstaAssistant />
+          <CommandPalette />
           <div className="flex flex-col min-h-screen">
             <Navbar />
-            <main className="flex-grow">
-              {children}
+            <main className="flex-grow flex flex-col">
+              <PageTransition>
+                {children}
+              </PageTransition>
             </main>
             <Footer />
           </div>

@@ -24,14 +24,23 @@ export default function SpotifyWidget() {
     return () => clearInterval(interval);
   }, []);
 
-  // Timer logic
+  // Timer logic using localStorage to persist across reloads
   useEffect(() => {
     let interval: any;
     if (data?.isPlaying) {
+      if (!localStorage.getItem("working_session_start")) {
+        localStorage.setItem("working_session_start", Date.now().toString());
+      }
+      
       interval = setInterval(() => {
-        setSessionSeconds((prev) => prev + 1);
+        const start = parseInt(localStorage.getItem("working_session_start") || "0", 10);
+        if (start > 0) {
+          setSessionSeconds(Math.floor((Date.now() - start) / 1000));
+        }
       }, 1000);
-    } else {
+    } else if (data && !data.isPlaying) {
+      // If we confirmed they are not playing, clear the session
+      localStorage.removeItem("working_session_start");
       setSessionSeconds(0);
     }
     return () => clearInterval(interval);

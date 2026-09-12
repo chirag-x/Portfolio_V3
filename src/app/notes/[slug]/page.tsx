@@ -3,6 +3,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import ViewCounter from "@/components/layout/ViewCounter";
 
 export async function generateStaticParams() {
   const notes = await getAllNotesMeta();
@@ -36,8 +37,11 @@ export default async function NotePage({ params }: { params: Promise<{ slug: str
         </Link>
         
         <header className="mb-12 pb-8 border-b border-border">
-          <div className="text-sm text-primary font-mono mb-4">
-            {new Date(note.meta.date).toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })}
+          <div className="flex items-center gap-6 mb-4">
+            <div className="text-sm text-primary font-mono">
+              {new Date(note.meta.date).toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })}
+            </div>
+            <ViewCounter slug={slug} />
           </div>
           <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-6">
             {note.meta.title}

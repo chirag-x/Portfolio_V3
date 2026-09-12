@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, X, Loader2, Sparkles } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useSoundEffects } from "@/hooks/useSoundEffects";
 
 type Message = {
@@ -21,6 +21,7 @@ const SUGGESTIONS = [
 ];
 
 export default function AstaAssistant() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Message[]>([
@@ -87,6 +88,8 @@ export default function AstaAssistant() {
       setIsLoading(false);
     }
   };
+
+  if (pathname === "/terminal") return null;
 
   return (
     <>

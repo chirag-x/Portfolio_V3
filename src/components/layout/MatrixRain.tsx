@@ -16,8 +16,9 @@ export default function MatrixRain({ onClose }: { onClose: () => void }) {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()";
-    const fontSize = 14;
+    // We mix random matrix characters with the letters of CHIRAG and ASTA heavily weighted
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()CHIRAGASTACHIRAGASTA";
+    const fontSize = 16;
     const columns = canvas.width / fontSize;
     const drops: number[] = [];
 

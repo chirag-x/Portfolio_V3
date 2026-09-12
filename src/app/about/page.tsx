@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Code2, Cpu, Brain, Layers, Globe, Code, ArrowUpRight } from "lucide-react";
 import { profile } from "@/data/profile";
+import GithubGraph from "@/components/about/GithubGraph";
 
 export const metadata: Metadata = {
   title: "About Chirag Sharma — Full Stack Gen AI Developer",
@@ -203,6 +204,11 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* 5.5 GITHUB ACTIVITY */}
+      <section className="container mx-auto px-6 md:px-12 mb-32">
+        <GithubGraph />
       </section>
 
       {/* 6. ABOUT CTA */}

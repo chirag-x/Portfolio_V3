@@ -1,10 +1,16 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { profile } from "@/data/profile";
 import { Mail } from "lucide-react";
 import { FaGithub as Github, FaLinkedin as Linkedin, FaInstagram as Instagram, FaDiscord as Discord } from "react-icons/fa";
 import SpotifyWidget from "./SpotifyWidget";
 
 export default function Footer() {
+  const pathname = usePathname();
+  if (pathname === "/terminal") return null;
+
   return (
     <footer className="border-t border-border bg-background pt-20 pb-12 mt-auto">
       <div className="container mx-auto px-6 md:px-12">

@@ -10,9 +10,17 @@ import { projects } from "@/data/projects";
 export default function CommandPalette() {
   const [isOpen, setIsOpen] = useState(false);
   const [search, setSearch] = useState("");
+  const [notes, setNotes] = useState<any[]>([]);
   const router = useRouter();
   const { setTheme, theme } = useTheme();
   const { playSwoosh, playClick } = useSoundEffects();
+
+  useEffect(() => {
+    fetch('/api/search')
+      .then(res => res.json())
+      .then(data => setNotes(data))
+      .catch(console.error);
+  }, []);
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -54,6 +62,15 @@ export default function CommandPalette() {
       name: `Project: ${p.title}`,
       icon: <FolderGit2 className="h-4 w-4" />,
       action: () => router.push(`/work/${p.slug}`)
+    });
+  });
+
+  // Dynamically append all MDX notes for global search
+  notes.forEach((n) => {
+    commands.push({
+      name: `Read: ${n.title}`,
+      icon: <FileText className="h-4 w-4" />,
+      action: () => router.push(`/notes/${n.slug}`)
     });
   });
 

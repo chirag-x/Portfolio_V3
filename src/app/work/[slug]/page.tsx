@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, ExternalLink } from "lucide-react";
+import ViewCounter from "@/components/layout/ViewCounter";
 import { FaGithub as Github } from "react-icons/fa";
 import OmnixCinematic from "@/components/projects/OmnixCinematic";
 
@@ -60,6 +61,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
               {project.status}
             </div>
             <div className="text-muted-foreground font-mono text-sm">{project.year}</div>
+            <ViewCounter slug={`work-${slug}`} />
           </div>
           
           <h1 className="text-5xl md:text-7xl font-black tracking-tighter mb-6 uppercase">{project.title}</h1>

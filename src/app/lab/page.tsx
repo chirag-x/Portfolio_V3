@@ -3,6 +3,8 @@ import Link from "next/link";
 import { ArrowRight, Beaker, Terminal, Code2, Bot } from "lucide-react";
 import { projects } from "@/data/projects";
 import Image from "next/image";
+import InteractiveGeometry from "@/components/canvas/InteractiveGeometry";
+import MatrixTriggerButton from "@/components/layout/MatrixTriggerButton";
 
 export const metadata: Metadata = {
   title: "Lab — Experiments in AI, Automation & Software",
@@ -23,13 +25,25 @@ export default function LabPage() {
   return (
     <div className="pt-32 pb-24 min-h-screen bg-background">
       <section className="container mx-auto px-6 md:px-12 mb-24">
-        <div className="max-w-3xl">
-          <h1 className="text-4xl md:text-6xl font-black tracking-tighter mb-6 uppercase flex items-center gap-4">
-            The Lab <Beaker className="w-10 h-10 md:w-14 md:h-14 text-primary" />
-          </h1>
-          <p className="text-xl text-muted-foreground leading-relaxed">
-            Where I experiment. A space for prototypes, ideas, AI explorations, automation scripts, and things that may eventually become larger products.
-          </p>
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="max-w-3xl">
+            <h1 className="text-4xl md:text-6xl font-black tracking-tighter mb-6 uppercase flex items-center gap-4">
+              The Lab <Beaker className="w-10 h-10 md:w-14 md:h-14 text-primary" />
+            </h1>
+            <p className="text-xl text-muted-foreground leading-relaxed">
+              Where I experiment. A space for prototypes, ideas, AI explorations, automation scripts, and things that may eventually become larger products.
+            </p>
+          </div>
+          <div className="h-[400px] w-full border border-border/50 rounded-2xl bg-muted/30 overflow-hidden relative group">
+            <div className="absolute top-4 left-4 z-10 px-3 py-1 bg-background/80 shadow-md border border-border/50 rounded-full text-xs text-foreground font-mono flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+              asta_neural_core.ai
+            </div>
+            <InteractiveGeometry />
+            <div className="absolute bottom-4 right-4 z-10 px-3 py-1 bg-background/80 shadow-md border border-border/50 rounded-full text-xs text-muted-foreground pointer-events-none">
+              [ Drag to Interact ]
+            </div>
+          </div>
         </div>
       </section>
 
@@ -46,6 +60,23 @@ export default function LabPage() {
                 </div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* Secret Access Section */}
+      <section className="py-24">
+        <div className="container mx-auto px-6 md:px-12 text-center max-w-2xl">
+          <h2 className="text-2xl font-black uppercase tracking-widest mb-4">Classified Access</h2>
+          <p className="text-muted-foreground mb-10">
+            You found the lab. These are the experimental access points to the mainframe. Proceed with caution.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link href="/terminal" className="w-full sm:w-auto px-8 py-4 bg-primary text-primary-foreground font-bold uppercase tracking-widest rounded-full hover:scale-105 transition-transform flex items-center justify-center gap-2 shadow-lg">
+              <Terminal className="w-5 h-5" />
+              CHIRAG-OS
+            </Link>
+            <MatrixTriggerButton />
           </div>
         </div>
       </section>

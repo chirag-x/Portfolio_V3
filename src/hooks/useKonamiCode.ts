@@ -38,7 +38,17 @@ export function useKonamiCode(callback: () => void) {
       });
     };
 
+    const handleCustomTrigger = () => {
+      callback();
+      setKeys([]);
+    };
+
     window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+    window.addEventListener("trigger_konami", handleCustomTrigger);
+    
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("trigger_konami", handleCustomTrigger);
+    };
   }, [callback]);
 }
