@@ -30,8 +30,9 @@ export async function GET() {
     }
 
     const repoName = pushEvent.repo.name;
-    const latestCommit = pushEvent.payload.commits[pushEvent.payload.commits.length - 1];
-    const commitMessage = latestCommit ? latestCommit.message.split('\n')[0] : "Made changes";
+    const commits = pushEvent.payload.commits || [];
+    const latestCommit = commits.length > 0 ? commits[commits.length - 1] : null;
+    const commitMessage = latestCommit ? latestCommit.message.split('\n')[0] : "Pushed to repository";
     const time = pushEvent.created_at;
 
     return NextResponse.json({
@@ -40,7 +41,7 @@ export async function GET() {
       time: time
     });
 
-  } catch (error) {
-    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+  } catch (error: any) {
+    return NextResponse.json({ error: "Internal Server Error", message: error.message }, { status: 500 });
   }
 }

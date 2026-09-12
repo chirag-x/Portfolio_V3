@@ -4,7 +4,7 @@ import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
-import { Menu, Moon, Sun, X, Command } from "lucide-react";
+import { Menu, Moon, Sun, X, Command, Zap } from "lucide-react";
 import { profile } from "@/data/profile";
 
 import { usePathname } from "next/navigation";
@@ -89,11 +89,19 @@ export default function Navbar() {
               <Command className="h-4 w-4" />
             </button>
             <button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              onClick={() => {
+                if (theme === "light") setTheme("dark");
+                else if (theme === "dark") setTheme("matrix");
+                else setTheme("light");
+              }}
               className="p-2 rounded-full text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors"
               aria-label="Toggle theme"
             >
-              {mounted && (theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />)}
+              {mounted && (
+                theme === "light" ? <Moon className="h-5 w-5" /> : 
+                theme === "dark" ? <Zap className="h-5 w-5 text-primary" /> : 
+                <Sun className="h-5 w-5" />
+              )}
             </button>
             
             <button 

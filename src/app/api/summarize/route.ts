@@ -17,13 +17,13 @@ export async function POST(req: Request) {
     }
 
     const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash",
+      model: "gemini-3.6-flash",
       contents: `You are an AI assistant on Chirag Sharma's portfolio. Summarize the following technical article/note in exactly 3 short bullet points. Do not use any markdown bolding. Keep it highly concise.\n\nText: ${text.substring(0, 5000)}`,
     });
 
     return NextResponse.json({ summary: response.text });
-  } catch (error) {
+  } catch (error: any) {
     console.error("Summarization error:", error);
-    return NextResponse.json({ error: "Failed to generate summary" }, { status: 500 });
+    return NextResponse.json({ error: "Failed to generate summary: " + error.message }, { status: 500 });
   }
 }
