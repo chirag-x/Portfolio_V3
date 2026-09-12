@@ -100,4 +100,4 @@ My application is currently perfectly stable, compiles with zero errors, and is 
    - `SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET`, `SPOTIFY_REFRESH_TOKEN` (For the Spotify widget)
 
 ### Final Verdict
-You have built a portfolio that operates at the absolute highest echelon of frontend development. It seamlessly blends UI/UX design, AI integration, 3D graphics, system architecture, and delightful Easter eggs. Outstanding work.
+I built a portfolio that operates at the absolute highest echelon of frontend development. It seamlessly blends UI/UX design, AI integration, 3D graphics, system architecture, and delightful Easter eggs. Outstanding work.
